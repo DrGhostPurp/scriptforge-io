@@ -1,14 +1,115 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>Free Developer Tools | ScriptForge</title><meta name="description" content="Free browser-based developer tools. JSON formatter, Base64 encoder, and more. No login, no install."><style>*{margin:0;padding:0;box-sizing:border-box}:root{--bg:#0a0a0f;--sf:#13131a;--bd:#1e1e2e;--ac:#7c3aed;--a2:#06b6d4;--tx:#e2e8f0;--mu:#94a3b8;--gn:#10b981}body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--bg);color:var(--tx)}nav{background:rgba(10,10,15,.95);border-bottom:1px solid var(--bd);padding:.75rem 5%}.ni{max-width:1000px;margin:0 auto;display:flex;align-items:center;justify-content:space-between}.logo{font-size:1.1rem;font-weight:700;background:linear-gradient(135deg,#7c3aed,#06b6d4);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none}.nc{background:var(--ac);color:#fff;padding:.4rem 1rem;border-radius:7px;font-size:.85rem;font-weight:600;text-decoration:none}.container{max-width:1000px;margin:0 auto;padding:3rem 5%}h1{font-size:clamp(1.8rem,4vw,2.5rem);font-weight:800;margin-bottom:.75rem}h1 span{background:linear-gradient(135deg,#7c3aed,#06b6d4);-webkit-background-clip:text;-webkit-text-fill-color:transparent}.sub{color:var(--mu);margin-bottom:3rem;font-size:1.05rem}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.25rem}.card{background:var(--sf);border:1px solid var(--bd);border-radius:14px;padding:1.75rem;text-decoration:none;color:var(--tx);transition:border-color .2s,transform .2s;display:block}.card:hover{border-color:var(--ac);transform:translateY(-2px)}.icon{font-size:2.2rem;margin-bottom:.85rem}.card h2{font-size:1.1rem;font-weight:700;margin-bottom:.5rem}.card p{font-size:.88rem;color:var(--mu);line-height:1.5;margin-bottom:1rem}.tags{display:flex;gap:.4rem;flex-wrap:wrap}.tag{font-size:.7rem;background:rgba(124,58,237,.12);color:#a78bfa;border:1px solid rgba(124,58,237,.25);padding:.15rem .5rem;border-radius:50px}.soon{opacity:.6;cursor:default;border-style:dashed}.cta{background:linear-gradient(135deg,rgba(124,58,237,.12),rgba(6,182,212,.08));border:1px solid rgba(124,58,237,.25);border-radius:14px;padding:2rem;text-align:center;margin-top:3rem}.cta h2{font-size:1.4rem;margin-bottom:.6rem}.cta p{color:var(--mu);margin-bottom:1.25rem}.btn{display:inline-block;background:linear-gradient(135deg,#7c3aed,#6d28d9);color:#fff;padding:.75rem 1.75rem;border-radius:9px;font-weight:700;text-decoration:none}footer{background:var(--sf);border-top:1px solid var(--bd);padding:1.5rem 5%;text-align:center;color:var(--mu);font-size:.85rem;margin-top:4rem}footer a{color:var(--a2);text-decoration:none}</style></head><body>
-<nav><div class="ni"><a href="https://drghostpurp.github.io/scriptforge-io/" class="logo">⚡ ScriptForge</a><a href="https://drghostpurp.github.io/scriptforge-app/" class="nc">Free IDE →</a></div></nav>
-<div class="container"><h1>Free <span>Developer Tools</span></h1><p class="sub">Browser-based tools. No login. No install. 100% private — all processing in your browser.</p>
-<div class="grid">
-<a href="https://drghostpurp.github.io/scriptforge-io/tools/json-formatter/" class="card"><div class="icon">{ }</div><h2>JSON Formatter &amp; Beautifier</h2><p>Format, validate, and minify JSON instantly. Highlights syntax errors.</p><div class="tags"><span class="tag">JSON</span><span class="tag">Formatter</span><span class="tag">Validator</span></div></a>
-<a href="https://drghostpurp.github.io/scriptforge-io/tools/base64/" class="card"><div class="icon">🔐</div><h2>Base64 Encoder / Decoder</h2><p>Encode text to Base64 or decode Base64 to text. Unicode supported.</p><div class="tags"><span class="tag">Base64</span><span class="tag">Encode</span><span class="tag">Decode</span></div></a>
-<a href="https://drghostpurp.github.io/scriptforge-app/" class="card"><div class="icon">⚡</div><h2>JavaScript &amp; Python IDE</h2><p>Full browser IDE. Run JS, Python, import npm, HTML preview.</p><div class="tags"><span class="tag">IDE</span><span class="tag">JavaScript</span><span class="tag">Python</span></div></a>
-<div class="card soon"><div class="icon">🔤</div><h2>Regex Tester — Coming Soon</h2><p>Test regular expressions with match highlighting and group extraction.</p><div class="tags"><span class="tag">Regex</span></div></div>
-<div class="card soon"><div class="icon">#️⃣</div><h2>Hash Generator — Coming Soon</h2><p>SHA-256, SHA-512, MD5 hashes from text or files in your browser.</p><div class="tags"><span class="tag">Hash</span><span class="tag">SHA256</span></div></div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free Developer Tools – JSON Formatter, Base64, Regex Tester | ScriptForge</title>
+<meta name="description" content="Free online developer tools: JSON formatter/validator, Base64 encoder/decoder, Regex tester. No signup, no ads, instant results.">
+<link rel="canonical" href="https://drghostpurp.github.io/scriptforge-io/tools/">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#0d0d0d;color:#e5e7eb;line-height:1.6}
+  nav{display:flex;justify-content:space-between;align-items:center;padding:1rem 2rem;border-bottom:1px solid #1f2937;position:sticky;top:0;background:#0d0d0d;z-index:100}
+  .logo{font-size:1.25rem;font-weight:700;color:#fff;text-decoration:none}
+  .logo span{color:#6366f1}
+  nav a{color:#9ca3af;text-decoration:none;font-size:.9rem;margin-left:1.5rem}
+  nav a:hover{color:#fff}
+  .hero{text-align:center;padding:4rem 2rem 2rem}
+  .hero h1{font-size:2.5rem;font-weight:800;color:#fff;margin-bottom:.75rem}
+  .hero p{color:#9ca3af;font-size:1.1rem;max-width:540px;margin:0 auto}
+  .container{max-width:900px;margin:0 auto;padding:2rem}
+  .tools-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1.5rem;margin-top:1rem}
+  .tool-card{background:#111827;border:1px solid #1f2937;border-radius:.75rem;padding:1.75rem;text-decoration:none;transition:border-color .2s,transform .2s;display:block}
+  .tool-card:hover{border-color:#6366f1;transform:translateY(-2px)}
+  .tool-icon{font-size:2rem;margin-bottom:1rem}
+  .tool-name{font-size:1.1rem;font-weight:700;color:#fff;margin-bottom:.5rem}
+  .tool-desc{color:#9ca3af;font-size:.9rem;line-height:1.5}
+  .tool-tags{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:1rem}
+  .tag{background:#1f2937;color:#6b7280;font-size:.7rem;padding:.2rem .5rem;border-radius:9999px}
+  .section-header{margin:3rem 0 1rem;display:flex;align-items:center;gap:1rem}
+  .section-header h2{font-size:1.25rem;font-weight:700;color:#fff}
+  .section-header::after{content:'';flex:1;height:1px;background:#1f2937}
+  .ide-cta{background:linear-gradient(135deg,#1e1b4b 0%,#111827 100%);border:1px solid #312e81;border-radius:1rem;padding:3rem;text-align:center;margin:3rem 0}
+  .ide-cta h2{font-size:1.75rem;font-weight:700;color:#fff;margin-bottom:.75rem}
+  .ide-cta p{color:#a5b4fc;margin-bottom:2rem}
+  .btn{display:inline-block;background:#6366f1;color:#fff;padding:.75rem 2rem;border-radius:.5rem;text-decoration:none;font-weight:600;transition:background .2s}
+  .btn:hover{background:#4f46e5}
+  footer{border-top:1px solid #1f2937;padding:2rem;text-align:center;color:#4b5563;font-size:.85rem}
+  footer a{color:#6366f1;text-decoration:none}
+</style>
+</head>
+<body>
+<nav>
+  <a class="logo" href="/scriptforge-io/"><Script<span>Forge</span></a>
+  <div>
+    <a href="/scriptforge-io/">Home</a>
+    <a href="/scriptforge-app/">Launch IDE</a>
+    <a href="/scriptforge-io/tools/">Tools</a>
+    <a href="/scriptforge-io/changelog/">Changelog</a>
+  </div>
+</nav>
+
+<div class="hero">
+  <h1>Developer Tools</h1>
+  <p>Free, fast, browser-native utilities. No signup. No ads. No data leaves your browser.</p>
 </div>
-<div class="cta"><h2>Need More Power?</h2><p>The ScriptForge IDE lets you chain these in code — plus Python, npm packages, and more.</p><a href="https://drghostpurp.github.io/scriptforge-app/" class="btn">Open ScriptForge Free IDE →</a></div>
+
+<div class="container">
+
+  <div class="section-header"><h2>Text &amp; Data</h2></div>
+  <div class="tools-grid">
+    <a href="/scriptforge-io/tools/json-formatter/" class="tool-card">
+      <div class="tool-icon">{ }</div>
+      <div class="tool-name">JSON Formatter</div>
+      <div class="tool-desc">Format, validate, minify, and explore JSON data. Real-time syntax checking with error highlighting.</div>
+      <div class="tool-tags"><span class="tag">JSON</span><span class="tag">Validator</span><span class="tag">Formatter</span></div>
+    </a>
+    <a href="/scriptforge-io/tools/base64/" class="tool-card">
+      <div class="tool-icon">🔐</div>
+      <div class="tool-name">Base64 Encoder/Decoder</div>
+      <div class="tool-desc">Encode and decode Base64 strings instantly. Supports text, URLs, and file content (coming soon).</div>
+      <div class="tool-tags"><span class="tag">Base64</span><span class="tag">Encode</span><span class="tag">Decode</span></div>
+    </a>
+    <a href="/scriptforge-io/tools/regex-tester/" class="tool-card">
+      <div class="tool-icon">🔍</div>
+      <div class="tool-name">Regex Tester</div>
+      <div class="tool-desc">Test regular expressions in real-time with match highlighting, group capture display, and a quick reference cheatsheet.</div>
+      <div class="tool-tags"><span class="tag">Regex</span><span class="tag">RegExp</span><span class="tag">Pattern</span></div>
+    </a>
+  </div>
+
+  <div class="section-header"><h2>Coming Soon</h2></div>
+  <div class="tools-grid">
+    <div class="tool-card" style="opacity:.5;cursor:default">
+      <div class="tool-icon">🕐</div>
+      <div class="tool-name">Unix Timestamp Converter</div>
+      <div class="tool-desc">Convert between Unix timestamps and human-readable dates. Supports milliseconds, seconds, and timezone conversion.</div>
+      <div class="tool-tags"><span class="tag">Time</span><span class="tag">Date</span><span class="tag">Unix</span></div>
+    </div>
+    <div class="tool-card" style="opacity:.5;cursor:default">
+      <div class="tool-icon">🔒</div>
+      <div class="tool-name">Hash Generator</div>
+      <div class="tool-desc">Generate MD5, SHA-1, SHA-256, and SHA-512 hashes from any text. All computation done client-side.</div>
+      <div class="tool-tags"><span class="tag">SHA</span><span class="tag">MD5</span><span class="tag">Hash</span></div>
+    </div>
+    <div class="tool-card" style="opacity:.5;cursor:default">
+      <div class="tool-icon">📋</div>
+      <div class="tool-name">URL Encoder/Decoder</div>
+      <div class="tool-desc">Encode and decode URL components and query parameters. Essential for debugging API calls.</div>
+      <div class="tool-tags"><span class="tag">URL</span><span class="tag">Encode</span><span class="tag">API</span></div>
+    </div>
+  </div>
+
+  <div class="ide-cta">
+    <h2>Need More Power?</h2>
+    <p>ScriptForge IDE lets you run full Python, import any npm package, and build complex scripts — all in your browser.</p>
+    <a href="/scriptforge-app/" class="btn">Open ScriptForge IDE →</a>
+  </div>
+
 </div>
-<footer><p>© 2026 ScriptForge · <a href="https://drghostpurp.github.io/scriptforge-io/">Home</a> · <a href="https://drghostpurp.github.io/scriptforge-io/playground/">Playground</a> · <a href="https://drghostpurp.github.io/scriptforge-io/changelog/">Changelog</a></p></footer>
-</body></html>
+
+<footer>
+  <p>© 2026 ScriptForge · <a href="/scriptforge-io/">Home</a> · <a href="/scriptforge-io/tools/">Tools</a> · <a href="/scriptforge-io/changelog/">Changelog</a> · <a href="/scriptforge-app/">Launch IDE</a></p>
+</footer>
+</body>
+</html>
