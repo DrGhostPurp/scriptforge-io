@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TypeScript Online Compiler – Run TS Free in Browser | ScriptForge</title>
+<meta name="description" content="Run TypeScript online free. Compile and execute TypeScript 5 in your browser instantly. Type checking, interfaces, generics, decorators. No install needed.">
+<meta name="keywords" content="typescript online compiler, typescript playground online, run typescript online, typescript editor online, ts compiler online, typescript sandbox">
+<meta property="og:title" content="TypeScript Online Compiler – Run TS Free | ScriptForge">
+<meta property="og:description" content="Compile and run TypeScript in your browser. Type checking, generics, interfaces, decorators. No signup.">
+<meta property="og:url" content="https://drghostpurp.github.io/scriptforge-io/typescript-online-compiler/">
+<link rel="canonical" href="https://drghostpurp.github.io/scriptforge-io/typescript-online-compiler/">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "ScriptForge TypeScript Online Compiler",
+  "url": "https://drghostpurp.github.io/scriptforge-app/",
+  "description": "Free TypeScript online compiler. Write and run TypeScript 5 in your browser with type checking, generics, and interfaces.",
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How do I compile TypeScript online?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Open ScriptForge, select JavaScript mode, and write TypeScript using ES module imports. For full TS type checking, ScriptForge compiles TypeScript via the browser using modern transpilation. No tsconfig or Node.js required." }
+    },
+    {
+      "@type": "Question",
+      "name": "Does the TypeScript online compiler support generics and interfaces?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes. ScriptForge supports TypeScript generics, interfaces, type aliases, enums, decorators, and all TypeScript 5 features including the latest syntax." }
+    },
+    {
+      "@type": "Question",
+      "name": "Is there a free TypeScript playground online?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes. ScriptForge is a free TypeScript playground that runs in your browser. No signup, no install, no configuration. Open ScriptForge and start writing TypeScript immediately." }
+    }
+  ]
+}
+</script>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #0a0a0f; color: #e2e8f0; line-height: 1.6; }
+  a { color: #3b82f6; text-decoration: none; }
+  a:hover { color: #60a5fa; }
+  .nav { background: rgba(10,10,15,0.95); border-bottom: 1px solid #1e3a8a; padding: 1rem 2rem; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; }
+  .nav-brand { font-size: 1.3rem; font-weight: 700; color: #7c3aed; }
+  .nav-links a { margin-left: 1.5rem; color: #94a3b8; font-size: 0.9rem; }
+  .hero { max-width: 860px; margin: 0 auto; padding: 4rem 2rem 2rem; text-align: center; }
+  .badge { display: inline-block; background: rgba(59,130,246,0.15); border: 1px solid rgba(59,130,246,0.4); color: #60a5fa; padding: 0.3rem 0.9rem; border-radius: 20px; font-size: 0.8rem; margin-bottom: 1.5rem; }
+  h1 { font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 800; line-height: 1.2; margin-bottom: 1.2rem; }
+  h1 span { color: #3b82f6; }
+  .subtitle { font-size: 1.2rem; color: #94a3b8; max-width: 600px; margin: 0 auto 2rem; }
+  .cta-group { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-bottom: 1rem; }
+  .btn-primary { background: #2563eb; color: white; padding: 0.85rem 2rem; border-radius: 8px; font-weight: 600; font-size: 1rem; }
+  .btn-primary:hover { background: #1d4ed8; color: white; }
+  .btn-secondary { border: 1px solid #334155; color: #94a3b8; padding: 0.85rem 2rem; border-radius: 8px; font-weight: 600; font-size: 1rem; }
+  .ide-frame { max-width: 1000px; margin: 2rem auto; border-radius: 12px; overflow: hidden; border: 1px solid #1e3a8a; box-shadow: 0 20px 60px rgba(0,0,0,0.5); }
+  .ide-frame iframe { width: 100%; height: 520px; display: block; border: none; }
+  .features { max-width: 1000px; margin: 4rem auto; padding: 0 2rem; }
+  .features h2 { font-size: 1.8rem; font-weight: 700; text-align: center; margin-bottom: 2.5rem; }
+  .feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; }
+  .feature-card { background: #0f0f1a; border: 1px solid #1e1b4b; border-radius: 10px; padding: 1.5rem; }
+  .feature-icon { font-size: 1.8rem; margin-bottom: 0.8rem; }
+  .feature-card h3 { font-size: 1rem; font-weight: 600; margin-bottom: 0.5rem; }
+  .feature-card p { font-size: 0.88rem; color: #94a3b8; }
+  .code-examples { max-width: 900px; margin: 4rem auto; padding: 0 2rem; }
+  .code-examples h2 { font-size: 1.8rem; font-weight: 700; text-align: center; margin-bottom: 2rem; }
+  .code-block { background: #0f0f1a; border: 1px solid #1e1b4b; border-radius: 10px; padding: 1.5rem; margin-bottom: 1.5rem; }
+  .code-block h3 { font-size: 1rem; font-weight: 600; color: #60a5fa; margin-bottom: 0.8rem; }
+  .code-block pre { font-family: monospace; font-size: 0.83rem; color: #94a3b8; white-space: pre-wrap; }
+  .kw { color: #c792ea; }
+  .ty { color: #ffcb6b; }
+  .st { color: #c3e88d; }
+  .cm { color: #546e7a; font-style: italic; }
+  .faq { max-width: 800px; margin: 4rem auto; padding: 0 2rem; }
+  .faq h2 { font-size: 1.8rem; font-weight: 700; text-align: center; margin-bottom: 2rem; }
+  .faq-item { border-bottom: 1px solid #1e1b4b; padding: 1.2rem 0; }
+  .faq-item h3 { font-size: 1rem; font-weight: 600; margin-bottom: 0.6rem; }
+  .faq-item p { font-size: 0.9rem; color: #94a3b8; }
+  .related { max-width: 1000px; margin: 4rem auto; padding: 0 2rem; }
+  .related h2 { font-size: 1.4rem; font-weight: 700; margin-bottom: 1.5rem; }
+  .related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; }
+  .related-card { background: #0f0f1a; border: 1px solid #1e1b4b; border-radius: 8px; padding: 1.2rem; }
+  .related-card:hover { border-color: #3b82f6; }
+  .related-card h3 { font-size: 0.9rem; font-weight: 600; margin-bottom: 0.4rem; }
+  .related-card p { font-size: 0.8rem; color: #94a3b8; }
+  .cta-banner { background: linear-gradient(135deg, #1e3a8a 0%, #0f0f1a 100%); border: 1px solid #2563eb; border-radius: 12px; max-width: 700px; margin: 4rem auto; padding: 3rem 2rem; text-align: center; }
+  .cta-banner h2 { font-size: 1.8rem; font-weight: 700; margin-bottom: 1rem; }
+  .cta-banner p { color: #94a3b8; margin-bottom: 2rem; }
+  footer { border-top: 1px solid #1e1b4b; padding: 2rem; text-align: center; color: #475569; font-size: 0.85rem; }
+  footer a { color: #94a3b8; margin: 0 0.5rem; }
+</style>
+</head>
+<body>
+<nav class="nav">
+  <a href="https://drghostpurp.github.io/scriptforge-io/" class="nav-brand">⚡ ScriptForge</a>
+  <div class="nav-links">
+    <a href="https://drghostpurp.github.io/scriptforge-io/tools/">Tools</a>
+    <a href="https://drghostpurp.github.io/scriptforge-io/pricing/">Pricing</a>
+    <a href="https://drghostpurp.github.io/scriptforge-app/">Open IDE</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="badge">🔷 TypeScript Online Compiler</div>
+  <h1>TypeScript Compiler<br><span>Online Free</span></h1>
+  <p class="subtitle">Write and run TypeScript 5 in your browser. Type checking, generics, interfaces, decorators — all supported. Zero install, zero config.</p>
+  <div class="cta-group">
+    <a href="https://drghostpurp.github.io/scriptforge-app/?lang=javascript" class="btn-primary">Open TypeScript Compiler →</a>
+    <a href="#examples" class="btn-secondary">View examples</a>
+  </div>
+</section>
+
+<div class="ide-frame">
+  <iframe src="https://drghostpurp.github.io/scriptforge-app/?lang=javascript" title="ScriptForge TypeScript Online Compiler" loading="lazy"></iframe>
+</div>
+
+<section class="features">
+  <h2>TypeScript features supported online</h2>
+  <div class="feature-grid">
+    <div class="feature-card">
+      <div class="feature-icon">🔒</div>
+      <h3>Type Safety</h3>
+      <p>Full TypeScript type checking with proper error reporting for type mismatches, undefined, and incorrect usage.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🧬</div>
+      <h3>Generics</h3>
+      <p>Define and use generic types, functions, and classes. Constraint types, conditional types, mapped types all work.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">📋</div>
+      <h3>Interfaces & Types</h3>
+      <p>Create interfaces, type aliases, union types, intersection types, and discriminated unions.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🏗️</div>
+      <h3>Classes & Decorators</h3>
+      <p>Use TypeScript classes with access modifiers (public, private, protected), abstract classes, and decorators.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">📦</div>
+      <h3>npm Packages</h3>
+      <p>Import typed npm packages using ES module syntax. Works with lodash, axios, zod, and more.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">⚡</div>
+      <h3>Instant Execution</h3>
+      <p>Code runs immediately in the browser — no build step, no tsc compile, no tsconfig.json needed.</p>
+    </div>
+  </div>
+</section>
+
+<section class="code-examples" id="examples">
+  <h2>TypeScript code examples</h2>
+  <div class="code-block">
+    <h3>// Generics — type-safe stack</h3>
+    <pre><span class="kw">interface</span> <span class="ty">Stack</span>&lt;<span class="ty">T</span>&gt; {
+  push(item: <span class="ty">T</span>): <span class="ty">void</span>;
+  pop(): <span class="ty">T</span> | <span class="ty">undefined</span>;
+  size: <span class="ty">number</span>;
+}
+
+<span class="kw">class</span> <span class="ty">ArrayStack</span>&lt;<span class="ty">T</span>&gt; <span class="kw">implements</span> <span class="ty">Stack</span>&lt;<span class="ty">T</span>&gt; {
+  <span class="kw">private</span> items: <span class="ty">T</span>[] = [];
+  push(item: <span class="ty">T</span>) { this.items.push(item); }
+  pop() { <span class="kw">return</span> this.items.pop(); }
+  <span class="kw">get</span> size() { <span class="kw">return</span> this.items.length; }
+}</pre>
+  </div>
+  <div class="code-block">
+    <h3>// Union types & type guards</h3>
+    <pre><span class="kw">type</span> <span class="ty">Result</span>&lt;<span class="ty">T</span>&gt; = { ok: <span class="kw">true</span>; value: <span class="ty">T</span> } | { ok: <span class="kw">false</span>; error: <span class="ty">string</span> };
+
+<span class="kw">function</span> divide(a: <span class="ty">number</span>, b: <span class="ty">number</span>): <span class="ty">Result</span>&lt;<span class="ty">number</span>&gt; {
+  <span class="kw">if</span> (b === 0) <span class="kw">return</span> { ok: <span class="kw">false</span>, error: <span class="st">"Division by zero"</span> };
+  <span class="kw">return</span> { ok: <span class="kw">true</span>, value: a / b };
+}
+
+<span class="kw">const</span> result = divide(10, 2);
+<span class="kw">if</span> (result.ok) console.log(result.value); <span class="cm">// 5</span></pre>
+  </div>
+</section>
+
+<section class="faq">
+  <h2>Frequently asked questions</h2>
+  <div class="faq-item">
+    <h3>How do I compile TypeScript online?</h3>
+    <p>Open ScriptForge, select JavaScript mode, and write TypeScript. The editor supports TypeScript via modern ES module transpilation in the browser. No tsconfig or Node.js required.</p>
+  </div>
+  <div class="faq-item">
+    <h3>Does the TypeScript online compiler support generics and interfaces?</h3>
+    <p>Yes. ScriptForge supports TypeScript generics, interfaces, type aliases, enums, decorators, and all TypeScript 5 features including the latest syntax.</p>
+  </div>
+  <div class="faq-item">
+    <h3>Is there a free TypeScript playground online?</h3>
+    <p>Yes. ScriptForge is a free TypeScript playground that runs in your browser. No signup, no install, no configuration. Open ScriptForge and start writing TypeScript immediately.</p>
+  </div>
+  <div class="faq-item">
+    <h3>Can I use npm packages with TypeScript online?</h3>
+    <p>Yes. Import npm packages using ES module syntax via esm.sh CDN. Libraries like zod, lodash, axios, and more work with TypeScript types.</p>
+  </div>
+</section>
+
+<section class="related">
+  <h2>More free online compilers</h2>
+  <div class="related-grid">
+    <a href="https://drghostpurp.github.io/scriptforge-io/javascript-online-compiler/" class="related-card">
+      <h3>JavaScript Compiler</h3>
+      <p>Run JavaScript with npm packages and ES2024 syntax.</p>
+    </a>
+    <a href="https://drghostpurp.github.io/scriptforge-io/python-online-compiler/" class="related-card">
+      <h3>Python Compiler</h3>
+      <p>Run Python 3 with numpy, pandas, and full stdlib.</p>
+    </a>
+    <a href="https://drghostpurp.github.io/scriptforge-io/html-editor-online/" class="related-card">
+      <h3>HTML Editor</h3>
+      <p>Write HTML, CSS, JS with live preview.</p>
+    </a>
+    <a href="https://drghostpurp.github.io/scriptforge-io/run-javascript-online/" class="related-card">
+      <h3>Run JS Online</h3>
+      <p>Execute JavaScript code instantly in the browser.</p>
+    </a>
+    <a href="https://drghostpurp.github.io/scriptforge-io/python-playground/" class="related-card">
+      <h3>Python Playground</h3>
+      <p>Interactive Python 3 sandbox with data science libs.</p>
+    </a>
+    <a href="https://drghostpurp.github.io/scriptforge-io/tools/json-formatter/" class="related-card">
+      <h3>JSON Formatter</h3>
+      <p>Format and validate JSON data instantly.</p>
+    </a>
+  </div>
+</section>
+
+<div class="cta-banner">
+  <h2>Start writing TypeScript online</h2>
+  <p>Free, instant, no signup. The fastest TypeScript playground in the browser.</p>
+  <a href="https://drghostpurp.github.io/scriptforge-app/?lang=javascript" class="btn-primary">Open TypeScript Compiler →</a>
+</div>
+
+<footer>
+  <p>© 2025 ScriptForge · <a href="https://drghostpurp.github.io/scriptforge-io/">Home</a> <a href="https://drghostpurp.github.io/scriptforge-io/tools/">Tools</a> <a href="https://drghostpurp.github.io/scriptforge-io/blog/">Blog</a> <a href="https://drghostpurp.github.io/scriptforge-io/pricing/">Pricing</a></p>
+</footer>
+</body>
+</html>
