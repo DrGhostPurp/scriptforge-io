@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Free Developer Tools – JSON, Base64, Regex, Hash, URL, Color | ScriptForge</title>
-<meta name="description" content="6 free online developer tools: JSON formatter, Base64 encoder, Regex tester, Hash generator, URL encoder, Color converter. No signup, instant results.">
+<title>Free Developer Tools – JSON, Regex, Hash, Diff, URL, Color | ScriptForge</title>
+<meta name="description" content="8 free online developer tools: JSON formatter, Base64, Regex tester, Timestamp, Hash generator, URL encoder, Color converter, Diff checker. No signup, instant results.">
 <link rel="canonical" href="https://drghostpurp.github.io/scriptforge-io/tools/">
 <style>
   *{margin:0;padding:0;box-sizing:border-box}
@@ -19,7 +19,7 @@
   .hero p{color:#9ca3af;font-size:1.1rem;max-width:540px;margin:0 auto}
   .badge{display:inline-block;background:#6366f120;border:1px solid #6366f140;color:#a78bfa;font-size:.8rem;padding:.3rem .75rem;border-radius:9999px;margin-bottom:1rem}
   .container{max-width:960px;margin:0 auto;padding:2rem}
-  .tools-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1.25rem;margin-top:1rem}
+  .tools-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:1.25rem;margin-top:1rem}
   .tool-card{background:#111827;border:1px solid #1f2937;border-radius:.75rem;padding:1.5rem;text-decoration:none;transition:border-color .2s,transform .2s;display:block}
   .tool-card:hover{border-color:#6366f1;transform:translateY(-2px)}
   .tool-icon{font-size:1.75rem;margin-bottom:.75rem}
@@ -27,9 +27,6 @@
   .tool-desc{color:#9ca3af;font-size:.85rem;line-height:1.5}
   .tool-tags{display:flex;gap:.4rem;flex-wrap:wrap;margin-top:.75rem}
   .tag{background:#1f2937;color:#6b7280;font-size:.7rem;padding:.15rem .45rem;border-radius:9999px}
-  .section-header{margin:3rem 0 1rem;display:flex;align-items:center;gap:1rem}
-  .section-header h2{font-size:1.1rem;font-weight:700;color:#fff;white-space:nowrap}
-  .section-header::after{content:'';flex:1;height:1px;background:#1f2937}
   .ide-cta{background:linear-gradient(135deg,#1e1b4b 0%,#111827 100%);border:1px solid #312e81;border-radius:1rem;padding:3rem;text-align:center;margin:3rem 0}
   .ide-cta h2{font-size:1.75rem;font-weight:700;color:#fff;margin-bottom:.75rem}
   .ide-cta p{color:#a5b4fc;margin-bottom:2rem}
@@ -52,62 +49,61 @@
 </nav>
 
 <div class="hero">
-  <div class="badge">6 Tools Live</div>
+  <div class="badge">8 Tools Live</div>
   <h1>Developer Tools</h1>
   <p>Free, fast, browser-native utilities. No signup. No ads. Your data never leaves your browser.</p>
 </div>
 
 <div class="container">
-  <div class="section-header"><h2>All Tools</h2></div>
   <div class="tools-grid">
     <a href="/scriptforge-io/tools/json-formatter/" class="tool-card">
       <div class="tool-icon">{ }</div>
       <div class="tool-name">JSON Formatter</div>
-      <div class="tool-desc">Format, validate, minify, and explore JSON data with real-time error highlighting.</div>
+      <div class="tool-desc">Format, validate, minify, and explore JSON with real-time error highlighting.</div>
       <div class="tool-tags"><span class="tag">JSON</span><span class="tag">Validator</span></div>
     </a>
     <a href="/scriptforge-io/tools/base64/" class="tool-card">
       <div class="tool-icon">🔐</div>
       <div class="tool-name">Base64 Encoder</div>
-      <div class="tool-desc">Encode and decode Base64 strings instantly. Great for API tokens and data URIs.</div>
+      <div class="tool-desc">Encode and decode Base64 strings. Great for API tokens and data URIs.</div>
       <div class="tool-tags"><span class="tag">Base64</span><span class="tag">Encode</span></div>
     </a>
     <a href="/scriptforge-io/tools/regex-tester/" class="tool-card">
       <div class="tool-icon">🔍</div>
       <div class="tool-name">Regex Tester</div>
-      <div class="tool-desc">Test regex patterns in real-time with match highlighting and capture group display.</div>
+      <div class="tool-desc">Test regex patterns in real-time with match highlighting and capture groups.</div>
       <div class="tool-tags"><span class="tag">Regex</span><span class="tag">Pattern</span></div>
     </a>
     <a href="/scriptforge-io/tools/timestamp/" class="tool-card">
       <div class="tool-icon">🕐</div>
       <div class="tool-name">Timestamp Converter</div>
-      <div class="tool-desc">Convert Unix timestamps to dates and back. Supports seconds, ms, timezones, ISO.</div>
+      <div class="tool-desc">Convert Unix timestamps to dates. Supports seconds, ms, ISO, and timezones.</div>
       <div class="tool-tags"><span class="tag">Epoch</span><span class="tag">Unix</span></div>
     </a>
     <a href="/scriptforge-io/tools/hash/" class="tool-card">
       <div class="tool-icon">🔒</div>
       <div class="tool-name">Hash Generator</div>
-      <div class="tool-desc">Generate MD5, SHA-1, SHA-256, and SHA-512 hashes. 100% client-side via Web Crypto API.</div>
-      <div class="tool-tags"><span class="tag">SHA-256</span><span class="tag">MD5</span><span class="tag">Crypto</span></div>
+      <div class="tool-desc">MD5, SHA-1, SHA-256, SHA-512. 100% client-side via Web Crypto API.</div>
+      <div class="tool-tags"><span class="tag">SHA-256</span><span class="tag">MD5</span></div>
     </a>
     <a href="/scriptforge-io/tools/url-encode/" class="tool-card">
       <div class="tool-icon">🔗</div>
-      <div class="tool-name">URL Encoder / Decoder</div>
-      <div class="tool-desc">Encode/decode URLs and query strings. Supports encodeURI, encodeURIComponent, and query parsing.</div>
-      <div class="tool-tags"><span class="tag">URL</span><span class="tag">Percent</span><span class="tag">Query</span></div>
+      <div class="tool-name">URL Encoder</div>
+      <div class="tool-desc">Encode/decode URLs, query strings, and percent-encoded characters.</div>
+      <div class="tool-tags"><span class="tag">URL</span><span class="tag">Percent</span></div>
     </a>
     <a href="/scriptforge-io/tools/color/" class="tool-card">
       <div class="tool-icon">🎨</div>
       <div class="tool-name">Color Converter</div>
-      <div class="tool-desc">Convert HEX, RGB, HSL and CSS color formats. Includes shades, contrast checker, and color picker.</div>
+      <div class="tool-desc">Convert HEX↔RGB↔HSL. Includes shades, contrast checker, and CSS vars.</div>
       <div class="tool-tags"><span class="tag">HEX</span><span class="tag">RGB</span><span class="tag">HSL</span></div>
     </a>
-    <div class="tool-card" style="opacity:.4;cursor:default;border-style:dashed">
+    <a href="/scriptforge-io/tools/diff/" class="tool-card">
       <div class="tool-icon">⚖️</div>
       <div class="tool-name">Diff Checker</div>
-      <div class="tool-desc">Compare two text blocks and highlight differences line by line. Coming soon.</div>
-      <div class="tool-tags"><span class="tag">Coming soon</span></div>
-    </div>
+      <div class="tool-desc">Compare two text blocks line by line. Unified and side-by-side views.</div>
+      <div class="tool-tags"><span class="tag">Diff</span><span class="tag">Compare</span></div>
+    </a>
   </div>
 
   <div class="ide-cta">
