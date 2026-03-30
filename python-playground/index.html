@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Python Playground Online – Interactive Python Sandbox Free | ScriptForge</title>
+<meta name="description" content="Free Python playground online. Experiment with Python 3 code in an interactive sandbox. Supports numpy, pandas, matplotlib-like output. No install, no signup.">
+<meta name="keywords" content="python playground online, python sandbox online, interactive python online, python3 playground, python coding playground, online python playground free">
+<meta property="og:title" content="Python Playground Online – Free Interactive Sandbox | ScriptForge">
+<meta property="og:description" content="Experiment with Python 3 in an interactive browser sandbox. numpy, pandas, full stdlib. No signup.">
+<meta property="og:url" content="https://drghostpurp.github.io/scriptforge-io/python-playground/">
+<link rel="canonical" href="https://drghostpurp.github.io/scriptforge-io/python-playground/">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "ScriptForge Python Playground Online",
+  "url": "https://drghostpurp.github.io/scriptforge-app/",
+  "description": "Free interactive Python playground. Run Python 3 in your browser with numpy, pandas, and more.",
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is a Python playground?",
+      "acceptedAnswer": { "@type": "Answer", "text": "A Python playground is an interactive online environment where you can write and run Python code immediately without installing anything. It is perfect for learning Python, testing algorithms, experimenting with libraries, and sharing code snippets." }
+    },
+    {
+      "@type": "Question",
+      "name": "What Python libraries are available in the ScriptForge playground?",
+      "acceptedAnswer": { "@type": "Answer", "text": "ScriptForge's Python playground supports numpy, pandas, scipy, sympy, matplotlib (text output), regex, json, math, datetime, random, itertools, and the full Python 3 standard library via Pyodide WebAssembly." }
+    },
+    {
+      "@type": "Question",
+      "name": "Is the Python playground free?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes, completely free with no signup required. Open ScriptForge, select Python, and start coding immediately. No time limits, no credit card required." }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I use the Python playground for learning?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Absolutely. ScriptForge is ideal for Python beginners and students. The instant feedback loop — write code, run it, see results — is the fastest way to learn Python fundamentals, data structures, and algorithms." }
+    }
+  ]
+}
+</script>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #0a0a0f; color: #e2e8f0; line-height: 1.6; }
+  a { color: #22c55e; text-decoration: none; }
+  a:hover { color: #4ade80; }
+  .nav { background: rgba(10,10,15,0.95); border-bottom: 1px solid #052e16; padding: 1rem 2rem; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; }
+  .nav-brand { font-size: 1.3rem; font-weight: 700; color: #7c3aed; }
+  .nav-links a { margin-left: 1.5rem; color: #94a3b8; font-size: 0.9rem; }
+  .hero { max-width: 860px; margin: 0 auto; padding: 4rem 2rem 2rem; text-align: center; }
+  .badge { display: inline-block; background: rgba(34,197,94,0.15); border: 1px solid rgba(34,197,94,0.4); color: #4ade80; padding: 0.3rem 0.9rem; border-radius: 20px; font-size: 0.8rem; margin-bottom: 1.5rem; }
+  h1 { font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 800; line-height: 1.2; margin-bottom: 1.2rem; }
+  h1 span { color: #22c55e; }
+  .subtitle { font-size: 1.2rem; color: #94a3b8; max-width: 600px; margin: 0 auto 2rem; }
+  .cta-group { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-bottom: 1rem; }
+  .btn-primary { background: #16a34a; color: white; padding: 0.85rem 2rem; border-radius: 8px; font-weight: 600; font-size: 1rem; }
+  .btn-primary:hover { background: #15803d; color: white; }
+  .btn-secondary { border: 1px solid #334155; color: #94a3b8; padding: 0.85rem 2rem; border-radius: 8px; font-weight: 600; font-size: 1rem; }
+  .ide-frame { max-width: 1000px; margin: 2rem auto; border-radius: 12px; overflow: hidden; border: 1px solid #052e16; box-shadow: 0 20px 60px rgba(0,0,0,0.5); }
+  .ide-frame iframe { width: 100%; height: 540px; display: block; border: none; }
+  .use-cases { max-width: 1000px; margin: 4rem auto; padding: 0 2rem; }
+  .use-cases h2 { font-size: 1.8rem; font-weight: 700; text-align: center; margin-bottom: 2.5rem; }
+  .cases-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; }
+  .case-card { background: #0f0f1a; border: 1px solid #052e16; border-radius: 10px; padding: 1.5rem; }
+  .case-icon { font-size: 1.8rem; margin-bottom: 0.8rem; }
+  .case-card h3 { font-size: 1rem; font-weight: 600; margin-bottom: 0.5rem; }
+  .case-card p { font-size: 0.88rem; color: #94a3b8; }
+  .snippets { max-width: 900px; margin: 4rem auto; padding: 0 2rem; }
+  .snippets h2 { font-size: 1.8rem; font-weight: 700; text-align: center; margin-bottom: 2rem; }
+  .snippet-card { background: #0f0f1a; border: 1px solid #052e16; border-radius: 10px; padding: 1.5rem; margin-bottom: 1.2rem; }
+  .snippet-card h3 { font-size: 1rem; font-weight: 600; color: #4ade80; margin-bottom: 0.8rem; }
+  .snippet-card pre { font-family: 'Fira Code', monospace; font-size: 0.83rem; color: #94a3b8; white-space: pre-wrap; }
+  .kw { color: #c792ea; }
+  .st { color: #c3e88d; }
+  .cm { color: #546e7a; font-style: italic; }
+  .fn { color: #82aaff; }
+  .packages { max-width: 900px; margin: 4rem auto; padding: 0 2rem; }
+  .packages h2 { font-size: 1.8rem; font-weight: 700; text-align: center; margin-bottom: 2rem; }
+  .pkg-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 0.8rem; }
+  .pkg { background: #0f0f1a; border: 1px solid #052e16; border-radius: 8px; padding: 0.8rem 1rem; font-size: 0.85rem; font-family: monospace; color: #4ade80; }
+  .faq { max-width: 800px; margin: 4rem auto; padding: 0 2rem; }
+  .faq h2 { font-size: 1.8rem; font-weight: 700; text-align: center; margin-bottom: 2rem; }
+  .faq-item { border-bottom: 1px solid #1e1b4b; padding: 1.2rem 0; }
+  .faq-item h3 { font-size: 1rem; font-weight: 600; margin-bottom: 0.6rem; }
+  .faq-item p { font-size: 0.9rem; color: #94a3b8; }
+  .related { max-width: 1000px; margin: 4rem auto; padding: 0 2rem; }
+  .related h2 { font-size: 1.4rem; font-weight: 700; margin-bottom: 1.5rem; }
+  .related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; }
+  .related-card { background: #0f0f1a; border: 1px solid #1e1b4b; border-radius: 8px; padding: 1.2rem; }
+  .related-card:hover { border-color: #22c55e; }
+  .related-card h3 { font-size: 0.9rem; font-weight: 600; margin-bottom: 0.4rem; }
+  .related-card p { font-size: 0.8rem; color: #94a3b8; }
+  .cta-banner { background: linear-gradient(135deg, #052e16 0%, #0f0f1a 100%); border: 1px solid #16a34a; border-radius: 12px; max-width: 700px; margin: 4rem auto; padding: 3rem 2rem; text-align: center; }
+  .cta-banner h2 { font-size: 1.8rem; font-weight: 700; margin-bottom: 1rem; }
+  .cta-banner p { color: #94a3b8; margin-bottom: 2rem; }
+  footer { border-top: 1px solid #1e1b4b; padding: 2rem; text-align: center; color: #475569; font-size: 0.85rem; }
+  footer a { color: #94a3b8; margin: 0 0.5rem; }
+</style>
+</head>
+<body>
+<nav class="nav">
+  <a href="https://drghostpurp.github.io/scriptforge-io/" class="nav-brand">⚡ ScriptForge</a>
+  <div class="nav-links">
+    <a href="https://drghostpurp.github.io/scriptforge-io/tools/">Tools</a>
+    <a href="https://drghostpurp.github.io/scriptforge-io/pricing/">Pricing</a>
+    <a href="https://drghostpurp.github.io/scriptforge-app/">Open IDE</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="badge">🐍 Interactive Python Sandbox</div>
+  <h1>Python Playground<br><span>Online Free</span></h1>
+  <p class="subtitle">An interactive Python 3 sandbox in your browser. Experiment with code, test algorithms, explore data science libraries. No install, no signup.</p>
+  <div class="cta-group">
+    <a href="https://drghostpurp.github.io/scriptforge-app/?lang=python" class="btn-primary">Open Python Playground →</a>
+    <a href="#snippets" class="btn-secondary">See code examples</a>
+  </div>
+</section>
+
+<div class="ide-frame">
+  <iframe src="https://drghostpurp.github.io/scriptforge-app/?lang=python" title="ScriptForge Python Playground Online" loading="lazy"></iframe>
+</div>
+
+<section class="use-cases">
+  <h2>What to use the Python playground for</h2>
+  <div class="cases-grid">
+    <div class="case-card">
+      <div class="case-icon">🎓</div>
+      <h3>Learning Python</h3>
+      <p>Perfect for beginners. Write code, run it instantly, and see results — the fastest feedback loop for learning Python.</p>
+    </div>
+    <div class="case-card">
+      <div class="case-icon">🧮</div>
+      <h3>Algorithm Practice</h3>
+      <p>Test sorting algorithms, data structures, recursion, and dynamic programming without setting up a local environment.</p>
+    </div>
+    <div class="case-card">
+      <div class="case-icon">📊</div>
+      <h3>Data Analysis</h3>
+      <p>Load numpy and pandas to explore datasets, compute statistics, and filter data — all in the browser.</p>
+    </div>
+    <div class="case-card">
+      <div class="case-icon">🧪</div>
+      <h3>Quick Experiments</h3>
+      <p>Test a regex, debug a lambda, try a list comprehension. Faster than spinning up a local Python shell.</p>
+    </div>
+    <div class="case-card">
+      <div class="case-icon">🎓</div>
+      <h3>Teaching & Demos</h3>
+      <p>Share a Python playground URL with students or colleagues. They can run and modify code instantly.</p>
+    </div>
+    <div class="case-card">
+      <div class="case-icon">🏆</div>
+      <h3>Interview Prep</h3>
+      <p>Practice coding challenges and LeetCode-style problems in a clean Python environment before technical interviews.</p>
+    </div>
+  </div>
+</section>
+
+<section class="snippets" id="snippets">
+  <h2>Python playground code examples</h2>
+  <div class="snippet-card">
+    <h3># List comprehensions + lambda</h3>
+    <pre>nums = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+evens = [x <span class="kw">for</span> x <span class="kw">in</span> nums <span class="kw">if</span> x % 2 == 0]
+squared = <span class="fn">list</span>(<span class="fn">map</span>(<span class="kw">lambda</span> x: x**2, evens))
+<span class="fn">print</span>(squared)  <span class="cm"># [4, 16, 36, 64, 100]</span></pre>
+  </div>
+  <div class="snippet-card">
+    <h3># numpy — array math</h3>
+    <pre><span class="kw">import</span> numpy <span class="kw">as</span> np
+a = np.<span class="fn">array</span>([1, 2, 3, 4, 5])
+<span class="fn">print</span>(np.<span class="fn">mean</span>(a))    <span class="cm"># 3.0</span>
+<span class="fn">print</span>(np.<span class="fn">std</span>(a))     <span class="cm"># 1.414...</span>
+<span class="fn">print</span>(a * 2)        <span class="cm"># [2 4 6 8 10]</span></pre>
+  </div>
+  <div class="snippet-card">
+    <h3># Fibonacci generator</h3>
+    <pre><span class="kw">def</span> <span class="fn">fibonacci</span>(n):
+    a, b = 0, 1
+    <span class="kw">for</span> _ <span class="kw">in</span> <span class="fn">range</span>(n):
+        <span class="kw">yield</span> a
+        a, b = b, a + b
+
+<span class="fn">print</span>(<span class="fn">list</span>(<span class="fn">fibonacci</span>(10)))
+<span class="cm"># [0, 1, 1, 2, 3, 5, 8, 13, 21, 34]</span></pre>
+  </div>
+</section>
+
+<section class="packages">
+  <h2>Available packages in the Python playground</h2>
+  <div class="pkg-grid">
+    <div class="pkg">numpy</div>
+    <div class="pkg">pandas</div>
+    <div class="pkg">scipy</div>
+    <div class="pkg">sympy</div>
+    <div class="pkg">regex</div>
+    <div class="pkg">json</div>
+    <div class="pkg">math</div>
+    <div class="pkg">datetime</div>
+    <div class="pkg">random</div>
+    <div class="pkg">itertools</div>
+    <div class="pkg">functools</div>
+    <div class="pkg">collections</div>
+    <div class="pkg">string</div>
+    <div class="pkg">os.path</div>
+    <div class="pkg">hashlib</div>
+    <div class="pkg">base64</div>
+    <div class="pkg">struct</div>
+    <div class="pkg">statistics</div>
+    <div class="pkg">typing</div>
+    <div class="pkg">dataclasses</div>
+  </div>
+</section>
+
+<section class="faq">
+  <h2>Frequently asked questions</h2>
+  <div class="faq-item">
+    <h3>What is a Python playground?</h3>
+    <p>A Python playground is an interactive online environment where you can write and run Python code immediately without installing anything. It is perfect for learning Python, testing algorithms, experimenting with libraries, and sharing code snippets.</p>
+  </div>
+  <div class="faq-item">
+    <h3>What Python libraries are available?</h3>
+    <p>ScriptForge's Python playground supports numpy, pandas, scipy, sympy, regex, json, math, datetime, random, itertools, and the full Python 3 standard library via Pyodide WebAssembly.</p>
+  </div>
+  <div class="faq-item">
+    <h3>Is the Python playground free?</h3>
+    <p>Yes, completely free with no signup required. Open ScriptForge, select Python, and start coding immediately. No time limits, no credit card required.</p>
+  </div>
+  <div class="faq-item">
+    <h3>Can I use the Python playground for learning?</h3>
+    <p>Absolutely. ScriptForge is ideal for Python beginners and students. The instant feedback loop makes it one of the best ways to learn Python fundamentals, data structures, and algorithms.</p>
+  </div>
+  <div class="faq-item">
+    <h3>Can I share my Python playground code?</h3>
+    <p>Yes. Every script you write in ScriptForge gets a shareable URL. Send it to friends, post it in a forum, or embed it in a blog. Anyone with the link can run your code instantly.</p>
+  </div>
+</section>
+
+<section class="related">
+  <h2>More free Python and developer tools</h2>
+  <div class="related-grid">
+    <a href="https://drghostpurp.github.io/scriptforge-io/python-online-compiler/" class="related-card">
+      <h3>Python Online Compiler</h3>
+      <p>Compile and run Python 3 scripts with full stdlib.</p>
+    </a>
+    <a href="https://drghostpurp.github.io/scriptforge-io/run-python-online/" class="related-card">
+      <h3>Run Python Online Free</h3>
+      <p>Execute Python with numpy, pandas and scientific packages.</p>
+    </a>
+    <a href="https://drghostpurp.github.io/scriptforge-io/javascript-online-compiler/" class="related-card">
+      <h3>JavaScript Compiler</h3>
+      <p>Run JS with npm packages and modern ES2024 syntax.</p>
+    </a>
+    <a href="https://drghostpurp.github.io/scriptforge-io/html-editor-online/" class="related-card">
+      <h3>HTML Editor Online</h3>
+      <p>Full HTML/CSS/JS editor with live preview.</p>
+    </a>
+    <a href="https://drghostpurp.github.io/scriptforge-io/tools/json-formatter/" class="related-card">
+      <h3>JSON Formatter</h3>
+      <p>Format and validate JSON data instantly.</p>
+    </a>
+    <a href="https://drghostpurp.github.io/scriptforge-io/tools/regex-tester/" class="related-card">
+      <h3>Regex Tester</h3>
+      <p>Test Python and JavaScript regular expressions live.</p>
+    </a>
+  </div>
+</section>
+
+<div class="cta-banner">
+  <h2>Jump into the Python playground</h2>
+  <p>Free, instant, no signup. The cleanest Python sandbox on the web.</p>
+  <a href="https://drghostpurp.github.io/scriptforge-app/?lang=python" class="btn-primary">Open Python Playground →</a>
+</div>
+
+<footer>
+  <p>© 2025 ScriptForge · <a href="https://drghostpurp.github.io/scriptforge-io/">Home</a> <a href="https://drghostpurp.github.io/scriptforge-io/tools/">Tools</a> <a href="https://drghostpurp.github.io/scriptforge-io/blog/">Blog</a> <a href="https://drghostpurp.github.io/scriptforge-io/pricing/">Pricing</a></p>
+</footer>
+</body>
+</html>
