@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>URL Encoder / Decoder Online – Free Tool | ScriptForge</title>
+<meta name="description" content="Free online URL encoder and decoder. Encode or decode URL strings, query parameters, and percent-encoded characters instantly. No signup required.">
+<link rel="canonical" href="https://drghostpurp.github.io/scriptforge-io/tools/url-encode/">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#0d0d0d;color:#e5e7eb;line-height:1.6}
+  nav{display:flex;justify-content:space-between;align-items:center;padding:1rem 2rem;border-bottom:1px solid #1f2937;position:sticky;top:0;background:#0d0d0d;z-index:100}
+  .logo{font-size:1.25rem;font-weight:700;color:#fff;text-decoration:none}
+  .logo span{color:#6366f1}
+  nav a{color:#9ca3af;text-decoration:none;font-size:.9rem;margin-left:1.5rem}
+  nav a:hover{color:#fff}
+  .hero{text-align:center;padding:3rem 2rem 1.5rem}
+  .hero h1{font-size:2rem;font-weight:800;color:#fff;margin-bottom:.5rem}
+  .hero p{color:#9ca3af}
+  .container{max-width:900px;margin:0 auto;padding:1.5rem 2rem}
+  .card{background:#111827;border:1px solid #1f2937;border-radius:.75rem;padding:1.5rem;margin-bottom:1.5rem}
+  label{display:block;font-size:.8rem;font-weight:600;color:#9ca3af;text-transform:uppercase;letter-spacing:.05em;margin-bottom:.5rem}
+  textarea{width:100%;background:#1f2937;border:1px solid #374151;border-radius:.5rem;color:#e5e7eb;padding:.75rem 1rem;font-family:'Courier New',monospace;font-size:.9rem;resize:vertical;outline:none;min-height:100px;transition:border .2s}
+  textarea:focus{border-color:#6366f1}
+  .mode-tabs{display:flex;gap:.5rem;margin-bottom:1.25rem}
+  .mode-tab{background:#1f2937;border:1px solid #374151;color:#9ca3af;padding:.45rem 1rem;border-radius:.5rem;cursor:pointer;font-size:.875rem;font-weight:600;transition:all .2s}
+  .mode-tab.active{background:#6366f1;border-color:#6366f1;color:#fff}
+  .swap-btn{display:flex;align-items:center;justify-content:center;margin:.5rem 0;cursor:pointer}
+  .swap-btn button{background:#1f2937;border:1px solid #374151;color:#6366f1;padding:.4rem 1rem;border-radius:.5rem;cursor:pointer;font-size:.85rem;transition:all .2s}
+  .swap-btn button:hover{background:#6366f1;color:#fff}
+  .row-btns{display:flex;gap:.5rem;margin-top:.75rem;flex-wrap:wrap}
+  .btn-sm{background:transparent;border:1px solid #374151;color:#9ca3af;padding:.35rem .85rem;border-radius:.4rem;cursor:pointer;font-size:.8rem;transition:all .2s}
+  .btn-sm:hover{border-color:#6366f1;color:#6366f1}
+  .btn-sm.primary{background:#6366f1;border-color:#6366f1;color:#fff}
+  .btn-sm.primary:hover{background:#4f46e5}
+  .result-display{background:#0d1117;border:1px solid #1f2937;border-radius:.5rem;padding:1rem;font-family:'Courier New',monospace;font-size:.85rem;color:#a78bfa;min-height:60px;word-break:break-all;white-space:pre-wrap;line-height:1.6}
+  .diff-view{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+  .tools-nav{display:flex;gap:.75rem;flex-wrap:wrap;margin-bottom:1.5rem}
+  .tools-nav a{background:#1f2937;color:#9ca3af;padding:.4rem .9rem;border-radius:.5rem;text-decoration:none;font-size:.85rem;transition:all .2s}
+  .tools-nav a:hover,.tools-nav a.active{background:#6366f1;color:#fff}
+  h2{font-size:1rem;font-weight:700;color:#fff;margin-bottom:1rem}
+  .examples{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:.75rem;margin-top:.5rem}
+  .example-card{background:#1f2937;border-radius:.5rem;padding:.85rem;cursor:pointer;border:1px solid transparent;transition:border .2s}
+  .example-card:hover{border-color:#6366f1}
+  .ex-label{font-size:.75rem;color:#6b7280;margin-bottom:.3rem}
+  .ex-val{font-family:'Courier New',monospace;font-size:.8rem;color:#a78bfa;word-break:break-all}
+  footer{border-top:1px solid #1f2937;padding:2rem;text-align:center;color:#4b5563;font-size:.85rem}
+  footer a{color:#6366f1;text-decoration:none}
+</style>
+</head>
+<body>
+<nav>
+  <a class="logo" href="/scriptforge-io/"><Script<span>Forge</span></a>
+  <div>
+    <a href="/scriptforge-io/">Home</a>
+    <a href="/scriptforge-app/">Launch IDE</a>
+    <a href="/scriptforge-io/tools/">Tools</a>
+  </div>
+</nav>
+
+<div class="hero">
+  <h1>URL Encoder / Decoder</h1>
+  <p>Encode and decode URL strings, query parameters, and percent-encoded characters</p>
+</div>
+
+<div class="container">
+  <div class="tools-nav">
+    <a href="/scriptforge-io/tools/">All Tools</a>
+    <a href="/scriptforge-io/tools/json-formatter/">JSON</a>
+    <a href="/scriptforge-io/tools/base64/">Base64</a>
+    <a href="/scriptforge-io/tools/regex-tester/">Regex</a>
+    <a href="/scriptforge-io/tools/timestamp/">Timestamp</a>
+    <a href="/scriptforge-io/tools/hash/">Hash</a>
+    <a href="/scriptforge-io/tools/url-encode/" class="active">URL Encode</a>
+    <a href="/scriptforge-io/tools/color/">Color</a>
+  </div>
+
+  <div class="card">
+    <div class="mode-tabs">
+      <button class="mode-tab active" onclick="setMode('encode')" id="tabEncode">Encode</button>
+      <button class="mode-tab" onclick="setMode('decode')" id="tabDecode">Decode</button>
+      <button class="mode-tab" onclick="setMode('component')" id="tabComponent">encodeURIComponent</button>
+      <button class="mode-tab" onclick="setMode('query')" id="tabQuery">Parse Query String</button>
+    </div>
+
+    <label id="inputLabel">URL or String to Encode</label>
+    <textarea id="inputArea" oninput="process()" placeholder="https://example.com/search?q=hello world&lang=en"></textarea>
+    <div class="row-btns">
+      <button class="btn-sm primary" onclick="process()">Convert</button>
+      <button class="btn-sm" onclick="copyResult()">Copy Result</button>
+      <button class="btn-sm" onclick="swapInputOutput()">⇅ Swap</button>
+      <button class="btn-sm" onclick="clearAll()">Clear</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <label>Result</label>
+    <div id="resultArea" class="result-display">Result will appear here...</div>
+  </div>
+
+  <div class="card">
+    <h2>Examples — click to try</h2>
+    <div class="examples">
+      <div class="example-card" onclick="loadExample('https://example.com/search?q=hello world&tags=foo bar','encode')">
+        <div class="ex-label">URL with spaces</div>
+        <div class="ex-val">?q=hello world&tags=foo bar</div>
+      </div>
+      <div class="example-card" onclick="loadExample('https%3A%2F%2Fexample.com%2Fsearch%3Fq%3Dhello%20world','decode')">
+        <div class="ex-label">Percent-encoded URL</div>
+        <div class="ex-val">https%3A%2F%2Fexample.com%2F...</div>
+      </div>
+      <div class="example-card" onclick="loadExample('name=John Doe&email=john@example.com&city=New York','query')">
+        <div class="ex-label">Query string parser</div>
+        <div class="ex-val">name=John Doe&email=john@...</div>
+      </div>
+      <div class="example-card" onclick="loadExample('https://api.example.com/data?filter={"active":true}','component')">
+        <div class="ex-label">JSON in query param</div>
+        <div class="ex-val">filter={"active":true}</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <p>© 2026 ScriptForge · <a href="/scriptforge-io/">Home</a> · <a href="/scriptforge-io/tools/">Tools</a> · <a href="/scriptforge-app/">Launch IDE</a></p>
+</footer>
+
+<script>
+let currentMode = 'encode';
+
+function setMode(mode) {
+  currentMode = mode;
+  ['encode','decode','component','query'].forEach(m => {
+    document.getElementById('tab'+m.charAt(0).toUpperCase()+m.slice(1)).classList.toggle('active', m===mode);
+  });
+  const labels = { encode:'URL or String to Encode', decode:'Percent-encoded String to Decode', component:'String to encodeURIComponent', query:'Query String to Parse' };
+  const placeholders = {
+    encode:'https://example.com/search?q=hello world&lang=en',
+    decode:'https%3A%2F%2Fexample.com%2Fsearch%3Fq%3Dhello%20world',
+    component:'{"key": "value with spaces & special chars"}',
+    query:'name=John Doe&city=New York&active=true'
+  };
+  document.getElementById('inputLabel').textContent = labels[mode];
+  document.getElementById('inputArea').placeholder = placeholders[mode];
+  process();
+}
+
+function process() {
+  const input = document.getElementById('inputArea').value;
+  const el = document.getElementById('resultArea');
+  if (!input.trim()) { el.textContent = 'Result will appear here...'; el.style.color='#4b5563'; return; }
+  el.style.color = '#a78bfa';
+  try {
+    let result;
+    if (currentMode === 'encode') {
+      result = encodeURI(input);
+    } else if (currentMode === 'decode') {
+      result = decodeURIComponent(input.replace(/\+/g, ' '));
+    } else if (currentMode === 'component') {
+      result = encodeURIComponent(input);
+    } else if (currentMode === 'query') {
+      const params = new URLSearchParams(input);
+      const obj = {};
+      for (const [k,v] of params) obj[k] = v;
+      result = JSON.stringify(obj, null, 2);
+      el.style.color = '#6ee7b7';
+    }
+    el.textContent = result;
+    window._lastResult = result;
+  } catch(e) {
+    el.style.color = '#f87171';
+    el.textContent = 'Error: ' + e.message;
+    window._lastResult = '';
+  }
+}
+
+function copyResult() {
+  if (!window._lastResult) return;
+  navigator.clipboard.writeText(window._lastResult).catch(()=>{});
+  const el = document.getElementById('resultArea');
+  const orig = el.style.color;
+  el.style.color = '#10b981';
+  setTimeout(()=>{ el.style.color = orig; }, 800);
+}
+
+function swapInputOutput() {
+  if (!window._lastResult) return;
+  document.getElementById('inputArea').value = window._lastResult;
+  setMode(currentMode === 'encode' ? 'decode' : 'encode');
+  process();
+}
+
+function clearAll() {
+  document.getElementById('inputArea').value = '';
+  document.getElementById('resultArea').textContent = 'Result will appear here...';
+  document.getElementById('resultArea').style.color = '#4b5563';
+  window._lastResult = '';
+}
+
+function loadExample(val, mode) {
+  setMode(mode);
+  document.getElementById('inputArea').value = val;
+  process();
+}
+
+// Init
+document.getElementById('inputArea').value = 'https://example.com/search?q=hello world&lang=en&tags=foo bar baz';
+process();
+</script>
+</body>
+</html>
