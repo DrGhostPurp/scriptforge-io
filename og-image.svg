@@ -1,0 +1,76 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0a0f"/>
+      <stop offset="100%" style="stop-color:#111827"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#818cf8"/>
+      <stop offset="100%" style="stop-color:#6366f1"/>
+    </linearGradient>
+    <linearGradient id="glow" x1="50%" y1="0%" x2="50%" y2="100%">
+      <stop offset="0%" style="stop-color:#6366f1;stop-opacity:0.2"/>
+      <stop offset="100%" style="stop-color:#6366f1;stop-opacity:0"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  
+  <!-- Glow blob -->
+  <ellipse cx="600" cy="200" rx="400" ry="200" fill="url(#glow)"/>
+  
+  <!-- Border -->
+  <rect x="1" y="1" width="1198" height="628" fill="none" stroke="#1f2937" stroke-width="2" rx="0"/>
+  
+  <!-- Left accent bar -->
+  <rect x="0" y="0" width="6" height="630" fill="url(#accent)"/>
+  
+  <!-- Logo -->
+  <text x="80" y="100" font-family="-apple-system,BlinkMacSystemFont,sans-serif" font-size="32" font-weight="800" fill="white">&lt;Script</text>
+  <text x="233" y="100" font-family="-apple-system,BlinkMacSystemFont,sans-serif" font-size="32" font-weight="800" fill="#6366f1">Forge</text>
+  <text x="300" y="100" font-family="-apple-system,BlinkMacSystemFont,sans-serif" font-size="32" font-weight="800" fill="white">&gt;</text>
+  
+  <!-- Main headline -->
+  <text x="80" y="200" font-family="-apple-system,BlinkMacSystemFont,sans-serif" font-size="62" font-weight="900" fill="white">Browser-Native</text>
+  <text x="80" y="275" font-family="-apple-system,BlinkMacSystemFont,sans-serif" font-size="62" font-weight="900" fill="url(#accent)">IDE for Scripts</text>
+  <text x="80" y="350" font-family="-apple-system,BlinkMacSystemFont,sans-serif" font-size="62" font-weight="900" fill="white">That Actually Run</text>
+  
+  <!-- Subtext -->
+  <text x="80" y="420" font-family="-apple-system,BlinkMacSystemFont,sans-serif" font-size="26" fill="#9ca3af">Real Python (Pyodide) + any npm package. Zero install. Free forever.</text>
+  
+  <!-- Feature pills -->
+  <rect x="80" y="460" width="200" height="40" rx="20" fill="#1f2937"/>
+  <text x="180" y="486" font-family="-apple-system,BlinkMacSystemFont,sans-serif" font-size="18" fill="#6ee7b7" text-anchor="middle">&#x2713; Python WASM</text>
+
+  <rect x="296" y="460" width="180" height="40" rx="20" fill="#1f2937"/>
+  <text x="386" y="486" font-family="-apple-system,BlinkMacSystemFont,sans-serif" font-size="18" fill="#6ee7b7" text-anchor="middle">&#x2713; npm imports</text>
+
+  <rect x="492" y="460" width="160" height="40" rx="20" fill="#1f2937"/>
+  <text x="572" y="486" font-family="-apple-system,BlinkMacSystemFont,sans-serif" font-size="18" fill="#6ee7b7" text-anchor="middle">&#x2713; 8 free tools</text>
+
+  <rect x="668" y="460" width="170" height="40" rx="20" fill="#1f2937"/>
+  <text x="753" y="486" font-family="-apple-system,BlinkMacSystemFont,sans-serif" font-size="18" fill="#6ee7b7" text-anchor="middle">&#x2713; No account</text>
+  
+  <!-- URL -->
+  <text x="80" y="570" font-family="Courier New,monospace" font-size="22" fill="#374151">drghostpurp.github.io/scriptforge-io</text>
+  
+  <!-- Code decoration on right -->
+  <rect x="820" y="140" width="340" height="320" rx="8" fill="#111827" stroke="#1f2937" stroke-width="1"/>
+  <rect x="820" y="140" width="340" height="32" rx="8" fill="#161b2e"/>
+  <circle cx="846" cy="156" r="6" fill="#f87171"/>
+  <circle cx="868" cy="156" r="6" fill="#fbbf24"/>
+  <circle cx="890" cy="156" r="6" fill="#34d399"/>
+  <text x="844" y="207" font-family="Courier New,monospace" font-size="13" fill="#374151">import numpy as np</text>
+  <text x="844" y="230" font-family="Courier New,monospace" font-size="13" fill="#374151"> </text>
+  <text x="844" y="253" font-family="Courier New,monospace" font-size="13" fill="#6b7280"># analyze in browser</text>
+  <text x="844" y="276" font-family="Courier New,monospace" font-size="13" fill="#818cf8">sales </text>
+  <text x="888" y="276" font-family="Courier New,monospace" font-size="13" fill="#e5e7eb">= [142, 238, 312]</text>
+  <text x="844" y="299" font-family="Courier New,monospace" font-size="13" fill="#818cf8">arr </text>
+  <text x="876" y="299" font-family="Courier New,monospace" font-size="13" fill="#e5e7eb">= np.array(sales)</text>
+  <text x="844" y="322" font-family="Courier New,monospace" font-size="13" fill="#34d399">print</text>
+  <text x="886" y="322" font-family="Courier New,monospace" font-size="13" fill="#e5e7eb">(arr.mean())</text>
+  <rect x="820" y="390" width="340" height="70" rx="0" fill="#0a0a0f"/>
+  <text x="844" y="415" font-family="Courier New,monospace" font-size="11" fill="#6b7280">OUTPUT</text>
+  <text x="844" y="440" font-family="Courier New,monospace" font-size="13" fill="#10b981">230.666...</text>
+</svg>
