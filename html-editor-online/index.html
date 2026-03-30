@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HTML Editor Online – Live Preview, Free | ScriptForge</title>
+<meta name="description" content="Free online HTML editor with live preview. Write, edit and run HTML, CSS and JavaScript instantly in your browser. No signup required. Works on any device.">
+<meta name="keywords" content="html editor online, online html editor, html live editor, html css js editor, html editor free, live html preview">
+<meta property="og:title" content="HTML Editor Online – Live Preview, Free | ScriptForge">
+<meta property="og:description" content="Write and preview HTML, CSS, and JavaScript instantly in your browser. Free, no signup, no install.">
+<meta property="og:url" content="https://drghostpurp.github.io/scriptforge-io/html-editor-online/">
+<meta property="og:type" content="website">
+<link rel="canonical" href="https://drghostpurp.github.io/scriptforge-io/html-editor-online/">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "ScriptForge HTML Editor Online",
+  "url": "https://drghostpurp.github.io/scriptforge-app/",
+  "description": "Free online HTML editor with live preview. Write HTML, CSS, and JavaScript in your browser.",
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "featureList": ["Live HTML preview", "CSS editing", "JavaScript support", "No signup required", "Works in browser"]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is an online HTML editor?",
+      "acceptedAnswer": { "@type": "Answer", "text": "An online HTML editor lets you write and preview HTML, CSS, and JavaScript code directly in your browser without installing any software. ScriptForge provides a free live-preview HTML editor that updates as you type." }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I use ScriptForge HTML editor for free?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes. ScriptForge's HTML editor is completely free with no signup required. Open the editor, start writing HTML, and see a live preview instantly." }
+    },
+    {
+      "@type": "Question",
+      "name": "Does the HTML editor support CSS and JavaScript?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes. ScriptForge supports full HTML5, CSS3, and JavaScript in a single editor. You can write a complete web page and preview it live, including styled components and interactive scripts." }
+    },
+    {
+      "@type": "Question",
+      "name": "Do I need to install anything to use the HTML editor?",
+      "acceptedAnswer": { "@type": "Answer", "text": "No installation required. ScriptForge runs entirely in your web browser. Just visit the site and start coding immediately on any device including phones, tablets, and desktops." }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I share my HTML code with others?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes. ScriptForge generates a shareable URL for your code so you can send it to teammates, instructors, or clients. Anyone with the link can view and run your HTML instantly." }
+    }
+  ]
+}
+</script>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #0a0a0f; color: #e2e8f0; line-height: 1.6; }
+  a { color: #7c3aed; text-decoration: none; }
+  a:hover { color: #a78bfa; }
+  .nav { background: rgba(10,10,15,0.95); border-bottom: 1px solid #1e1b4b; padding: 1rem 2rem; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; }
+  .nav-brand { font-size: 1.3rem; font-weight: 700; color: #7c3aed; }
+  .nav-links a { margin-left: 1.5rem; color: #94a3b8; font-size: 0.9rem; }
+  .hero { max-width: 860px; margin: 0 auto; padding: 4rem 2rem 2rem; text-align: center; }
+  .badge { display: inline-block; background: rgba(124,58,237,0.15); border: 1px solid rgba(124,58,237,0.4); color: #a78bfa; padding: 0.3rem 0.9rem; border-radius: 20px; font-size: 0.8rem; margin-bottom: 1.5rem; }
+  h1 { font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 800; line-height: 1.2; margin-bottom: 1.2rem; }
+  h1 span { color: #7c3aed; }
+  .subtitle { font-size: 1.2rem; color: #94a3b8; max-width: 600px; margin: 0 auto 2rem; }
+  .cta-group { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-bottom: 1rem; }
+  .btn-primary { background: #7c3aed; color: white; padding: 0.85rem 2rem; border-radius: 8px; font-weight: 600; font-size: 1rem; transition: background 0.2s; }
+  .btn-primary:hover { background: #6d28d9; color: white; }
+  .btn-secondary { border: 1px solid #334155; color: #94a3b8; padding: 0.85rem 2rem; border-radius: 8px; font-weight: 600; font-size: 1rem; }
+  .btn-secondary:hover { border-color: #7c3aed; color: #a78bfa; }
+  .ide-frame { max-width: 1000px; margin: 2rem auto; border-radius: 12px; overflow: hidden; border: 1px solid #1e1b4b; box-shadow: 0 20px 60px rgba(0,0,0,0.5); }
+  .ide-frame iframe { width: 100%; height: 520px; display: block; border: none; }
+  .features { max-width: 1000px; margin: 4rem auto; padding: 0 2rem; }
+  .features h2 { font-size: 1.8rem; font-weight: 700; text-align: center; margin-bottom: 2.5rem; }
+  .feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; }
+  .feature-card { background: #0f0f1a; border: 1px solid #1e1b4b; border-radius: 10px; padding: 1.5rem; }
+  .feature-icon { font-size: 1.8rem; margin-bottom: 0.8rem; }
+  .feature-card h3 { font-size: 1rem; font-weight: 600; margin-bottom: 0.5rem; }
+  .feature-card p { font-size: 0.88rem; color: #94a3b8; }
+  .how-to { max-width: 800px; margin: 4rem auto; padding: 0 2rem; }
+  .how-to h2 { font-size: 1.8rem; font-weight: 700; text-align: center; margin-bottom: 2rem; }
+  .steps { display: grid; gap: 1.2rem; }
+  .step { background: #0f0f1a; border: 1px solid #1e1b4b; border-radius: 10px; padding: 1.5rem; display: flex; gap: 1rem; align-items: flex-start; }
+  .step-num { background: #7c3aed; color: white; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; flex-shrink: 0; }
+  .step-body h3 { font-size: 1rem; font-weight: 600; margin-bottom: 0.3rem; }
+  .step-body p { font-size: 0.9rem; color: #94a3b8; }
+  .compare { max-width: 860px; margin: 4rem auto; padding: 0 2rem; }
+  .compare h2 { font-size: 1.8rem; font-weight: 700; text-align: center; margin-bottom: 2rem; }
+  .compare-table { width: 100%; border-collapse: collapse; }
+  .compare-table th { background: #1e1b4b; padding: 1rem; text-align: left; font-size: 0.85rem; color: #94a3b8; text-transform: uppercase; }
+  .compare-table td { padding: 0.9rem 1rem; border-bottom: 1px solid #1e1b4b; font-size: 0.9rem; }
+  .compare-table tr:last-child td { border-bottom: none; }
+  .compare-table .yes { color: #4ade80; font-weight: 600; }
+  .compare-table .no { color: #f87171; }
+  .compare-table .sf { color: #a78bfa; font-weight: 700; }
+  .faq { max-width: 800px; margin: 4rem auto; padding: 0 2rem; }
+  .faq h2 { font-size: 1.8rem; font-weight: 700; text-align: center; margin-bottom: 2rem; }
+  .faq-item { border-bottom: 1px solid #1e1b4b; padding: 1.2rem 0; }
+  .faq-item h3 { font-size: 1rem; font-weight: 600; margin-bottom: 0.6rem; color: #e2e8f0; }
+  .faq-item p { font-size: 0.9rem; color: #94a3b8; }
+  .related { max-width: 1000px; margin: 4rem auto; padding: 0 2rem; }
+  .related h2 { font-size: 1.4rem; font-weight: 700; margin-bottom: 1.5rem; }
+  .related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; }
+  .related-card { background: #0f0f1a; border: 1px solid #1e1b4b; border-radius: 8px; padding: 1.2rem; transition: border-color 0.2s; }
+  .related-card:hover { border-color: #7c3aed; }
+  .related-card h3 { font-size: 0.9rem; font-weight: 600; margin-bottom: 0.4rem; }
+  .related-card p { font-size: 0.8rem; color: #94a3b8; }
+  .cta-banner { background: linear-gradient(135deg, #1e1b4b 0%, #0f0f1a 100%); border: 1px solid #3730a3; border-radius: 12px; max-width: 700px; margin: 4rem auto; padding: 3rem 2rem; text-align: center; }
+  .cta-banner h2 { font-size: 1.8rem; font-weight: 700; margin-bottom: 1rem; }
+  .cta-banner p { color: #94a3b8; margin-bottom: 2rem; }
+  footer { border-top: 1px solid #1e1b4b; padding: 2rem; text-align: center; color: #475569; font-size: 0.85rem; }
+  footer a { color: #94a3b8; margin: 0 0.5rem; }
+</style>
+</head>
+<body>
+<nav class="nav">
+  <a href="https://drghostpurp.github.io/scriptforge-io/" class="nav-brand">⚡ ScriptForge</a>
+  <div class="nav-links">
+    <a href="https://drghostpurp.github.io/scriptforge-io/tools/">Tools</a>
+    <a href="https://drghostpurp.github.io/scriptforge-io/pricing/">Pricing</a>
+    <a href="https://drghostpurp.github.io/scriptforge-app/">Open IDE</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="badge">🌐 Free Online HTML Editor</div>
+  <h1>HTML Editor Online<br><span>Write. Preview. Share.</span></h1>
+  <p class="subtitle">The fastest way to write HTML, CSS, and JavaScript — with a live preview that updates as you type. No signup, no install.</p>
+  <div class="cta-group">
+    <a href="https://drghostpurp.github.io/scriptforge-app/?lang=html" class="btn-primary">Open HTML Editor Free →</a>
+    <a href="#how-it-works" class="btn-secondary">How it works</a>
+  </div>
+</section>
+
+<div class="ide-frame">
+  <iframe src="https://drghostpurp.github.io/scriptforge-app/?lang=html" title="ScriptForge Online HTML Editor" loading="lazy"></iframe>
+</div>
+
+<section class="features">
+  <h2>Everything you need in an online HTML editor</h2>
+  <div class="feature-grid">
+    <div class="feature-card">
+      <div class="feature-icon">⚡</div>
+      <h3>Instant Live Preview</h3>
+      <p>See your HTML rendered in real-time as you type. No need to save or refresh.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🎨</div>
+      <h3>CSS Support</h3>
+      <p>Style your HTML with full CSS3 support including flexbox, grid, animations, and variables.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">⚙️</div>
+      <h3>JavaScript Enabled</h3>
+      <p>Add interactivity with JavaScript. DOM manipulation, event listeners, fetch — all supported.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">📤</div>
+      <h3>Shareable Links</h3>
+      <p>Share your HTML snippet with a single URL. Perfect for team reviews or asking for help.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">💾</div>
+      <h3>Export Your Code</h3>
+      <p>Download your HTML file directly. Keep your work without creating an account.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">📱</div>
+      <h3>Works Everywhere</h3>
+      <p>Use the HTML editor on desktop, tablet, or phone. Fully responsive layout.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🚫</div>
+      <h3>No Signup Needed</h3>
+      <p>Start editing HTML immediately. Zero friction, no account required.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🌙</div>
+      <h3>Dark Mode</h3>
+      <p>Easy on the eyes with a polished dark theme, or switch to light mode.</p>
+    </div>
+  </div>
+</section>
+
+<section class="how-to" id="how-it-works">
+  <h2>How to use the online HTML editor</h2>
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-body">
+        <h3>Open the editor</h3>
+        <p>Click "Open HTML Editor Free" above. The editor loads instantly — no download or login required.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-body">
+        <h3>Select HTML mode</h3>
+        <p>Choose the HTML template from the language selector. A starter template with boilerplate code loads automatically.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-body">
+        <h3>Write your code</h3>
+        <p>Type your HTML, CSS, and JavaScript in the editor. Use the built-in templates for common patterns like forms, cards, and navigation bars.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">4</div>
+      <div class="step-body">
+        <h3>Preview and share</h3>
+        <p>Click Run to see a live rendered preview. Share your code with a URL, or export it as an .html file.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="compare">
+  <h2>ScriptForge vs other HTML editors</h2>
+  <table class="compare-table">
+    <thead>
+      <tr>
+        <th>Feature</th>
+        <th class="sf">ScriptForge</th>
+        <th>CodePen</th>
+        <th>JSFiddle</th>
+        <th>Replit</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Live HTML preview</td>
+        <td class="yes">✓</td>
+        <td class="yes">✓</td>
+        <td class="yes">✓</td>
+        <td class="yes">✓</td>
+      </tr>
+      <tr>
+        <td>No signup required</td>
+        <td class="yes">✓</td>
+        <td class="yes">✓</td>
+        <td class="yes">✓</td>
+        <td class="no">✗</td>
+      </tr>
+      <tr>
+        <td>Python support</td>
+        <td class="yes">✓</td>
+        <td class="no">✗</td>
+        <td class="no">✗</td>
+        <td class="yes">✓</td>
+      </tr>
+      <tr>
+        <td>npm package imports</td>
+        <td class="yes">✓</td>
+        <td class="yes">✓</td>
+        <td class="no">✗</td>
+        <td class="yes">✓</td>
+      </tr>
+      <tr>
+        <td>GitHub Gist import</td>
+        <td class="yes">✓</td>
+        <td class="no">✗</td>
+        <td class="no">✗</td>
+        <td class="no">✗</td>
+      </tr>
+      <tr>
+        <td>Shareable URL</td>
+        <td class="yes">✓</td>
+        <td class="yes">✓</td>
+        <td class="yes">✓</td>
+        <td class="yes">✓</td>
+      </tr>
+      <tr>
+        <td>Always free</td>
+        <td class="yes">✓</td>
+        <td class="no">Freemium</td>
+        <td class="yes">✓</td>
+        <td class="no">Freemium</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<section class="faq">
+  <h2>Frequently asked questions</h2>
+  <div class="faq-item">
+    <h3>What is an online HTML editor?</h3>
+    <p>An online HTML editor lets you write and preview HTML, CSS, and JavaScript code directly in your browser without installing any software. ScriptForge provides a free live-preview HTML editor that updates as you type.</p>
+  </div>
+  <div class="faq-item">
+    <h3>Can I use ScriptForge HTML editor for free?</h3>
+    <p>Yes. ScriptForge's HTML editor is completely free with no signup required. Open the editor, start writing HTML, and see a live preview instantly.</p>
+  </div>
+  <div class="faq-item">
+    <h3>Does the HTML editor support CSS and JavaScript?</h3>
+    <p>Yes. ScriptForge supports full HTML5, CSS3, and JavaScript in a single editor. You can write a complete web page and preview it live, including styled components and interactive scripts.</p>
+  </div>
+  <div class="faq-item">
+    <h3>Do I need to install anything?</h3>
+    <p>No installation required. ScriptForge runs entirely in your web browser. Just visit the site and start coding immediately on any device including phones, tablets, and desktops.</p>
+  </div>
+  <div class="faq-item">
+    <h3>Can I share my HTML code with others?</h3>
+    <p>Yes. ScriptForge generates a shareable URL for your code so you can send it to teammates, instructors, or clients. Anyone with the link can view and run your HTML instantly.</p>
+  </div>
+  <div class="faq-item">
+    <h3>Is ScriptForge good for beginners?</h3>
+    <p>Absolutely. ScriptForge is ideal for beginners learning HTML for the first time. The live preview gives immediate feedback as you type, which is one of the best ways to learn HTML quickly.</p>
+  </div>
+</section>
+
+<section class="related">
+  <h2>Other free online tools</h2>
+  <div class="related-grid">
+    <a href="https://drghostpurp.github.io/scriptforge-io/python-online-compiler/" class="related-card">
+      <h3>Python Online Compiler</h3>
+      <p>Run Python 3 code in your browser with full stdlib support.</p>
+    </a>
+    <a href="https://drghostpurp.github.io/scriptforge-io/javascript-online-compiler/" class="related-card">
+      <h3>JavaScript Online Compiler</h3>
+      <p>Write and run JavaScript with npm packages, no setup needed.</p>
+    </a>
+    <a href="https://drghostpurp.github.io/scriptforge-io/run-python-online/" class="related-card">
+      <h3>Run Python Online Free</h3>
+      <p>Execute Python scripts instantly with numpy, pandas, and more.</p>
+    </a>
+    <a href="https://drghostpurp.github.io/scriptforge-io/tools/json-formatter/" class="related-card">
+      <h3>JSON Formatter</h3>
+      <p>Format, validate, and beautify JSON data instantly.</p>
+    </a>
+    <a href="https://drghostpurp.github.io/scriptforge-io/tools/regex-tester/" class="related-card">
+      <h3>Regex Tester</h3>
+      <p>Test and debug regular expressions with live match highlighting.</p>
+    </a>
+    <a href="https://drghostpurp.github.io/scriptforge-io/tools/diff/" class="related-card">
+      <h3>Code Diff Checker</h3>
+      <p>Compare two blocks of code or text side by side.</p>
+    </a>
+  </div>
+</section>
+
+<div class="cta-banner">
+  <h2>Start editing HTML right now</h2>
+  <p>Free, instant, no signup. The simplest online HTML editor with live preview.</p>
+  <a href="https://drghostpurp.github.io/scriptforge-app/?lang=html" class="btn-primary">Open HTML Editor →</a>
+</div>
+
+<footer>
+  <p>© 2025 ScriptForge · <a href="https://drghostpurp.github.io/scriptforge-io/">Home</a> <a href="https://drghostpurp.github.io/scriptforge-io/tools/">Tools</a> <a href="https://drghostpurp.github.io/scriptforge-io/blog/">Blog</a> <a href="https://drghostpurp.github.io/scriptforge-io/pricing/">Pricing</a> <a href="https://drghostpurp.github.io/scriptforge-app/">IDE</a></p>
+</footer>
+</body>
+</html>
