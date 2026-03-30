@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Python Online Compiler – Run Python 3 Free in Your Browser | ScriptForge</title>
+<meta name="description" content="Free Python online compiler. Run Python 3 code instantly in your browser — no install, no signup. Supports NumPy, pandas, matplotlib and 100+ packages via Pyodide WebAssembly.">
+<meta property="og:title" content="Python Online Compiler – Run Python 3 Free | ScriptForge">
+<meta property="og:description" content="Run Python 3 instantly in your browser. No install. Supports NumPy, pandas, matplotlib. Free forever.">
+<meta property="og:image" content="https://drghostpurp.github.io/scriptforge-io/og-image.svg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://drghostpurp.github.io/scriptforge-io/python-online-compiler/">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "ScriptForge Python Online Compiler",
+  "url": "https://drghostpurp.github.io/scriptforge-app/",
+  "description": "Run Python 3 code online for free. No install required. Supports NumPy, pandas, matplotlib and 100+ scientific packages via Pyodide WebAssembly.",
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any (Browser)",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "featureList": ["Python 3 runtime via Pyodide WebAssembly", "NumPy support", "pandas support", "matplotlib support", "No installation required", "Free forever"]
+}
+</script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#0a0a0f;color:#e5e7eb;line-height:1.6}
+nav{display:flex;justify-content:space-between;align-items:center;padding:1rem 2rem;border-bottom:1px solid #1f2937;position:sticky;top:0;background:rgba(10,10,15,.95);backdrop-filter:blur(8px);z-index:100}
+.logo{font-size:1.25rem;font-weight:800;color:#fff;text-decoration:none}.logo span{color:#6366f1}
+nav a{color:#9ca3af;text-decoration:none;font-size:.9rem;margin-left:1.5rem}
+.nav-cta{background:#6366f1;color:#fff!important;padding:.4rem 1rem;border-radius:.5rem;font-weight:600!important}
+.hero{text-align:center;padding:4rem 2rem 2rem;position:relative}
+.hero::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:600px;height:400px;background:radial-gradient(circle,rgba(99,102,241,.1) 0%,transparent 70%);pointer-events:none}
+.badge{display:inline-flex;align-items:center;gap:.4rem;background:rgba(59,130,246,.1);border:1px solid rgba(59,130,246,.25);color:#93c5fd;font-size:.8rem;padding:.3rem .85rem;border-radius:9999px;margin-bottom:1.25rem;font-weight:600}
+h1{font-size:clamp(2rem,5vw,3.25rem);font-weight:900;color:#fff;line-height:1.15;letter-spacing:-.02em;margin-bottom:1rem;max-width:700px;margin-left:auto;margin-right:auto}
+h1 .py{color:#3b82f6}
+.sub{color:#9ca3af;font-size:1.05rem;max-width:540px;margin:0 auto 2rem;line-height:1.65}
+.cta-row{display:flex;gap:.75rem;justify-content:center;flex-wrap:wrap;margin-bottom:1.75rem}
+.btn-main{background:#6366f1;color:#fff;padding:.85rem 2rem;border-radius:.6rem;text-decoration:none;font-weight:700;font-size:1rem;display:inline-flex;align-items:center;gap:.4rem;transition:background .2s}
+.btn-main:hover{background:#4f46e5}
+.btn-ghost{border:1px solid #1f2937;color:#9ca3af;padding:.85rem 1.5rem;border-radius:.6rem;text-decoration:none;font-size:.95rem;transition:all .2s}
+.btn-ghost:hover{border-color:#6366f1;color:#fff}
+.trust{display:flex;justify-content:center;gap:1.5rem;flex-wrap:wrap;font-size:.82rem;color:#4b5563}
+.trust span{display:flex;align-items:center;gap:.35rem}
+.trust .ok{color:#10b981}
+
+/* IDE EMBED SECTION */
+.ide-section{max-width:960px;margin:3rem auto;padding:0 2rem}
+.ide-wrap{border:1px solid #1f2937;border-radius:.75rem;overflow:hidden;box-shadow:0 0 60px rgba(99,102,241,.1)}
+.ide-bar{background:#161b2e;padding:.6rem 1rem;display:flex;align-items:center;gap:.5rem;border-bottom:1px solid #1f2937}
+.dot{width:12px;height:12px;border-radius:50%}
+.ide-bar .lbl{margin-left:.5rem;font-size:.78rem;color:#374151;font-family:'Courier New',monospace}
+iframe{width:100%;height:500px;border:none;display:block}
+
+/* FEATURES */
+.container{max-width:960px;margin:0 auto;padding:0 2rem 4rem}
+.section-lbl{font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:#6366f1;margin-bottom:.5rem}
+.section-title{font-size:1.75rem;font-weight:800;color:#fff;margin-bottom:.75rem;line-height:1.25}
+.section-sub{color:#9ca3af;margin-bottom:2.5rem;font-size:.95rem;line-height:1.65;max-width:560px}
+.grid3{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1rem;margin-bottom:4rem}
+.feat{background:#111827;border:1px solid #1f2937;border-radius:.75rem;padding:1.4rem}
+.feat-icon{font-size:1.6rem;margin-bottom:.65rem}
+.feat-title{font-weight:700;color:#fff;margin-bottom:.35rem;font-size:.95rem}
+.feat-desc{font-size:.85rem;color:#6b7280;line-height:1.55}
+
+/* PACKAGES */
+.pkg-grid{display:flex;gap:.5rem;flex-wrap:wrap;margin:1rem 0 2.5rem}
+.pkg{background:#111827;border:1px solid #1f2937;border-radius:.4rem;padding:.3rem .75rem;font-size:.82rem;font-family:'Courier New',monospace;color:#a78bfa;transition:border-color .2s}
+.pkg:hover{border-color:#6366f1}
+
+/* FAQ */
+.faq{max-width:680px;margin:0 auto 4rem}
+.faq h2{font-size:1.5rem;font-weight:800;color:#fff;margin-bottom:1.5rem}
+.faq-item{border-bottom:1px solid #1f2937;padding:1.1rem 0}
+.faq-item:first-of-type{border-top:1px solid #1f2937}
+.faq-q{font-weight:600;color:#fff;margin-bottom:.4rem;font-size:.95rem}
+.faq-a{color:#9ca3af;font-size:.875rem;line-height:1.65}
+
+/* CODE EXAMPLES */
+pre{background:#111827;border:1px solid #1f2937;border-radius:.5rem;padding:1.25rem;overflow-x:auto;font-family:'Courier New',monospace;font-size:.82rem;line-height:1.8;margin-bottom:1rem}
+.kw{color:#818cf8}.fn{color:#34d399}.str{color:#fbbf24}.cm{color:#374151}.num{color:#f87171}
+.examples-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;margin-bottom:3rem}
+.example-card{background:#111827;border:1px solid #1f2937;border-radius:.75rem;padding:1.25rem;cursor:pointer;text-decoration:none;display:block;transition:border-color .2s}
+.example-card:hover{border-color:#6366f1}
+.ex-title{font-weight:700;color:#fff;font-size:.9rem;margin-bottom:.75rem}
+footer{border-top:1px solid #1f2937;padding:2rem;text-align:center;color:#4b5563;font-size:.82rem}
+footer a{color:#6366f1;text-decoration:none}
+@media(max-width:600px){.examples-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<nav>
+  <a class="logo" href="/scriptforge-io/"><Script<span>Forge</span></a>
+  <div>
+    <a href="/scriptforge-io/">Home</a>
+    <a href="/scriptforge-io/tools/">Tools</a>
+    <a href="/scriptforge-io/javascript-online-compiler/">JS Compiler</a>
+    <a href="/scriptforge-app/" class="nav-cta">Launch IDE →</a>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="badge">🐍 Python 3 · Powered by Pyodide WebAssembly</div>
+  <h1>Python Online Compiler<br><span class="py">Run Python 3 Free</span> in Your Browser</h1>
+  <p class="sub">The fastest way to run Python code online. No download, no install, no account. Full CPython 3 with NumPy, pandas, matplotlib and 100+ packages.</p>
+  <div class="cta-row">
+    <a href="/scriptforge-app/" class="btn-main">▶ Run Python Now — Free</a>
+    <a href="#examples" class="btn-ghost">See Examples</a>
+  </div>
+  <div class="trust">
+    <span><span class="ok">✓</span> Real CPython 3 — not a subset</span>
+    <span><span class="ok">✓</span> NumPy, pandas, matplotlib included</span>
+    <span><span class="ok">✓</span> Runs in your browser — no server</span>
+    <span><span class="ok">✓</span> Free forever, no account</span>
+  </div>
+</div>
+
+<!-- LIVE IDE EMBED -->
+<div class="ide-section">
+  <div class="ide-wrap">
+    <div class="ide-bar">
+      <div class="dot" style="background:#f87171"></div>
+      <div class="dot" style="background:#fbbf24"></div>
+      <div class="dot" style="background:#34d399"></div>
+      <span class="lbl">ScriptForge — Python Online Compiler (live)</span>
+    </div>
+    <iframe src="https://drghostpurp.github.io/scriptforge-app/" title="Python Online Compiler" loading="lazy"></iframe>
+  </div>
+</div>
+
+<div class="container">
+
+  <div class="section-lbl">Why ScriptForge</div>
+  <div class="section-title">Not just a REPL. A real Python environment.</div>
+  <p class="section-sub">Most "Python online compilers" run on a server somewhere. ScriptForge compiles CPython to WebAssembly and runs it directly in your browser tab. Your code never leaves your machine.</p>
+
+  <div class="grid3">
+    <div class="feat">
+      <div class="feat-icon">⚡</div>
+      <div class="feat-title">Instant execution</div>
+      <div class="feat-desc">No cold start, no queue, no server round-trip. Python runs at near-native speed via WebAssembly right in your browser tab.</div>
+    </div>
+    <div class="feat">
+      <div class="feat-icon">📦</div>
+      <div class="feat-title">100+ packages available</div>
+      <div class="feat-desc">NumPy, pandas, matplotlib, scikit-learn, SciPy, Pillow, BeautifulSoup, regex, and many more — all pre-compiled for WASM.</div>
+    </div>
+    <div class="feat">
+      <div class="feat-icon">🔒</div>
+      <div class="feat-title">100% private</div>
+      <div class="feat-desc">Your code and data never touch a server. Everything executes locally in your browser — ideal for sensitive data and proprietary scripts.</div>
+    </div>
+    <div class="feat">
+      <div class="feat-icon">💾</div>
+      <div class="feat-title">Save your scripts</div>
+      <div class="feat-desc">Scripts persist in browser localStorage across sessions. No account needed — your work is always there when you come back.</div>
+    </div>
+    <div class="feat">
+      <div class="feat-icon">🔗</div>
+      <div class="feat-title">Share instantly</div>
+      <div class="feat-desc">Share any script via URL hash. Your colleague opens the link and the code is already there, ready to run.</div>
+    </div>
+    <div class="feat">
+      <div class="feat-icon">📤</div>
+      <div class="feat-title">Export as .py file</div>
+      <div class="feat-desc">Download your script as a standard .py file to use in any Python environment. No lock-in.</div>
+    </div>
+  </div>
+
+  <div class="section-lbl">Packages</div>
+  <div class="section-title" style="font-size:1.4rem">Available Python packages</div>
+  <p class="section-sub">All pre-compiled to WebAssembly. Load any of these with a standard import statement.</p>
+  <div class="pkg-grid">
+    <span class="pkg">numpy</span><span class="pkg">pandas</span><span class="pkg">matplotlib</span>
+    <span class="pkg">scipy</span><span class="pkg">scikit-learn</span><span class="pkg">statsmodels</span>
+    <span class="pkg">pillow</span><span class="pkg">requests</span><span class="pkg">beautifulsoup4</span>
+    <span class="pkg">lxml</span><span class="pkg">regex</span><span class="pkg">cryptography</span>
+    <span class="pkg">sympy</span><span class="pkg">networkx</span><span class="pkg">bokeh</span>
+    <span class="pkg">pyodide (stdlib)</span><span class="pkg">json</span><span class="pkg">csv</span>
+    <span class="pkg">datetime</span><span class="pkg">collections</span><span class="pkg">itertools</span>
+    <span class="pkg">functools</span><span class="pkg">pathlib</span><span class="pkg">re</span>
+    <span class="pkg">math</span><span class="pkg">random</span><span class="pkg">statistics</span>
+  </div>
+
+  <div id="examples" class="section-lbl" style="margin-top:2rem">Examples</div>
+  <div class="section-title" style="font-size:1.4rem">Python code examples — click to open in IDE</div>
+  <div class="examples-grid">
+    <a href="/scriptforge-app/" class="example-card">
+      <div class="ex-title">📊 Data Analysis with NumPy</div>
+      <pre><span class="kw">import</span> <span class="fn">numpy</span> <span class="kw">as</span> np
+
+sales = [<span class="num">142</span>, <span class="num">238</span>, <span class="num">195</span>, <span class="num">312</span>]
+arr = np.<span class="fn">array</span>(sales)
+<span class="fn">print</span>(<span class="str">f"Mean: {arr.mean():.1f}"</span>)
+<span class="fn">print</span>(<span class="str">f"Std: {arr.std():.1f}"</span>)</pre>
+    </a>
+    <a href="/scriptforge-app/" class="example-card">
+      <div class="ex-title">🐼 DataFrame with pandas</div>
+      <pre><span class="kw">import</span> <span class="fn">pandas</span> <span class="kw">as</span> pd
+
+data = {<span class="str">'name'</span>:[<span class="str">'Alice'</span>,<span class="str">'Bob'</span>],
+        <span class="str">'score'</span>:[<span class="num">92</span>,<span class="num">87</span>]}
+df = pd.<span class="fn">DataFrame</span>(data)
+<span class="fn">print</span>(df.<span class="fn">describe</span>())</pre>
+    </a>
+    <a href="/scriptforge-app/" class="example-card">
+      <div class="ex-title">🔢 List comprehensions</div>
+      <pre><span class="cm"># Pythonic patterns</span>
+squares = [x**<span class="num">2</span> <span class="kw">for</span> x <span class="kw">in</span> <span class="fn">range</span>(<span class="num">10</span>)]
+evens = [x <span class="kw">for</span> x <span class="kw">in</span> squares
+         <span class="kw">if</span> x % <span class="num">2</span> == <span class="num">0</span>]
+<span class="fn">print</span>(evens)</pre>
+    </a>
+    <a href="/scriptforge-app/" class="example-card">
+      <div class="ex-title">🔬 Statistics module</div>
+      <pre><span class="kw">import</span> <span class="fn">statistics</span> <span class="kw">as</span> s
+
+data = [<span class="num">4</span>,<span class="num">7</span>,<span class="num">13</span>,<span class="num">2</span>,<span class="num">1</span>,<span class="num">9</span>,<span class="num">14</span>,<span class="num">3</span>]
+<span class="fn">print</span>(<span class="str">f"Median: {s.median(data)}"</span>)
+<span class="fn">print</span>(<span class="str">f"Mode: {s.mode(data)}"</span>)</pre>
+    </a>
+  </div>
+
+  <div class="faq">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-item">
+      <div class="faq-q">Is this a real Python compiler or a simulator?</div>
+      <div class="faq-a">It's real. ScriptForge uses Pyodide — the full CPython 3 interpreter compiled to WebAssembly. It runs the same Python you'd install on your machine, not a simplified version or transpiler. NumPy, pandas, and other C-extension packages are also compiled to WASM and run at near-native speed.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Does my Python code get sent to a server?</div>
+      <div class="faq-a">No. Python execution happens entirely inside your browser tab using WebAssembly. Nothing is sent to any server. This makes ScriptForge ideal for running scripts on sensitive or proprietary data.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Which Python version does it support?</div>
+      <div class="faq-a">ScriptForge runs Python 3 (specifically the version bundled with the current Pyodide release, which tracks CPython closely). Python 2 is not supported as it reached end-of-life in 2020.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Can I install any Python package?</div>
+      <div class="faq-a">Pure Python packages can be installed from PyPI. Packages with C extensions need to be pre-compiled for WebAssembly — Pyodide ships 100+ of the most popular ones including NumPy, pandas, scipy, and scikit-learn. If a package you need isn't available, pure-Python alternatives usually work.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Is it free? Any limits?</div>
+      <div class="faq-a">Completely free. No rate limits, no credit card, no account required. The IDE runs in your browser and is hosted on GitHub Pages — there's no server cost for us to pass on to you.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">How does it compare to Replit or Google Colab?</div>
+      <div class="faq-a">Replit and Colab run your code on servers — they require accounts, have rate limits, and send your code over the network. ScriptForge runs everything locally in your browser. It's faster to start, completely private, and always free. The tradeoff is that very long-running computations or filesystem-heavy work is better suited to a server environment.</div>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <p>© 2026 ScriptForge · <a href="/scriptforge-io/">Home</a> · <a href="/scriptforge-io/javascript-online-compiler/">JS Compiler</a> · <a href="/scriptforge-io/tools/">Tools</a> · <a href="/scriptforge-io/pricing/">Pricing</a></p>
+</footer>
+<script src="/scriptforge-io/assets/growth.js"></script>
+</body>
+</html>
