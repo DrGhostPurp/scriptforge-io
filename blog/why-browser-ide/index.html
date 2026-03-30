@@ -1,1 +1,115 @@
-undefined
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Why a Browser-Native IDE? The Case for Zero-Install Development</title>
+<meta name="description" content="Why we built ScriptForge as a pure browser IDE with no server, no install, and no account required. The case for WebAssembly-powered development tools.">
+<meta property="og:title" content="Why a Browser-Native IDE?">
+<meta property="og:description" content="The case for zero-install development tools in 2026.">
+<meta property="og:url" content="https://drghostpurp.github.io/scriptforge-io/blog/why-browser-ide/">
+<link rel="canonical" href="https://drghostpurp.github.io/scriptforge-io/blog/why-browser-ide/">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#0d0d0d;color:#e5e7eb;line-height:1.75}
+  nav{display:flex;justify-content:space-between;align-items:center;padding:1rem 2rem;border-bottom:1px solid #1f2937;position:sticky;top:0;background:#0d0d0d;z-index:100}
+  .logo{font-size:1.25rem;font-weight:700;color:#fff;text-decoration:none}
+  .logo span{color:#6366f1}
+  nav a{color:#9ca3af;text-decoration:none;font-size:.9rem;margin-left:1.5rem}
+  nav a:hover{color:#fff}
+  .container{max-width:680px;margin:0 auto;padding:4rem 2rem}
+  .meta{display:flex;gap:1rem;align-items:center;margin-bottom:2rem;font-size:.85rem;color:#6b7280}
+  .tag{background:#1f2937;color:#6366f1;padding:.2rem .6rem;border-radius:9999px;font-size:.75rem;font-weight:600}
+  h1{font-size:2.25rem;font-weight:800;color:#fff;line-height:1.25;margin-bottom:1.5rem}
+  h2{font-size:1.4rem;font-weight:700;color:#fff;margin:2.5rem 0 1rem}
+  p{margin-bottom:1.25rem;color:#d1d5db}
+  .callout{background:#1f2937;border-left:3px solid #6366f1;padding:1rem 1.5rem;border-radius:0 .5rem .5rem 0;margin:1.5rem 0}
+  .callout p{margin:0;color:#e5e7eb}
+  code{background:#1f2937;color:#a78bfa;padding:.1rem .4rem;border-radius:.25rem;font-size:.9em;font-family:'Courier New',monospace}
+  .cta-box{background:#111827;border:1px solid #374151;border-radius:1rem;padding:2rem;text-align:center;margin:3rem 0}
+  .cta-box h3{font-size:1.5rem;font-weight:700;color:#fff;margin-bottom:.75rem}
+  .cta-box p{color:#9ca3af;margin-bottom:1.5rem}
+  .btn{display:inline-block;background:#6366f1;color:#fff;padding:.75rem 2rem;border-radius:.5rem;text-decoration:none;font-weight:600}
+  .btn:hover{background:#4f46e5}
+  footer{border-top:1px solid #1f2937;padding:2rem;text-align:center;color:#4b5563;font-size:.85rem}
+  footer a{color:#6366f1;text-decoration:none}
+</style>
+</head>
+<body>
+<nav>
+  <a class="logo" href="/scriptforge-io/"><Script<span>Forge</span></a>
+  <div>
+    <a href="/scriptforge-io/">Home</a>
+    <a href="/scriptforge-app/">Launch IDE</a>
+    <a href="/scriptforge-io/tools/">Tools</a>
+    <a href="/scriptforge-io/changelog/">Changelog</a>
+  </div>
+</nav>
+
+<div class="container">
+  <div class="meta">
+    <span class="tag">Product</span>
+    <span>March 2026</span>
+    <span>·</span>
+    <span>6 min read</span>
+  </div>
+
+  <h1>Why a Browser-Native IDE? The Case for Zero-Install Development</h1>
+
+  <p>Every developer has been there. You want to test a quick script, try out a library, or run a colleague's snippet — and suddenly you're installing Node, setting up a virtual environment, or waiting for a cloud IDE to spin up.</p>
+
+  <p>We built ScriptForge to eliminate that friction entirely. Here's why we think the browser is the right runtime for the next generation of developer tools.</p>
+
+  <h2>The Problem with "Quick" Development Environments</h2>
+
+  <p>The traditional path to running code looks like this: install a runtime, create a project directory, install dependencies, configure your environment, then finally write code. Even with modern tooling like <code>npx</code> or <code>pipx</code>, there's always friction between "I have an idea" and "I'm running code."</p>
+
+  <p>Cloud IDEs like CodeSandbox and StackBlitz improved on this significantly — but they still require an account, still spin up a server somewhere, and still have cold-start delays. They're great for full projects. They're overkill for a quick script.</p>
+
+  <div class="callout">
+    <p><strong>The insight:</strong> For scripts and snippets, the overhead of any server — even a fast one — is unnecessary. Modern browsers are already full programming environments.</p>
+  </div>
+
+  <h2>WebAssembly Changed Everything</h2>
+
+  <p>The real breakthrough that makes ScriptForge possible is WebAssembly. Specifically, <a href="https://pyodide.org" style="color:#6366f1">Pyodide</a> — a full CPython interpreter compiled to WASM that runs directly in the browser tab.</p>
+
+  <p>This isn't a Python subset or a transpiler. It's CPython. It runs NumPy, pandas, matplotlib, and hundreds of scientific computing packages — all without a server. The first load takes a few seconds as WASM compiles, but after that it's instant.</p>
+
+  <p>JavaScript was always native to the browser. What Pyodide unlocked is parity: Python developers get the same zero-install experience that JavaScript developers always had.</p>
+
+  <h2>npm in the Browser via esm.sh</h2>
+
+  <p>For JavaScript, we integrate with <a href="https://esm.sh" style="color:#6366f1">esm.sh</a> — a CDN that transforms any npm package into an ES module you can import with a single URL. Want to use lodash, dayjs, or zod in your browser script? Just write <code>import _ from 'https://esm.sh/lodash'</code> and it works.</p>
+
+  <p>No <code>package.json</code>. No <code>node_modules</code>. No bundler. The entire npm ecosystem, available in the browser.</p>
+
+  <h2>Privacy by Architecture</h2>
+
+  <p>When your code never leaves the browser tab, privacy is a feature of the architecture — not a policy you have to trust us to enforce. Your scripts run locally. They're stored in your browser's localStorage. They never touch our servers.</p>
+
+  <p>For developers who work with sensitive data, internal scripts, or proprietary algorithms, this is a meaningful guarantee. The code stays on your machine.</p>
+
+  <h2>What's Next</h2>
+
+  <p>We're still early. The current v0.5 IDE is already useful — run Python, import npm packages, preview HTML, save scripts locally, import from GitHub Gists. But we have a long roadmap ahead:</p>
+
+  <p>Real-time collaboration (WebRTC peer-to-peer, no server), a VSCode extension bridge, support for more languages (Ruby via WASM, Rust via WASM), and a Pro tier with team script libraries and private sharing.</p>
+
+  <div class="callout">
+    <p>The browser is the most widely distributed computing environment in history. We think it should also be the most productive development environment. ScriptForge is our bet on that future.</p>
+  </div>
+
+  <div class="cta-box">
+    <h3>Try ScriptForge Free</h3>
+    <p>No signup. No install. Open the IDE and start coding in under 10 seconds.</p>
+    <a href="/scriptforge-app/" class="btn">Open ScriptForge IDE →</a>
+  </div>
+
+</div>
+
+<footer>
+  <p>© 2026 ScriptForge · <a href="/scriptforge-io/">Home</a> · <a href="/scriptforge-io/tools/">Tools</a> · <a href="/scriptforge-io/changelog/">Changelog</a></p>
+</footer>
+</body>
+</html>
