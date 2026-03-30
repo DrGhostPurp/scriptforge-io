@@ -1,1 +1,167 @@
-undefined
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Changelog – ScriptForge</title>
+<meta name="description" content="ScriptForge release history and version changelog. Track new features, improvements, and bug fixes.">
+<link rel="canonical" href="https://drghostpurp.github.io/scriptforge-io/changelog/">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#0d0d0d;color:#e5e7eb;line-height:1.6}
+  nav{display:flex;justify-content:space-between;align-items:center;padding:1rem 2rem;border-bottom:1px solid #1f2937;position:sticky;top:0;background:#0d0d0d;z-index:100}
+  .logo{font-size:1.25rem;font-weight:700;color:#fff;text-decoration:none}
+  .logo span{color:#6366f1}
+  nav a{color:#9ca3af;text-decoration:none;font-size:.9rem;margin-left:1.5rem}
+  nav a:hover{color:#fff}
+  .hero{text-align:center;padding:4rem 2rem 2rem}
+  .hero h1{font-size:2.5rem;font-weight:800;color:#fff;margin-bottom:.75rem}
+  .hero p{color:#9ca3af;font-size:1.1rem}
+  .container{max-width:720px;margin:0 auto;padding:2rem}
+  .version-block{border-left:2px solid #6366f1;padding-left:2rem;margin-bottom:3rem;position:relative}
+  .version-block::before{content:'';width:12px;height:12px;background:#6366f1;border-radius:50%;position:absolute;left:-7px;top:6px}
+  .version-tag{display:inline-flex;align-items:center;gap:.5rem;margin-bottom:.5rem}
+  .version-num{font-size:1.3rem;font-weight:700;color:#fff}
+  .version-badge{background:#6366f1;color:#fff;font-size:.7rem;padding:.2rem .5rem;border-radius:9999px;font-weight:600}
+  .version-badge.latest{background:#10b981}
+  .version-date{color:#6b7280;font-size:.85rem;margin-bottom:1rem}
+  .change-section{margin-bottom:1rem}
+  .change-section h4{font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;margin-bottom:.5rem}
+  .change-section h4.new{color:#10b981}
+  .change-section h4.improved{color:#6366f1}
+  .change-section h4.fixed{color:#f59e0b}
+  .change-section ul{list-style:none;padding:0}
+  .change-section li{padding:.25rem 0;color:#d1d5db;font-size:.95rem;display:flex;align-items:flex-start;gap:.5rem}
+  .change-section li::before{content:'•';color:#6b7280;flex-shrink:0;margin-top:.1rem}
+  .cta{background:#111827;border-radius:1rem;padding:3rem;text-align:center;margin:3rem 0}
+  .cta h2{font-size:1.75rem;font-weight:700;color:#fff;margin-bottom:1rem}
+  .cta p{color:#9ca3af;margin-bottom:2rem}
+  .btn{display:inline-block;background:#6366f1;color:#fff;padding:.75rem 2rem;border-radius:.5rem;text-decoration:none;font-weight:600;transition:background .2s}
+  .btn:hover{background:#4f46e5}
+  footer{border-top:1px solid #1f2937;padding:2rem;text-align:center;color:#4b5563;font-size:.85rem}
+  footer a{color:#6366f1;text-decoration:none}
+</style>
+</head>
+<body>
+<nav>
+  <a class="logo" href="/scriptforge-io/"><Script<span>Forge</span></a>
+  <div>
+    <a href="/scriptforge-io/">Home</a>
+    <a href="/scriptforge-app/">Launch IDE</a>
+    <a href="/scriptforge-io/tools/">Tools</a>
+    <a href="/scriptforge-io/changelog/">Changelog</a>
+  </div>
+</nav>
+
+<div class="hero">
+  <h1>Changelog</h1>
+  <p>Every feature, fix, and improvement — tracked publicly.</p>
+</div>
+
+<div class="container">
+
+  <div class="version-block">
+    <div class="version-tag">
+      <span class="version-num">v0.5</span>
+      <span class="version-badge latest">Latest</span>
+    </div>
+    <div class="version-date">March 2026</div>
+
+    <div class="change-section">
+      <h4 class="new">New Features</h4>
+      <ul>
+        <li>Real Python execution via Pyodide WebAssembly — runs in-browser, no server</li>
+        <li>npm package imports via esm.sh — import any package directly in browser JS</li>
+        <li>Live HTML preview panel — see rendered output instantly</li>
+        <li>GitHub Gist import — paste any Gist URL to load scripts instantly</li>
+        <li>Script export — download as .js, .py, .sh, or .html</li>
+        <li>Shareable URLs — scripts share via URL hash fragment</li>
+        <li>Keyboard shortcuts — Ctrl+Enter to run, Ctrl+S to save, Tab for indent</li>
+        <li>Status bar — shows line count, cursor position, and execution time</li>
+      </ul>
+    </div>
+    <div class="change-section">
+      <h4 class="improved">Improved</h4>
+      <ul>
+        <li>Dark/light theme toggle with localStorage persistence</li>
+        <li>Script sidebar with real-time search/filter</li>
+        <li>10 built-in starter templates for Python, JS, HTML, and shell</li>
+        <li>Execution output panel with clear button and copy support</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="version-block">
+    <div class="version-tag">
+      <span class="version-num">v0.4</span>
+    </div>
+    <div class="version-date">February 2026</div>
+    <div class="change-section">
+      <h4 class="new">New Features</h4>
+      <ul>
+        <li>Multi-language support: JavaScript, Python, Shell, HTML</li>
+        <li>Script management: save, load, rename, delete</li>
+        <li>localStorage persistence across browser sessions</li>
+        <li>Output console with error highlighting</li>
+      </ul>
+    </div>
+    <div class="change-section">
+      <h4 class="improved">Improved</h4>
+      <ul>
+        <li>Redesigned sidebar with script list and management actions</li>
+        <li>Better code editor with monospace font and syntax coloring</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="version-block">
+    <div class="version-tag">
+      <span class="version-num">v0.3</span>
+    </div>
+    <div class="version-date">January 2026</div>
+    <div class="change-section">
+      <h4 class="new">New Features</h4>
+      <ul>
+        <li>First public beta — single HTML file, no dependencies</li>
+        <li>JavaScript execution with console capture</li>
+        <li>Basic script save/load using localStorage</li>
+        <li>Responsive layout for desktop and tablet</li>
+      </ul>
+    </div>
+    <div class="change-section">
+      <h4 class="fixed">Fixed</h4>
+      <ul>
+        <li>Output panel not clearing between runs</li>
+        <li>Tab key causing focus to jump out of editor</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="version-block">
+    <div class="version-tag">
+      <span class="version-num">v0.1 – v0.2</span>
+    </div>
+    <div class="version-date">December 2025</div>
+    <div class="change-section">
+      <h4 class="new">New Features</h4>
+      <ul>
+        <li>Initial proof of concept — run JS snippets in-browser</li>
+        <li>Simple textarea editor</li>
+        <li>Run button with basic error handling</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="cta">
+    <h2>Try v0.5 Now</h2>
+    <p>The latest version is live and free. No signup required.</p>
+    <a href="/scriptforge-app/" class="btn">Open ScriptForge IDE →</a>
+  </div>
+
+</div>
+
+<footer>
+  <p>© 2026 ScriptForge · <a href="/scriptforge-io/">Home</a> · <a href="/scriptforge-io/tools/">Tools</a> · <a href="/scriptforge-io/changelog/">Changelog</a></p>
+</footer>
+</body>
+</html>
