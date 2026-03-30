@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Run JavaScript Online – Free JS Playground | ScriptForge</title>
+<meta name="description" content="Run JavaScript online for free. No setup, no install. Execute JS code in your browser with npm package support, async/await, DOM access, and instant output.">
+<meta name="keywords" content="run javascript online, javascript playground online, execute javascript online, js online compiler, run js online free, online javascript runner">
+<meta property="og:title" content="Run JavaScript Online Free – JS Playground | ScriptForge">
+<meta property="og:description" content="Execute JavaScript in your browser instantly. Supports npm packages, async/await, DOM. No signup.">
+<meta property="og:url" content="https://drghostpurp.github.io/scriptforge-io/run-javascript-online/">
+<link rel="canonical" href="https://drghostpurp.github.io/scriptforge-io/run-javascript-online/">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "ScriptForge – Run JavaScript Online",
+  "url": "https://drghostpurp.github.io/scriptforge-app/",
+  "description": "Free online JavaScript runner with npm support. Run JS in your browser without any installation.",
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How do I run JavaScript online?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Open ScriptForge, select JavaScript mode, type or paste your JS code, and click Run. Your code executes instantly in the browser with output shown in the console panel. No install or login needed." }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I use npm packages when running JavaScript online?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes. ScriptForge supports npm package imports via esm.sh CDN. Use import statements to load lodash, axios, dayjs, React, and thousands of other packages directly in the browser." }
+    },
+    {
+      "@type": "Question",
+      "name": "Does ScriptForge support async/await in JavaScript?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes. ScriptForge fully supports modern JavaScript including async/await, Promises, ES6+ modules, arrow functions, destructuring, and all other modern syntax." }
+    },
+    {
+      "@type": "Question",
+      "name": "Is it free to run JavaScript online with ScriptForge?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes, completely free with no signup required. Open ScriptForge in any browser and start running JavaScript immediately." }
+    }
+  ]
+}
+</script>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #0a0a0f; color: #e2e8f0; line-height: 1.6; }
+  a { color: #7c3aed; text-decoration: none; }
+  a:hover { color: #a78bfa; }
+  .nav { background: rgba(10,10,15,0.95); border-bottom: 1px solid #1e1b4b; padding: 1rem 2rem; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; }
+  .nav-brand { font-size: 1.3rem; font-weight: 700; color: #7c3aed; }
+  .nav-links a { margin-left: 1.5rem; color: #94a3b8; font-size: 0.9rem; }
+  .hero { max-width: 860px; margin: 0 auto; padding: 4rem 2rem 2rem; text-align: center; }
+  .badge { display: inline-block; background: rgba(234,179,8,0.15); border: 1px solid rgba(234,179,8,0.4); color: #fbbf24; padding: 0.3rem 0.9rem; border-radius: 20px; font-size: 0.8rem; margin-bottom: 1.5rem; }
+  h1 { font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 800; line-height: 1.2; margin-bottom: 1.2rem; }
+  h1 span { color: #f59e0b; }
+  .subtitle { font-size: 1.2rem; color: #94a3b8; max-width: 600px; margin: 0 auto 2rem; }
+  .cta-group { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-bottom: 1rem; }
+  .btn-primary { background: #d97706; color: white; padding: 0.85rem 2rem; border-radius: 8px; font-weight: 600; font-size: 1rem; }
+  .btn-primary:hover { background: #b45309; color: white; }
+  .btn-secondary { border: 1px solid #334155; color: #94a3b8; padding: 0.85rem 2rem; border-radius: 8px; font-weight: 600; font-size: 1rem; }
+  .ide-frame { max-width: 1000px; margin: 2rem auto; border-radius: 12px; overflow: hidden; border: 1px solid #2d2507; box-shadow: 0 20px 60px rgba(0,0,0,0.5); }
+  .ide-frame iframe { width: 100%; height: 520px; display: block; border: none; }
+  .features { max-width: 1000px; margin: 4rem auto; padding: 0 2rem; }
+  .features h2 { font-size: 1.8rem; font-weight: 700; text-align: center; margin-bottom: 2.5rem; }
+  .feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; }
+  .feature-card { background: #0f0f1a; border: 1px solid #1e1b4b; border-radius: 10px; padding: 1.5rem; }
+  .feature-icon { font-size: 1.8rem; margin-bottom: 0.8rem; }
+  .feature-card h3 { font-size: 1rem; font-weight: 600; margin-bottom: 0.5rem; }
+  .feature-card p { font-size: 0.88rem; color: #94a3b8; }
+  .code-examples { max-width: 900px; margin: 4rem auto; padding: 0 2rem; }
+  .code-examples h2 { font-size: 1.8rem; font-weight: 700; text-align: center; margin-bottom: 2rem; }
+  .code-block { background: #0f0f1a; border: 1px solid #1e1b4b; border-radius: 10px; padding: 1.5rem; margin-bottom: 1.5rem; }
+  .code-block h3 { font-size: 1rem; font-weight: 600; color: #fbbf24; margin-bottom: 0.8rem; }
+  .code-block pre { font-family: 'Fira Code', 'Cascadia Code', monospace; font-size: 0.85rem; color: #94a3b8; white-space: pre-wrap; }
+  .keyword { color: #c792ea; }
+  .string { color: #c3e88d; }
+  .comment { color: #546e7a; font-style: italic; }
+  .func { color: #82aaff; }
+  .faq { max-width: 800px; margin: 4rem auto; padding: 0 2rem; }
+  .faq h2 { font-size: 1.8rem; font-weight: 700; text-align: center; margin-bottom: 2rem; }
+  .faq-item { border-bottom: 1px solid #1e1b4b; padding: 1.2rem 0; }
+  .faq-item h3 { font-size: 1rem; font-weight: 600; margin-bottom: 0.6rem; }
+  .faq-item p { font-size: 0.9rem; color: #94a3b8; }
+  .related { max-width: 1000px; margin: 4rem auto; padding: 0 2rem; }
+  .related h2 { font-size: 1.4rem; font-weight: 700; margin-bottom: 1.5rem; }
+  .related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; }
+  .related-card { background: #0f0f1a; border: 1px solid #1e1b4b; border-radius: 8px; padding: 1.2rem; }
+  .related-card:hover { border-color: #7c3aed; }
+  .related-card h3 { font-size: 0.9rem; font-weight: 600; margin-bottom: 0.4rem; }
+  .related-card p { font-size: 0.8rem; color: #94a3b8; }
+  .cta-banner { background: linear-gradient(135deg, #1a1400 0%, #0f0f1a 100%); border: 1px solid #854d0e; border-radius: 12px; max-width: 700px; margin: 4rem auto; padding: 3rem 2rem; text-align: center; }
+  .cta-banner h2 { font-size: 1.8rem; font-weight: 700; margin-bottom: 1rem; }
+  .cta-banner p { color: #94a3b8; margin-bottom: 2rem; }
+  footer { border-top: 1px solid #1e1b4b; padding: 2rem; text-align: center; color: #475569; font-size: 0.85rem; }
+  footer a { color: #94a3b8; margin: 0 0.5rem; }
+</style>
+</head>
+<body>
+<nav class="nav">
+  <a href="https://drghostpurp.github.io/scriptforge-io/" class="nav-brand">⚡ ScriptForge</a>
+  <div class="nav-links">
+    <a href="https://drghostpurp.github.io/scriptforge-io/tools/">Tools</a>
+    <a href="https://drghostpurp.github.io/scriptforge-io/pricing/">Pricing</a>
+    <a href="https://drghostpurp.github.io/scriptforge-app/">Open IDE</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="badge">🟡 JavaScript Playground</div>
+  <h1>Run JavaScript<br><span>Online Free</span></h1>
+  <p class="subtitle">Execute JavaScript in your browser instantly. Full ES2024 support, npm packages via import, async/await, DOM preview. Zero setup.</p>
+  <div class="cta-group">
+    <a href="https://drghostpurp.github.io/scriptforge-app/?lang=javascript" class="btn-primary">Run JS Now →</a>
+    <a href="#examples" class="btn-secondary">See examples</a>
+  </div>
+</section>
+
+<div class="ide-frame">
+  <iframe src="https://drghostpurp.github.io/scriptforge-app/?lang=javascript" title="ScriptForge JavaScript Online Runner" loading="lazy"></iframe>
+</div>
+
+<section class="features">
+  <h2>Why run JavaScript with ScriptForge?</h2>
+  <div class="feature-grid">
+    <div class="feature-card">
+      <div class="feature-icon">📦</div>
+      <h3>npm Packages</h3>
+      <p>Import lodash, axios, dayjs, React, and thousands of npm packages directly using ES module syntax via esm.sh CDN.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">⏳</div>
+      <h3>async / await</h3>
+      <p>Full support for asynchronous JavaScript including Promises, async/await, and the Fetch API for HTTP requests.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🖥️</div>
+      <h3>DOM & Browser APIs</h3>
+      <p>Access the full browser environment — manipulate the DOM, use localStorage, canvas, WebSockets, and Web APIs.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">📋</div>
+      <h3>Console Output</h3>
+      <p>console.log, console.error, console.table — all output shows in the integrated console panel.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🔗</div>
+      <h3>Share Instantly</h3>
+      <p>Share your JavaScript code via a URL. Great for bug reports, code reviews, or Stack Overflow answers.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🚀</div>
+      <h3>ES2024 Syntax</h3>
+      <p>Top-level await, optional chaining, nullish coalescing, Array.at(), Object.hasOwn() — all modern JS supported.</p>
+    </div>
+  </div>
+</section>
+
+<section class="code-examples" id="examples">
+  <h2>JavaScript code examples to try</h2>
+  <div class="code-block">
+    <h3>// Fetch API – async/await</h3>
+    <pre><span class="keyword">const</span> res = <span class="keyword">await</span> <span class="func">fetch</span>(<span class="string">'https://jsonplaceholder.typicode.com/posts/1'</span>);
+<span class="keyword">const</span> data = <span class="keyword">await</span> res.<span class="func">json</span>();
+console.<span class="func">log</span>(data.title);</pre>
+  </div>
+  <div class="code-block">
+    <h3>// Import lodash from npm</h3>
+    <pre><span class="keyword">import</span> _ <span class="keyword">from</span> <span class="string">'https://esm.sh/lodash'</span>;
+<span class="keyword">const</span> arr = [1, 2, 3, 4, 5];
+console.<span class="func">log</span>(_.<span class="func">chunk</span>(arr, 2));  <span class="comment">// [[1,2],[3,4],[5]]</span></pre>
+  </div>
+  <div class="code-block">
+    <h3>// Array methods – modern JS</h3>
+    <pre><span class="keyword">const</span> users = [
+  { name: <span class="string">'Alice'</span>, score: 92 },
+  { name: <span class="string">'Bob'</span>, score: 78 },
+  { name: <span class="string">'Carol'</span>, score: 95 }
+];
+<span class="keyword">const</span> top = users
+  .<span class="func">filter</span>(u => u.score > 80)
+  .<span class="func">sort</span>((a, b) => b.score - a.score)
+  .<span class="func">map</span>(u => u.name);
+console.<span class="func">log</span>(top);  <span class="comment">// ['Carol', 'Alice']</span></pre>
+  </div>
+</section>
+
+<section class="faq">
+  <h2>Frequently asked questions</h2>
+  <div class="faq-item">
+    <h3>How do I run JavaScript online?</h3>
+    <p>Open ScriptForge, select JavaScript mode, type or paste your JS code, and click Run. Your code executes instantly in the browser with output shown in the console panel. No install or login needed.</p>
+  </div>
+  <div class="faq-item">
+    <h3>Can I use npm packages when running JavaScript online?</h3>
+    <p>Yes. ScriptForge supports npm package imports via esm.sh CDN. Use import statements to load lodash, axios, dayjs, React, and thousands of other packages directly in the browser.</p>
+  </div>
+  <div class="faq-item">
+    <h3>Does ScriptForge support async/await?</h3>
+    <p>Yes. ScriptForge fully supports modern JavaScript including async/await, Promises, ES6+ modules, arrow functions, destructuring, and all other modern syntax including top-level await.</p>
+  </div>
+  <div class="faq-item">
+    <h3>Is it free to run JavaScript online?</h3>
+    <p>Yes, completely free with no signup required. Open ScriptForge in any browser and start running JavaScript immediately.</p>
+  </div>
+  <div class="faq-item">
+    <h3>What's the difference between ScriptForge and jsFiddle or CodePen?</h3>
+    <p>ScriptForge supports multiple languages (Python, JavaScript, HTML) in a single IDE, includes GitHub Gist import, npm packages, and shareable URLs — all without creating an account.</p>
+  </div>
+</section>
+
+<section class="related">
+  <h2>More free developer tools</h2>
+  <div class="related-grid">
+    <a href="https://drghostpurp.github.io/scriptforge-io/python-online-compiler/" class="related-card">
+      <h3>Python Online Compiler</h3>
+      <p>Run Python 3 with numpy, pandas, and full stdlib.</p>
+    </a>
+    <a href="https://drghostpurp.github.io/scriptforge-io/javascript-online-compiler/" class="related-card">
+      <h3>JavaScript Compiler</h3>
+      <p>Compile and run JavaScript with modern ES2024 syntax.</p>
+    </a>
+    <a href="https://drghostpurp.github.io/scriptforge-io/html-editor-online/" class="related-card">
+      <h3>HTML Editor Online</h3>
+      <p>Write HTML with live preview, CSS, and JavaScript.</p>
+    </a>
+    <a href="https://drghostpurp.github.io/scriptforge-io/tools/json-formatter/" class="related-card">
+      <h3>JSON Formatter</h3>
+      <p>Format and validate JSON data instantly.</p>
+    </a>
+    <a href="https://drghostpurp.github.io/scriptforge-io/tools/regex-tester/" class="related-card">
+      <h3>Regex Tester</h3>
+      <p>Test regular expressions with live highlighting.</p>
+    </a>
+    <a href="https://drghostpurp.github.io/scriptforge-io/run-python-online/" class="related-card">
+      <h3>Run Python Online</h3>
+      <p>Execute Python scripts free with scientific packages.</p>
+    </a>
+  </div>
+</section>
+
+<div class="cta-banner">
+  <h2>Ready to run JavaScript online?</h2>
+  <p>Free, instant, no signup. The fastest JavaScript playground on the web.</p>
+  <a href="https://drghostpurp.github.io/scriptforge-app/?lang=javascript" class="btn-primary">Open JS Playground →</a>
+</div>
+
+<footer>
+  <p>© 2025 ScriptForge · <a href="https://drghostpurp.github.io/scriptforge-io/">Home</a> <a href="https://drghostpurp.github.io/scriptforge-io/tools/">Tools</a> <a href="https://drghostpurp.github.io/scriptforge-io/blog/">Blog</a> <a href="https://drghostpurp.github.io/scriptforge-io/pricing/">Pricing</a></p>
+</footer>
+</body>
+</html>
