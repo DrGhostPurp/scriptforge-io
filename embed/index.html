@@ -1,1 +1,244 @@
-undefined
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Embed ScriptForge – Add a Live Code Editor to Your Website</title>
+<meta name="description" content="Embed a live Python or JavaScript code editor on your website or blog. Free, no signup, no server. Copy one line of HTML.">
+<link rel="canonical" href="https://drghostpurp.github.io/scriptforge-io/embed/">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#0d0d0d;color:#e5e7eb;line-height:1.6}
+  nav{display:flex;justify-content:space-between;align-items:center;padding:1rem 2rem;border-bottom:1px solid #1f2937;position:sticky;top:0;background:#0d0d0d;z-index:100}
+  .logo{font-size:1.25rem;font-weight:700;color:#fff;text-decoration:none}
+  .logo span{color:#6366f1}
+  nav a{color:#9ca3af;text-decoration:none;font-size:.9rem;margin-left:1.5rem}
+  nav a:hover{color:#fff}
+  .nav-cta{background:#6366f1;color:#fff!important;padding:.4rem 1rem;border-radius:.5rem;font-weight:600!important}
+  .hero{text-align:center;padding:4rem 2rem 2rem}
+  .hero h1{font-size:2.25rem;font-weight:800;color:#fff;margin-bottom:.75rem}
+  .hero p{color:#9ca3af;font-size:1.05rem;max-width:540px;margin:0 auto}
+  .container{max-width:900px;margin:0 auto;padding:2rem}
+  .card{background:#111827;border:1px solid #1f2937;border-radius:.75rem;padding:1.75rem;margin-bottom:1.5rem}
+  h2{font-size:1.15rem;font-weight:700;color:#fff;margin-bottom:1rem}
+  .step{display:flex;gap:1.25rem;align-items:flex-start;margin-bottom:1.5rem}
+  .step-num{width:32px;height:32px;background:#6366f1;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.85rem;font-weight:700;color:#fff;flex-shrink:0;margin-top:.1rem}
+  .step-content h3{font-size:1rem;font-weight:600;color:#fff;margin-bottom:.35rem}
+  .step-content p{font-size:.875rem;color:#9ca3af;line-height:1.6}
+  pre{background:#0d1117;border:1px solid #1f2937;border-radius:.5rem;padding:1.25rem;overflow-x:auto;font-family:'Courier New',monospace;font-size:.82rem;color:#e5e7eb;position:relative;margin:.75rem 0}
+  .copy-btn{position:absolute;top:.75rem;right:.75rem;background:#1f2937;border:1px solid #374151;color:#9ca3af;padding:.25rem .65rem;border-radius:.35rem;cursor:pointer;font-size:.75rem;transition:all .2s}
+  .copy-btn:hover{border-color:#6366f1;color:#fff}
+  .copy-btn.copied{border-color:#10b981;color:#10b981}
+  .tag{display:inline-block;background:#6366f120;border:1px solid #6366f140;color:#a78bfa;font-size:.75rem;padding:.2rem .6rem;border-radius:9999px;margin-right:.4rem;margin-bottom:.4rem}
+  .preview-wrapper{border:1px solid #1f2937;border-radius:.5rem;overflow:hidden;margin-top:1rem}
+  .preview-bar{background:#161b2e;padding:.5rem 1rem;font-size:.75rem;color:#6b7280;display:flex;align-items:center;gap:.5rem}
+  .preview-bar .dot{width:8px;height:8px;border-radius:50%}
+  iframe{width:100%;height:420px;border:none;display:block}
+  .options-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1rem}
+  .option-card{background:#0d1117;border:1px solid #1f2937;border-radius:.5rem;padding:1rem;cursor:pointer;transition:border-color .2s}
+  .option-card:hover,.option-card.active{border-color:#6366f1}
+  .option-card h4{font-size:.875rem;font-weight:600;color:#fff;margin-bottom:.25rem}
+  .option-card p{font-size:.8rem;color:#6b7280}
+  label{display:block;font-size:.8rem;font-weight:600;color:#9ca3af;text-transform:uppercase;letter-spacing:.05em;margin-bottom:.4rem;margin-top:.85rem}
+  input[type=text],select,textarea{width:100%;background:#1f2937;border:1px solid #374151;border-radius:.5rem;color:#e5e7eb;padding:.6rem .85rem;font-family:'Courier New',monospace;font-size:.875rem;outline:none;transition:border .2s}
+  input:focus,select:focus,textarea:focus{border-color:#6366f1}
+  select{cursor:pointer}
+  .generate-btn{background:#6366f1;color:#fff;border:none;padding:.75rem 1.75rem;border-radius:.5rem;font-weight:600;cursor:pointer;font-size:.9rem;transition:background .2s;margin-top:1rem}
+  .generate-btn:hover{background:#4f46e5}
+  .output-code{background:#0d1117;border:1px solid #6366f1;border-radius:.5rem;padding:1.25rem;font-family:'Courier New',monospace;font-size:.82rem;color:#a78bfa;margin-top:1rem;position:relative;word-break:break-all;white-space:pre-wrap}
+  .use-cases{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1rem;margin-top:1rem}
+  .use-case{background:#0d1117;border:1px solid #1f2937;border-radius:.5rem;padding:1rem}
+  .use-case-icon{font-size:1.5rem;margin-bottom:.5rem}
+  .use-case h4{font-size:.875rem;font-weight:600;color:#fff;margin-bottom:.25rem}
+  .use-case p{font-size:.8rem;color:#6b7280;line-height:1.5}
+  footer{border-top:1px solid #1f2937;padding:2rem;text-align:center;color:#4b5563;font-size:.85rem}
+  footer a{color:#6366f1;text-decoration:none}
+  @media(max-width:600px){.options-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<nav>
+  <a class="logo" href="/scriptforge-io/"><Script<span>Forge</span></a>
+  <div>
+    <a href="/scriptforge-io/">Home</a>
+    <a href="/scriptforge-app/" class="nav-cta">Launch IDE →</a>
+  </div>
+</nav>
+
+<div class="hero">
+  <h1>Embed ScriptForge</h1>
+  <p>Add a live, runnable code editor to your blog, documentation, or tutorial — in one line of HTML.</p>
+</div>
+
+<div class="container">
+
+  <div class="card">
+    <h2>Quickstart — copy and paste</h2>
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-content">
+        <h3>Add one line of HTML to your page</h3>
+        <p>Paste this iframe anywhere on your site — blog post, docs, tutorial, course. It works instantly, no API key needed.</p>
+        <pre><code id="quickCode">&lt;iframe
+  src="https://drghostpurp.github.io/scriptforge-app/"
+  width="100%"
+  height="500"
+  style="border:1px solid #1f2937;border-radius:8px"
+  title="ScriptForge IDE"
+&gt;&lt;/iframe&gt;</code><button class="copy-btn" onclick="copyCode('quickCode', this)">copy</button></pre>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-content">
+        <h3>That's it</h3>
+        <p>Your readers get a fully working Python + JavaScript IDE, right inside your page. They can run code, modify it, and see results — no account, no install.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Live Preview</h2>
+    <div class="preview-wrapper">
+      <div class="preview-bar">
+        <div class="dot" style="background:#f87171"></div>
+        <div class="dot" style="background:#fbbf24"></div>
+        <div class="dot" style="background:#34d399"></div>
+        <span>ScriptForge embedded in your page</span>
+      </div>
+      <iframe src="https://drghostpurp.github.io/scriptforge-app/" title="ScriptForge IDE Preview"></iframe>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Embed Generator</h2>
+    <p style="font-size:.875rem;color:#9ca3af;margin-bottom:1rem">Customize your embed and get the exact code.</p>
+
+    <label>Language / Mode</label>
+    <select id="langSelect">
+      <option value="">Default (user chooses)</option>
+      <option value="python">Python</option>
+      <option value="javascript">JavaScript</option>
+      <option value="html">HTML Preview</option>
+    </select>
+
+    <label>Height</label>
+    <select id="heightSelect">
+      <option value="400">Compact (400px)</option>
+      <option value="500" selected>Standard (500px)</option>
+      <option value="600">Tall (600px)</option>
+      <option value="800">Full (800px)</option>
+    </select>
+
+    <label>Border Style</label>
+    <select id="borderSelect">
+      <option value="1px solid #1f2937;border-radius:8px">Dark border (default)</option>
+      <option value="1px solid #e5e7eb;border-radius:8px">Light border</option>
+      <option value="none;border-radius:0">No border</option>
+    </select>
+
+    <button class="generate-btn" onclick="generateEmbed()">Generate Embed Code</button>
+    <div id="generatedCode" class="output-code" style="display:none"></div>
+  </div>
+
+  <div class="card">
+    <h2>Use Cases</h2>
+    <div class="use-cases">
+      <div class="use-case">
+        <div class="use-case-icon">📝</div>
+        <h4>Blog Posts & Tutorials</h4>
+        <p>Let readers run the code examples in your tutorial without leaving the page.</p>
+      </div>
+      <div class="use-case">
+        <div class="use-case-icon">📚</div>
+        <h4>Documentation</h4>
+        <p>Embed interactive examples in your docs so developers can experiment live.</p>
+      </div>
+      <div class="use-case">
+        <div class="use-case-icon">🎓</div>
+        <h4>Online Courses</h4>
+        <p>Give students a real coding environment inside your course platform. No setup required.</p>
+      </div>
+      <div class="use-case">
+        <div class="use-case-icon">🔬</div>
+        <h4>Code Challenges</h4>
+        <p>Embed runnable challenges in your platform. Students submit solutions right in the page.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Why embed ScriptForge?</h2>
+    <div style="display:flex;flex-direction:column;gap:.75rem;margin-top:.5rem">
+      <div style="display:flex;gap:.75rem;align-items:flex-start">
+        <span style="color:#10b981;font-weight:700;flex-shrink:0">✓</span>
+        <div><strong style="color:#fff">Zero cost.</strong> <span style="color:#9ca3af;font-size:.9rem">Completely free to embed — no API key, no account, no quota.</span></div>
+      </div>
+      <div style="display:flex;gap:.75rem;align-items:flex-start">
+        <span style="color:#10b981;font-weight:700;flex-shrink:0">✓</span>
+        <div><strong style="color:#fff">Real Python + JavaScript.</strong> <span style="color:#9ca3af;font-size:.9rem">Pyodide WASM gives your readers actual CPython. Not a toy.</span></div>
+      </div>
+      <div style="display:flex;gap:.75rem;align-items:flex-start">
+        <span style="color:#10b981;font-weight:700;flex-shrink:0">✓</span>
+        <div><strong style="color:#fff">Privacy-first.</strong> <span style="color:#9ca3af;font-size:.9rem">Code runs in the user's browser. Nothing sent to any server.</span></div>
+      </div>
+      <div style="display:flex;gap:.75rem;align-items:flex-start">
+        <span style="color:#10b981;font-weight:700;flex-shrink:0">✓</span>
+        <div><strong style="color:#fff">Always up-to-date.</strong> <span style="color:#9ca3af;font-size:.9rem">Embed once. New features automatically available — no code changes.</span></div>
+      </div>
+      <div style="display:flex;gap:.75rem;align-items:flex-start">
+        <span style="color:#10b981;font-weight:700;flex-shrink:0">✓</span>
+        <div><strong style="color:#fff">No CORS issues.</strong> <span style="color:#9ca3af;font-size:.9rem">Standard iframe embed works on any site, any framework.</span></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <p>© 2026 ScriptForge · <a href="/scriptforge-io/">Home</a> · <a href="/scriptforge-app/">Launch IDE</a> · <a href="/scriptforge-io/tools/">Tools</a></p>
+</footer>
+
+<script>
+function copyCode(id, btn) {
+  const text = document.getElementById(id).textContent;
+  navigator.clipboard.writeText(text).catch(()=>{});
+  btn.textContent = 'copied!';
+  btn.classList.add('copied');
+  setTimeout(() => { btn.textContent = 'copy'; btn.classList.remove('copied'); }, 2000);
+}
+
+function generateEmbed() {
+  const lang = document.getElementById('langSelect').value;
+  const height = document.getElementById('heightSelect').value;
+  const border = document.getElementById('borderSelect').value;
+  const [borderStyle, borderRadius] = border.split(';');
+
+  let src = 'https://drghostpurp.github.io/scriptforge-app/';
+
+  const code = `<iframe
+  src="${src}"
+  width="100%"
+  height="${height}"
+  style="border:${borderStyle};${borderRadius ? borderRadius : ''}"
+  title="ScriptForge IDE"
+  allow="cross-origin-isolated"
+></iframe>`;
+
+  const el = document.getElementById('generatedCode');
+  el.textContent = code;
+  el.style.display = 'block';
+
+  // Add copy button
+  el.onclick = () => {
+    navigator.clipboard.writeText(code).catch(()=>{});
+    el.style.borderColor = '#10b981';
+    el.style.color = '#10b981';
+    setTimeout(() => { el.style.borderColor = '#6366f1'; el.style.color = '#a78bfa'; }, 1200);
+  };
+  el.title = 'Click to copy';
+  el.style.cursor = 'pointer';
+}
+</script>
+</body>
+</html>
