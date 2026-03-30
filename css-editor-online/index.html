@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CSS Editor Online – Live Preview Free | ScriptForge</title>
+<meta name="description" content="Free online CSS editor with live HTML preview. Edit CSS, Flexbox, Grid, animations and see results instantly. No signup required. Works in any browser.">
+<meta name="keywords" content="css editor online, online css editor, css live editor, css playground online, css3 editor, live css preview, css tester online">
+<meta property="og:title" content="CSS Editor Online – Live Preview | ScriptForge">
+<meta property="og:description" content="Edit CSS with live HTML preview. Flexbox, Grid, animations — see changes instantly. Free, no signup.">
+<meta property="og:url" content="https://drghostpurp.github.io/scriptforge-io/css-editor-online/">
+<link rel="canonical" href="https://drghostpurp.github.io/scriptforge-io/css-editor-online/">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "ScriptForge CSS Editor Online",
+  "url": "https://drghostpurp.github.io/scriptforge-app/",
+  "description": "Free online CSS editor with live HTML preview. Edit CSS3, Flexbox, Grid and see live results.",
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is an online CSS editor?",
+      "acceptedAnswer": { "@type": "Answer", "text": "An online CSS editor lets you write CSS stylesheets and see the results applied to HTML instantly in your browser. ScriptForge offers a free CSS editor with live preview where changes appear as you type." }
+    },
+    {
+      "@type": "Question",
+      "name": "Does ScriptForge CSS editor support CSS3?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes. ScriptForge fully supports CSS3 including Flexbox, Grid, animations, transitions, CSS variables, media queries, and all modern CSS features." }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I test CSS with my own HTML in ScriptForge?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes. ScriptForge lets you write both HTML and CSS together in the same editor. You can add your own HTML markup and style it with custom CSS, then see the live result in the preview panel." }
+    }
+  ]
+}
+</script>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #0a0a0f; color: #e2e8f0; line-height: 1.6; }
+  a { color: #0ea5e9; text-decoration: none; }
+  a:hover { color: #38bdf8; }
+  .nav { background: rgba(10,10,15,0.95); border-bottom: 1px solid #082f49; padding: 1rem 2rem; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; }
+  .nav-brand { font-size: 1.3rem; font-weight: 700; color: #7c3aed; }
+  .nav-links a { margin-left: 1.5rem; color: #94a3b8; font-size: 0.9rem; }
+  .hero { max-width: 860px; margin: 0 auto; padding: 4rem 2rem 2rem; text-align: center; }
+  .badge { display: inline-block; background: rgba(14,165,233,0.15); border: 1px solid rgba(14,165,233,0.4); color: #38bdf8; padding: 0.3rem 0.9rem; border-radius: 20px; font-size: 0.8rem; margin-bottom: 1.5rem; }
+  h1 { font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 800; line-height: 1.2; margin-bottom: 1.2rem; }
+  h1 span { color: #0ea5e9; }
+  .subtitle { font-size: 1.2rem; color: #94a3b8; max-width: 600px; margin: 0 auto 2rem; }
+  .cta-group { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-bottom: 1rem; }
+  .btn-primary { background: #0284c7; color: white; padding: 0.85rem 2rem; border-radius: 8px; font-weight: 600; font-size: 1rem; }
+  .btn-primary:hover { background: #0369a1; color: white; }
+  .btn-secondary { border: 1px solid #334155; color: #94a3b8; padding: 0.85rem 2rem; border-radius: 8px; font-weight: 600; font-size: 1rem; }
+  .ide-frame { max-width: 1000px; margin: 2rem auto; border-radius: 12px; overflow: hidden; border: 1px solid #082f49; box-shadow: 0 20px 60px rgba(0,0,0,0.5); }
+  .ide-frame iframe { width: 100%; height: 520px; display: block; border: none; }
+  .features { max-width: 1000px; margin: 4rem auto; padding: 0 2rem; }
+  .features h2 { font-size: 1.8rem; font-weight: 700; text-align: center; margin-bottom: 2.5rem; }
+  .feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; }
+  .feature-card { background: #0f0f1a; border: 1px solid #1e1b4b; border-radius: 10px; padding: 1.5rem; }
+  .feature-icon { font-size: 1.8rem; margin-bottom: 0.8rem; }
+  .feature-card h3 { font-size: 1rem; font-weight: 600; margin-bottom: 0.5rem; }
+  .feature-card p { font-size: 0.88rem; color: #94a3b8; }
+  .css-topics { max-width: 900px; margin: 4rem auto; padding: 0 2rem; }
+  .css-topics h2 { font-size: 1.8rem; font-weight: 700; text-align: center; margin-bottom: 2rem; }
+  .topics-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 1rem; }
+  .topic-card { background: #0f0f1a; border: 1px solid #082f49; border-radius: 8px; padding: 1.2rem; text-align: center; }
+  .topic-card .icon { font-size: 1.5rem; margin-bottom: 0.5rem; }
+  .topic-card h3 { font-size: 0.9rem; font-weight: 600; color: #38bdf8; }
+  .faq { max-width: 800px; margin: 4rem auto; padding: 0 2rem; }
+  .faq h2 { font-size: 1.8rem; font-weight: 700; text-align: center; margin-bottom: 2rem; }
+  .faq-item { border-bottom: 1px solid #1e1b4b; padding: 1.2rem 0; }
+  .faq-item h3 { font-size: 1rem; font-weight: 600; margin-bottom: 0.6rem; }
+  .faq-item p { font-size: 0.9rem; color: #94a3b8; }
+  .related { max-width: 1000px; margin: 4rem auto; padding: 0 2rem; }
+  .related h2 { font-size: 1.4rem; font-weight: 700; margin-bottom: 1.5rem; }
+  .related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; }
+  .related-card { background: #0f0f1a; border: 1px solid #1e1b4b; border-radius: 8px; padding: 1.2rem; }
+  .related-card:hover { border-color: #0ea5e9; }
+  .related-card h3 { font-size: 0.9rem; font-weight: 600; margin-bottom: 0.4rem; }
+  .related-card p { font-size: 0.8rem; color: #94a3b8; }
+  .cta-banner { background: linear-gradient(135deg, #082f49 0%, #0f0f1a 100%); border: 1px solid #0369a1; border-radius: 12px; max-width: 700px; margin: 4rem auto; padding: 3rem 2rem; text-align: center; }
+  .cta-banner h2 { font-size: 1.8rem; font-weight: 700; margin-bottom: 1rem; }
+  .cta-banner p { color: #94a3b8; margin-bottom: 2rem; }
+  footer { border-top: 1px solid #1e1b4b; padding: 2rem; text-align: center; color: #475569; font-size: 0.85rem; }
+  footer a { color: #94a3b8; margin: 0 0.5rem; }
+</style>
+</head>
+<body>
+<nav class="nav">
+  <a href="https://drghostpurp.github.io/scriptforge-io/" class="nav-brand">⚡ ScriptForge</a>
+  <div class="nav-links">
+    <a href="https://drghostpurp.github.io/scriptforge-io/tools/">Tools</a>
+    <a href="https://drghostpurp.github.io/scriptforge-io/pricing/">Pricing</a>
+    <a href="https://drghostpurp.github.io/scriptforge-app/">Open IDE</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="badge">🎨 Free CSS Playground</div>
+  <h1>CSS Editor Online<br><span>Live Preview</span></h1>
+  <p class="subtitle">Write CSS and see instant live preview. Flexbox, Grid, animations, CSS variables, media queries — all supported. No signup needed.</p>
+  <div class="cta-group">
+    <a href="https://drghostpurp.github.io/scriptforge-app/?lang=html" class="btn-primary">Open CSS Editor Free →</a>
+    <a href="#css-topics" class="btn-secondary">What you can build</a>
+  </div>
+</section>
+
+<div class="ide-frame">
+  <iframe src="https://drghostpurp.github.io/scriptforge-app/?lang=html" title="ScriptForge Online CSS Editor" loading="lazy"></iframe>
+</div>
+
+<section class="features">
+  <h2>Everything in one online CSS editor</h2>
+  <div class="feature-grid">
+    <div class="feature-card">
+      <div class="feature-icon">⚡</div>
+      <h3>Instant Live Preview</h3>
+      <p>Every CSS change reflects instantly in the preview panel. No need to refresh.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">📐</div>
+      <h3>Flexbox & Grid</h3>
+      <p>Experiment with CSS Flexbox and Grid layouts interactively. See how properties change the layout in real time.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🎬</div>
+      <h3>Animations & Transitions</h3>
+      <p>Build and preview CSS keyframe animations and transitions without a local dev environment.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🎨</div>
+      <h3>CSS Variables</h3>
+      <p>Use custom properties (CSS variables) in your styles. Great for building design systems and theme-switching.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">📱</div>
+      <h3>Responsive Testing</h3>
+      <p>Write media queries and test responsive breakpoints with real-time preview at different viewport sizes.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🔗</div>
+      <h3>Share Your Work</h3>
+      <p>Generate a shareable link for your CSS snippet. Perfect for asking for code review or sharing solutions.</p>
+    </div>
+  </div>
+</section>
+
+<section class="css-topics" id="css-topics">
+  <h2>What you can build with the CSS editor</h2>
+  <div class="topics-grid">
+    <div class="topic-card"><div class="icon">📦</div><h3>Flexbox Layouts</h3></div>
+    <div class="topic-card"><div class="icon">🔲</div><h3>CSS Grid</h3></div>
+    <div class="topic-card"><div class="icon">🎬</div><h3>Animations</h3></div>
+    <div class="topic-card"><div class="icon">🌈</div><h3>Gradients</h3></div>
+    <div class="topic-card"><div class="icon">🃏</div><h3>Card Components</h3></div>
+    <div class="topic-card"><div class="icon">🍔</div><h3>Nav & Menus</h3></div>
+    <div class="topic-card"><div class="icon">📝</div><h3>Form Styling</h3></div>
+    <div class="topic-card"><div class="icon">📱</div><h3>Responsive Design</h3></div>
+    <div class="topic-card"><div class="icon">🎨</div><h3>Themes & Dark Mode</h3></div>
+    <div class="topic-card"><div class="icon">⬆️</div><h3>Hover Effects</h3></div>
+    <div class="topic-card"><div class="icon">🔤</div><h3>Typography</h3></div>
+    <div class="topic-card"><div class="icon">📏</div><h3>Custom Scrollbars</h3></div>
+  </div>
+</section>
+
+<section class="faq">
+  <h2>Frequently asked questions</h2>
+  <div class="faq-item">
+    <h3>What is an online CSS editor?</h3>
+    <p>An online CSS editor lets you write CSS stylesheets and see the results applied to HTML instantly in your browser. ScriptForge offers a free CSS editor with live preview where changes appear as you type.</p>
+  </div>
+  <div class="faq-item">
+    <h3>Does ScriptForge CSS editor support CSS3?</h3>
+    <p>Yes. ScriptForge fully supports CSS3 including Flexbox, Grid, animations, transitions, CSS variables, media queries, and all modern CSS features.</p>
+  </div>
+  <div class="faq-item">
+    <h3>Can I test CSS with my own HTML in ScriptForge?</h3>
+    <p>Yes. ScriptForge lets you write both HTML and CSS together in the same editor. You can add your own HTML markup and style it with custom CSS, then see the live result in the preview panel.</p>
+  </div>
+  <div class="faq-item">
+    <h3>Is the CSS editor free?</h3>
+    <p>Yes, completely free. No account, no subscription, no limits. Open ScriptForge and start editing CSS immediately.</p>
+  </div>
+  <div class="faq-item">
+    <h3>Can I use external fonts in the CSS editor?</h3>
+    <p>Yes. Since ScriptForge runs in a real browser environment, you can use @import to load Google Fonts or any other web font service in your HTML/CSS code.</p>
+  </div>
+</section>
+
+<section class="related">
+  <h2>More free developer tools</h2>
+  <div class="related-grid">
+    <a href="https://drghostpurp.github.io/scriptforge-io/html-editor-online/" class="related-card">
+      <h3>HTML Editor Online</h3>
+      <p>Full HTML editor with live preview and JavaScript.</p>
+    </a>
+    <a href="https://drghostpurp.github.io/scriptforge-io/javascript-online-compiler/" class="related-card">
+      <h3>JavaScript Compiler</h3>
+      <p>Run JS with npm packages and modern ES2024 syntax.</p>
+    </a>
+    <a href="https://drghostpurp.github.io/scriptforge-io/python-online-compiler/" class="related-card">
+      <h3>Python Compiler</h3>
+      <p>Run Python 3 in browser with numpy, pandas, and more.</p>
+    </a>
+    <a href="https://drghostpurp.github.io/scriptforge-io/tools/color/" class="related-card">
+      <h3>Color Picker</h3>
+      <p>Convert between HEX, RGB, and HSL color formats.</p>
+    </a>
+    <a href="https://drghostpurp.github.io/scriptforge-io/tools/diff/" class="related-card">
+      <h3>Code Diff Checker</h3>
+      <p>Compare two blocks of CSS or code side by side.</p>
+    </a>
+    <a href="https://drghostpurp.github.io/scriptforge-io/tools/regex-tester/" class="related-card">
+      <h3>Regex Tester</h3>
+      <p>Test and debug regular expressions with live matching.</p>
+    </a>
+  </div>
+</section>
+
+<div class="cta-banner">
+  <h2>Start editing CSS instantly</h2>
+  <p>Free, live preview, no signup. The cleanest online CSS editor available.</p>
+  <a href="https://drghostpurp.github.io/scriptforge-app/?lang=html" class="btn-primary">Open CSS Editor →</a>
+</div>
+
+<footer>
+  <p>© 2025 ScriptForge · <a href="https://drghostpurp.github.io/scriptforge-io/">Home</a> <a href="https://drghostpurp.github.io/scriptforge-io/tools/">Tools</a> <a href="https://drghostpurp.github.io/scriptforge-io/blog/">Blog</a> <a href="https://drghostpurp.github.io/scriptforge-io/pricing/">Pricing</a></p>
+</footer>
+</body>
+</html>
