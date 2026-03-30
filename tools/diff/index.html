@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Diff Checker Online – Compare Two Text Files | ScriptForge</title>
+<meta name="description" content="Free online diff checker. Compare two text blocks side-by-side and see differences highlighted line by line. No signup, works offline, nothing sent to a server.">
+<link rel="canonical" href="https://drghostpurp.github.io/scriptforge-io/tools/diff/">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#0d0d0d;color:#e5e7eb;line-height:1.6}
+  nav{display:flex;justify-content:space-between;align-items:center;padding:1rem 2rem;border-bottom:1px solid #1f2937;position:sticky;top:0;background:#0d0d0d;z-index:100}
+  .logo{font-size:1.25rem;font-weight:700;color:#fff;text-decoration:none}
+  .logo span{color:#6366f1}
+  nav a{color:#9ca3af;text-decoration:none;font-size:.9rem;margin-left:1.5rem}
+  nav a:hover{color:#fff}
+  .hero{text-align:center;padding:2.5rem 2rem 1.5rem}
+  .hero h1{font-size:2rem;font-weight:800;color:#fff;margin-bottom:.5rem}
+  .hero p{color:#9ca3af}
+  .container{max-width:1200px;margin:0 auto;padding:1.25rem 2rem}
+  .tools-nav{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1.5rem}
+  .tools-nav a{background:#1f2937;color:#9ca3af;padding:.35rem .75rem;border-radius:.5rem;text-decoration:none;font-size:.8rem;transition:all .2s}
+  .tools-nav a:hover,.tools-nav a.active{background:#6366f1;color:#fff}
+  .controls{display:flex;gap:.75rem;align-items:center;margin-bottom:1rem;flex-wrap:wrap}
+  .btn{background:#6366f1;color:#fff;border:none;padding:.5rem 1.25rem;border-radius:.5rem;cursor:pointer;font-size:.875rem;font-weight:600;transition:background .2s}
+  .btn:hover{background:#4f46e5}
+  .btn-ghost{background:transparent;border:1px solid #374151;color:#9ca3af;padding:.5rem 1rem;border-radius:.5rem;cursor:pointer;font-size:.875rem;transition:all .2s}
+  .btn-ghost:hover{border-color:#6366f1;color:#fff}
+  .btn-ghost.active{border-color:#6366f1;color:#6366f1;background:#6366f110}
+  .stats{font-size:.8rem;color:#6b7280;margin-left:auto}
+  .stat-add{color:#10b981;font-weight:600}
+  .stat-del{color:#f87171;font-weight:600}
+  .editor-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem}
+  .editor-panel{display:flex;flex-direction:column}
+  .editor-label{font-size:.75rem;font-weight:700;color:#6b7280;text-transform:uppercase;letter-spacing:.05em;padding:.5rem 1rem;background:#111827;border:1px solid #1f2937;border-bottom:none;border-radius:.5rem .5rem 0 0;display:flex;justify-content:space-between;align-items:center}
+  .editor-label span{color:#9ca3af;font-weight:400;text-transform:none;letter-spacing:0}
+  textarea{width:100%;background:#111827;border:1px solid #1f2937;border-top:none;color:#e5e7eb;padding:1rem;font-family:'Courier New',monospace;font-size:.85rem;resize:vertical;outline:none;min-height:220px;line-height:1.6;border-radius:0 0 .5rem .5rem}
+  textarea:focus{border-color:#6366f1}
+  .diff-out{background:#111827;border:1px solid #1f2937;border-radius:.75rem;overflow:hidden;margin-bottom:1rem}
+  .diff-header{padding:.75rem 1.25rem;background:#0d1117;border-bottom:1px solid #1f2937;font-size:.8rem;font-weight:600;color:#6b7280;display:flex;gap:1.5rem}
+  .diff-header .h-add{color:#10b981} .diff-header .h-del{color:#f87171} .diff-header .h-eq{color:#6b7280}
+  .diff-body{font-family:'Courier New',monospace;font-size:.82rem;line-height:1.7;overflow-x:auto}
+  .diff-line{display:flex;min-width:100%}
+  .diff-line.added{background:#0d2818}
+  .diff-line.removed{background:#2d1219}
+  .diff-line.equal{background:transparent}
+  .diff-line:hover{filter:brightness(1.2)}
+  .line-num{min-width:44px;text-align:right;padding:0 .75rem;color:#374151;user-select:none;border-right:1px solid #1f2937;flex-shrink:0;font-size:.75rem;line-height:1.7}
+  .line-sym{min-width:24px;text-align:center;padding:0 .25rem;flex-shrink:0;font-weight:700}
+  .diff-line.added .line-sym{color:#10b981}
+  .diff-line.removed .line-sym{color:#f87171}
+  .diff-line.equal .line-sym{color:#374151}
+  .line-content{padding:0 .75rem;flex:1;white-space:pre;word-break:break-all}
+  .diff-line.added .line-content{color:#6ee7b7}
+  .diff-line.removed .line-content{color:#fca5a5}
+  .diff-line.equal .line-content{color:#6b7280}
+  .inline-add{background:#0d3d1c;color:#6ee7b7;border-radius:2px}
+  .inline-del{background:#5c1c2a;color:#fca5a5;border-radius:2px;text-decoration:line-through}
+  .empty-state{text-align:center;padding:3rem;color:#4b5563}
+  .view-tabs{display:flex;gap:.5rem;margin-bottom:0}
+  .mode-badge{background:#1f2937;border:1px solid #374151;color:#9ca3af;padding:.3rem .7rem;border-radius:.4rem;cursor:pointer;font-size:.8rem;transition:all .2s}
+  .mode-badge.active{background:#6366f1;border-color:#6366f1;color:#fff}
+  @media(max-width:700px){.editor-grid{grid-template-columns:1fr}}
+  footer{border-top:1px solid #1f2937;padding:2rem;text-align:center;color:#4b5563;font-size:.85rem}
+  footer a{color:#6366f1;text-decoration:none}
+</style>
+</head>
+<body>
+<nav>
+  <a class="logo" href="/scriptforge-io/"><Script<span>Forge</span></a>
+  <div>
+    <a href="/scriptforge-io/">Home</a>
+    <a href="/scriptforge-app/">Launch IDE</a>
+    <a href="/scriptforge-io/tools/">Tools</a>
+  </div>
+</nav>
+
+<div class="hero">
+  <h1>Diff Checker</h1>
+  <p>Compare two text blocks and see differences highlighted line by line</p>
+</div>
+
+<div class="container">
+  <div class="tools-nav">
+    <a href="/scriptforge-io/tools/">All Tools</a>
+    <a href="/scriptforge-io/tools/json-formatter/">JSON</a>
+    <a href="/scriptforge-io/tools/base64/">Base64</a>
+    <a href="/scriptforge-io/tools/regex-tester/">Regex</a>
+    <a href="/scriptforge-io/tools/hash/">Hash</a>
+    <a href="/scriptforge-io/tools/url-encode/">URL</a>
+    <a href="/scriptforge-io/tools/color/">Color</a>
+    <a href="/scriptforge-io/tools/diff/" class="active">Diff</a>
+  </div>
+
+  <div class="editor-grid">
+    <div class="editor-panel">
+      <div class="editor-label">Original (A) <span id="lineCountA">0 lines</span></div>
+      <textarea id="textA" oninput="updateCounts();autoDiff()" placeholder="Paste original text here...">The quick brown fox jumps over the lazy dog.
+Hello, World!
+This line is the same.
+This line will be changed.
+Only in original.</textarea>
+    </div>
+    <div class="editor-panel">
+      <div class="editor-label">Modified (B) <span id="lineCountB">0 lines</span></div>
+      <textarea id="textB" oninput="updateCounts();autoDiff()" placeholder="Paste modified text here...">The quick brown fox jumps over the lazy dog.
+Hello, ScriptForge!
+This line is the same.
+This line has been modified.
+Only in modified.</textarea>
+    </div>
+  </div>
+
+  <div class="controls">
+    <button class="btn" onclick="runDiff()">Compare</button>
+    <button class="btn-ghost" onclick="swapTexts()">⇅ Swap A↔B</button>
+    <button class="btn-ghost" onclick="clearAll()">Clear</button>
+    <span class="mode-badge active" id="modeUnified" onclick="setView('unified')">Unified</span>
+    <span class="mode-badge" id="modeSplit" onclick="setView('split')">Side-by-side</span>
+    <div class="stats" id="statsBar"></div>
+  </div>
+
+  <div class="diff-out" id="diffOut">
+    <div class="empty-state">Click <strong style="color:#fff">Compare</strong> or start typing to see the diff</div>
+  </div>
+</div>
+
+<footer>
+  <p>© 2026 ScriptForge · <a href="/scriptforge-io/">Home</a> · <a href="/scriptforge-io/tools/">Tools</a> · <a href="/scriptforge-app/">Launch IDE</a></p>
+</footer>
+
+<script>
+let viewMode = 'unified';
+let autoTimer = null;
+
+function updateCounts() {
+  const a = document.getElementById('textA').value;
+  const b = document.getElementById('textB').value;
+  document.getElementById('lineCountA').textContent = a.split('\n').length + ' lines';
+  document.getElementById('lineCountB').textContent = b.split('\n').length + ' lines';
+}
+
+function setView(mode) {
+  viewMode = mode;
+  document.getElementById('modeUnified').classList.toggle('active', mode==='unified');
+  document.getElementById('modeSplit').classList.toggle('active', mode==='split');
+  runDiff();
+}
+
+function swapTexts() {
+  const a = document.getElementById('textA').value;
+  const b = document.getElementById('textB').value;
+  document.getElementById('textA').value = b;
+  document.getElementById('textB').value = a;
+  runDiff();
+}
+
+function clearAll() {
+  document.getElementById('textA').value = '';
+  document.getElementById('textB').value = '';
+  document.getElementById('diffOut').innerHTML = '<div class="empty-state">Paste text in both panels and click Compare</div>';
+  document.getElementById('statsBar').textContent = '';
+  updateCounts();
+}
+
+function autoDiff() {
+  clearTimeout(autoTimer);
+  autoTimer = setTimeout(runDiff, 400);
+}
+
+// LCS-based diff algorithm
+function lcs(a, b) {
+  const m = a.length, n = b.length;
+  const dp = Array.from({length: m+1}, () => new Array(n+1).fill(0));
+  for (let i=1;i<=m;i++) for (let j=1;j<=n;j++) {
+    if (a[i-1]===b[j-1]) dp[i][j]=dp[i-1][j-1]+1;
+    else dp[i][j]=Math.max(dp[i-1][j],dp[i][j-1]);
+  }
+  const result=[];
+  let i=m,j=n;
+  while(i>0||j>0){
+    if(i>0&&j>0&&a[i-1]===b[j-1]){result.unshift({type:'equal',val:a[i-1]});i--;j--;}
+    else if(j>0&&(i===0||dp[i][j-1]>=dp[i-1][j])){result.unshift({type:'added',val:b[j-1]});j--;}
+    else{result.unshift({type:'removed',val:a[i-1]});i--;}
+  }
+  return result;
+}
+
+function escHtml(s) {
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+
+function runDiff() {
+  const a = document.getElementById('textA').value;
+  const b = document.getElementById('textB').value;
+  if (!a && !b) { document.getElementById('diffOut').innerHTML = '<div class="empty-state">Paste text in both panels and click Compare</div>'; return; }
+
+  const aLines = a.split('\n');
+  const bLines = b.split('\n');
+  const diff = lcs(aLines, bLines);
+
+  let added=0, removed=0, equal=0;
+  diff.forEach(d=>{ if(d.type==='added')added++; else if(d.type==='removed')removed++; else equal++; });
+
+  document.getElementById('statsBar').innerHTML =
+    `<span class="stat-add">+${added} added</span> &nbsp; <span class="stat-del">-${removed} removed</span> &nbsp; <span>${equal} unchanged</span>`;
+
+  if (viewMode === 'unified') renderUnified(diff);
+  else renderSplit(aLines, bLines, diff);
+}
+
+function renderUnified(diff) {
+  let aNum=0, bNum=0;
+  const lines = diff.map(d => {
+    if (d.type==='equal') { aNum++; bNum++; return `<div class="diff-line equal"><span class="line-num">${aNum}</span><span class="line-sym"> </span><span class="line-content">${escHtml(d.val)||'&nbsp;'}</span></div>`; }
+    if (d.type==='removed') { aNum++; return `<div class="diff-line removed"><span class="line-num">${aNum}</span><span class="line-sym">-</span><span class="line-content">${escHtml(d.val)||'&nbsp;'}</span></div>`; }
+    if (d.type==='added') { bNum++; return `<div class="diff-line added"><span class="line-num">${bNum}</span><span class="line-sym">+</span><span class="line-content">${escHtml(d.val)||'&nbsp;'}</span></div>`; }
+  }).join('');
+
+  document.getElementById('diffOut').innerHTML = `
+    <div class="diff-header">
+      <span class="h-del">— Original (A)</span>
+      <span class="h-add">+ Modified (B)</span>
+      <span class="h-eq">· Unchanged</span>
+    </div>
+    <div class="diff-body">${lines || '<div class="empty-state">No differences found — texts are identical!</div>'}</div>`;
+}
+
+function renderSplit(aLines, bLines, diff) {
+  // Build paired lines for split view
+  const aOut=[], bOut=[];
+  diff.forEach(d=>{
+    if(d.type==='equal'){aOut.push({type:'equal',val:d.val});bOut.push({type:'equal',val:d.val});}
+    else if(d.type==='removed'){aOut.push({type:'removed',val:d.val});bOut.push({type:'empty',val:''});}
+    else if(d.type==='added'){aOut.push({type:'empty',val:''});bOut.push({type:'added',val:d.val});}
+  });
+
+  const makeLines = (lines, startNum) => {
+    let n=0;
+    return lines.map(l=>{
+      if(l.type!=='empty')n++;
+      const cls = l.type==='added'?'added':l.type==='removed'?'removed':'equal';
+      const sym = l.type==='added'?'+':l.type==='removed'?'-':' ';
+      const num = l.type==='empty'?'':n;
+      return `<div class="diff-line ${cls}" style="min-height:1.7em"><span class="line-num">${num}</span><span class="line-sym">${l.type==='empty'?'':sym}</span><span class="line-content">${escHtml(l.val)||'&nbsp;'}</span></div>`;
+    }).join('');
+  };
+
+  document.getElementById('diffOut').innerHTML = `
+    <div class="diff-header"><span class="h-del">— Original (A)</span><span style="margin-left:auto" class="h-add">+ Modified (B)</span></div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:0;border-top:1px solid #1f2937">
+      <div class="diff-body" style="border-right:1px solid #1f2937">${makeLines(aOut,1)}</div>
+      <div class="diff-body">${makeLines(bOut,1)}</div>
+    </div>`;
+}
+
+updateCounts();
+runDiff();
+</script>
+</body>
+</html>
