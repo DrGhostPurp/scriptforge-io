@@ -1,1 +1,28 @@
-undefined
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>Base64 Encoder & Decoder — Free | ScriptForge</title><meta name="description" content="Encode or decode Base64 instantly in your browser. Free, private, no server."><meta name="keywords" content="base64 encode, base64 decode, base64 encoder decoder online"><style>*{margin:0;padding:0;box-sizing:border-box}:root{--bg:#0a0a0f;--sf:#13131a;--bd:#1e1e2e;--ac:#7c3aed;--a2:#06b6d4;--tx:#e2e8f0;--mu:#94a3b8;--gn:#10b981;--rd:#ef4444}body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--bg);color:var(--tx);min-height:100vh}nav{background:rgba(10,10,15,.95);border-bottom:1px solid var(--bd);padding:.75rem 5%}.ni{max-width:900px;margin:0 auto;display:flex;align-items:center;justify-content:space-between}.logo{font-size:1.1rem;font-weight:700;background:linear-gradient(135deg,#7c3aed,#06b6d4);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none}.nc{background:var(--ac);color:#fff;padding:.4rem 1rem;border-radius:7px;font-size:.85rem;font-weight:600;text-decoration:none}.hero{text-align:center;padding:2.5rem 5% 1.5rem}.hero h1{font-size:clamp(1.8rem,4vw,2.6rem);font-weight:800;margin-bottom:.75rem}.hero h1 span{background:linear-gradient(135deg,#7c3aed,#06b6d4);-webkit-background-clip:text;-webkit-text-fill-color:transparent}.hero p{color:var(--mu);max-width:550px;margin:0 auto}.tw{max-width:900px;margin:0 auto;padding:1rem 5% 3rem}.mt{display:flex;background:var(--sf);border:1px solid var(--bd);border-radius:8px;overflow:hidden;margin-bottom:1.25rem;width:fit-content}.mb{padding:.5rem 1.5rem;font-size:.9rem;font-weight:600;cursor:pointer;border:none;background:transparent;color:var(--mu);transition:all .2s}.mb.on{background:var(--ac);color:#fff}label{font-size:.8rem;color:var(--mu);display:block;margin-bottom:.4rem;font-weight:600}textarea{width:100%;height:150px;background:var(--sf);border:1px solid var(--bd);color:var(--tx);padding:.75rem;border-radius:8px;font-family:"Fira Code",Consolas,monospace;font-size:.82rem;line-height:1.55;resize:vertical;outline:none;margin-bottom:1rem}textarea:focus{border-color:var(--ac)}.ctrl{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1rem}.btn{padding:.45rem 1rem;border-radius:7px;font-size:.85rem;font-weight:600;cursor:pointer;border:none;transition:all .15s}.bp{background:var(--ac);color:#fff}.bp:hover{filter:brightness(1.1)}.ba{background:var(--a2);color:#fff}.ba:hover{filter:brightness(1.1)}.bg{background:var(--sf);color:var(--mu);border:1px solid var(--bd)}.bg:hover{color:var(--tx)}.st{font-size:.82rem;min-height:1.2rem;margin-bottom:.75rem}.ok{color:var(--gn)}.er{color:var(--rd)}footer{background:var(--sf);border-top:1px solid var(--bd);padding:1.5rem 5%;text-align:center;color:var(--mu);font-size:.85rem;margin-top:3rem}footer a{color:var(--a2);text-decoration:none}</style></head><body>
+<nav><div class="ni"><a href="https://drghostpurp.github.io/scriptforge-io/" class="logo">⚡ ScriptForge</a><a href="https://drghostpurp.github.io/scriptforge-app/" class="nc">Free IDE →</a></div></nav>
+<div class="hero"><h1>Base64 <span>Encoder &amp; Decoder</span></h1><p>Encode text to Base64 or decode Base64 to text. 100% in-browser — nothing sent to any server.</p></div>
+<div class="tw">
+<div class="mt"><button class="mb on" id="me" onclick="setM('e')">Encode →</button><button class="mb" id="md" onclick="setM('d')">← Decode</button></div>
+<label id="il">Text to Encode</label>
+<textarea id="inp" placeholder="Enter text to encode…"></textarea>
+<div class="ctrl">
+<button class="btn bp" id="ab" onclick="proc()">⚡ Encode to Base64</button>
+<button class="btn ba" onclick="cp()">📋 Copy Result</button>
+<button class="btn bg" onclick="cl()">✕ Clear</button>
+<button class="btn bg" onclick="sf()">⇄ Swap &amp; Flip</button>
+</div>
+<div class="st" id="st"></div>
+<label id="ol">Base64 Output</label>
+<textarea id="out" placeholder="Result will appear here…" readonly></textarea>
+</div>
+<footer><p>© 2026 ScriptForge · <a href="https://drghostpurp.github.io/scriptforge-io/">Home</a> · <a href="https://drghostpurp.github.io/scriptforge-io/tools/">Tools</a> · <a href="https://drghostpurp.github.io/scriptforge-app/">IDE</a></p></footer>
+<script>
+let mode="e";
+function gi(id){return document.getElementById(id);}
+function ss(m,t){const el=gi("st");el.textContent=m;el.className="st "+(t||"");}
+function setM(m){mode=m;gi("me").className="mb"+(m==="e"?" on":"");gi("md").className="mb"+(m==="d"?" on":"");gi("il").textContent=m==="e"?"Text to Encode":"Base64 to Decode";gi("ol").textContent=m==="e"?"Base64 Output":"Decoded Text";gi("ab").textContent=m==="e"?"⚡ Encode to Base64":"⚡ Decode from Base64";}
+function proc(){const i=gi("inp").value;if(!i){ss("Enter something first","er");return;}try{const o=mode==="e"?btoa(unescape(encodeURIComponent(i))):decodeURIComponent(escape(atob(i.trim())));gi("out").value=o;ss("✓ "+(mode==="e"?"Encoded":"Decoded"),"ok");}catch(e){ss("✗ "+e.message,"er");}}
+function cp(){const v=gi("out").value;if(!v){ss("Nothing to copy","er");return;}navigator.clipboard.writeText(v).then(()=>ss("✓ Copied","ok"));}
+function cl(){gi("inp").value="";gi("out").value="";ss("");}
+function sf(){const a=gi("inp").value;gi("inp").value=gi("out").value;gi("out").value=a;setM(mode==="e"?"d":"e");}
+</script></body></html>
