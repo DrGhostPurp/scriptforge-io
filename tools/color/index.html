@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Color Converter Online – HEX to RGB, HSL, CSS | ScriptForge</title>
+<meta name="description" content="Free online color converter. Convert between HEX, RGB, HSL, and CSS color formats instantly. Includes color picker, contrast checker, and palette generator.">
+<link rel="canonical" href="https://drghostpurp.github.io/scriptforge-io/tools/color/">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#0d0d0d;color:#e5e7eb;line-height:1.6}
+  nav{display:flex;justify-content:space-between;align-items:center;padding:1rem 2rem;border-bottom:1px solid #1f2937;position:sticky;top:0;background:#0d0d0d;z-index:100}
+  .logo{font-size:1.25rem;font-weight:700;color:#fff;text-decoration:none}
+  .logo span{color:#6366f1}
+  nav a{color:#9ca3af;text-decoration:none;font-size:.9rem;margin-left:1.5rem}
+  nav a:hover{color:#fff}
+  .hero{text-align:center;padding:3rem 2rem 1.5rem}
+  .hero h1{font-size:2rem;font-weight:800;color:#fff;margin-bottom:.5rem}
+  .hero p{color:#9ca3af}
+  .container{max-width:860px;margin:0 auto;padding:1.5rem 2rem}
+  .card{background:#111827;border:1px solid #1f2937;border-radius:.75rem;padding:1.5rem;margin-bottom:1.5rem}
+  label{display:block;font-size:.8rem;font-weight:600;color:#9ca3af;text-transform:uppercase;letter-spacing:.05em;margin-bottom:.5rem}
+  input[type=text]{background:#1f2937;border:1px solid #374151;border-radius:.5rem;color:#e5e7eb;padding:.6rem 1rem;font-family:'Courier New',monospace;font-size:.95rem;outline:none;transition:border .2s;width:100%}
+  input[type=text]:focus{border-color:#6366f1}
+  .color-preview{width:100%;height:120px;border-radius:.5rem;margin-bottom:1.25rem;transition:background .15s;border:1px solid #374151;cursor:pointer;position:relative;display:flex;align-items:center;justify-content:center}
+  .color-preview-text{font-size:.8rem;font-weight:600;opacity:.7}
+  .picker-row{display:flex;gap:1rem;align-items:center;margin-bottom:1.25rem}
+  input[type=color]{width:56px;height:40px;border:1px solid #374151;border-radius:.5rem;background:#1f2937;cursor:pointer;padding:2px}
+  .formats-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:.75rem}
+  .format-box{background:#0d1117;border:1px solid #1f2937;border-radius:.5rem;padding:.85rem 1rem}
+  .format-label{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:#6b7280;margin-bottom:.35rem}
+  .format-val{font-family:'Courier New',monospace;font-size:.9rem;color:#a78bfa;cursor:pointer;transition:color .2s;word-break:break-all}
+  .format-val:hover{color:#818cf8}
+  .copy-hint{font-size:.65rem;color:#374151;margin-top:.2rem}
+  .shades-row{display:flex;gap:.4rem;flex-wrap:wrap;margin-top:.5rem}
+  .shade{width:36px;height:36px;border-radius:.35rem;cursor:pointer;border:2px solid transparent;transition:border .15s;flex-shrink:0}
+  .shade:hover{border-color:#fff}
+  .shade.selected{border-color:#6366f1}
+  .contrast-section{margin-top:1rem}
+  .contrast-pair{display:flex;gap:1rem;align-items:center;margin-bottom:.75rem}
+  .contrast-swatch{width:80px;height:48px;border-radius:.35rem;border:1px solid #374151;display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:700;cursor:pointer}
+  .contrast-val{font-size:1.1rem;font-weight:700}
+  .contrast-badge{font-size:.7rem;padding:.2rem .5rem;border-radius:9999px;font-weight:700}
+  .tools-nav{display:flex;gap:.75rem;flex-wrap:wrap;margin-bottom:1.5rem}
+  .tools-nav a{background:#1f2937;color:#9ca3af;padding:.4rem .9rem;border-radius:.5rem;text-decoration:none;font-size:.85rem;transition:all .2s}
+  .tools-nav a:hover,.tools-nav a.active{background:#6366f1;color:#fff}
+  h2{font-size:1rem;font-weight:700;color:#fff;margin-bottom:1rem}
+  .named-colors{display:flex;gap:.4rem;flex-wrap:wrap;margin-top:.75rem}
+  .named-swatch{width:28px;height:28px;border-radius:.3rem;cursor:pointer;border:1px solid #1f2937;title:''}
+  footer{border-top:1px solid #1f2937;padding:2rem;text-align:center;color:#4b5563;font-size:.85rem}
+  footer a{color:#6366f1;text-decoration:none}
+</style>
+</head>
+<body>
+<nav>
+  <a class="logo" href="/scriptforge-io/"><Script<span>Forge</span></a>
+  <div>
+    <a href="/scriptforge-io/">Home</a>
+    <a href="/scriptforge-app/">Launch IDE</a>
+    <a href="/scriptforge-io/tools/">Tools</a>
+  </div>
+</nav>
+
+<div class="hero">
+  <h1>Color Converter</h1>
+  <p>Convert between HEX, RGB, HSL, and CSS color formats instantly</p>
+</div>
+
+<div class="container">
+  <div class="tools-nav">
+    <a href="/scriptforge-io/tools/">All Tools</a>
+    <a href="/scriptforge-io/tools/json-formatter/">JSON</a>
+    <a href="/scriptforge-io/tools/base64/">Base64</a>
+    <a href="/scriptforge-io/tools/regex-tester/">Regex</a>
+    <a href="/scriptforge-io/tools/hash/">Hash</a>
+    <a href="/scriptforge-io/tools/url-encode/">URL Encode</a>
+    <a href="/scriptforge-io/tools/color/" class="active">Color</a>
+  </div>
+
+  <div class="card">
+    <div class="picker-row">
+      <input type="color" id="colorPicker" value="#6366f1" oninput="fromPicker(this.value)">
+      <div style="flex:1">
+        <label>Enter any color (HEX, RGB, HSL, or CSS name)</label>
+        <input type="text" id="colorInput" value="#6366f1" oninput="fromInput(this.value)" placeholder="#6366f1 or rgb(99,102,241) or hsl(239,84%,67%)">
+      </div>
+    </div>
+    <div id="colorPreview" class="color-preview" style="background:#6366f1">
+      <span class="color-preview-text" id="previewText" style="color:white">#6366F1</span>
+    </div>
+    <div class="formats-grid" id="formatsGrid"></div>
+  </div>
+
+  <div class="card">
+    <h2>Shades &amp; Tints</h2>
+    <div class="shades-row" id="shadesRow"></div>
+  </div>
+
+  <div class="card">
+    <h2>Contrast Checker</h2>
+    <div class="contrast-pair">
+      <div id="contrastSwatch" class="contrast-swatch">Aa</div>
+      <div>
+        <div style="font-size:.8rem;color:#9ca3af;margin-bottom:.25rem">Contrast ratio vs white &amp; black</div>
+        <div style="display:flex;gap:1rem;align-items:center">
+          <div><span style="color:#6b7280;font-size:.8rem">vs White: </span><span class="contrast-val" id="contrastWhite">-</span> <span class="contrast-badge" id="badgeWhite"></span></div>
+          <div><span style="color:#6b7280;font-size:.8rem">vs Black: </span><span class="contrast-val" id="contrastBlack">-</span> <span class="contrast-badge" id="badgeBlack"></span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Popular Colors</h2>
+    <div class="named-colors" id="namedColors"></div>
+  </div>
+</div>
+
+<footer>
+  <p>© 2026 ScriptForge · <a href="/scriptforge-io/">Home</a> · <a href="/scriptforge-io/tools/">Tools</a> · <a href="/scriptforge-app/">Launch IDE</a></p>
+</footer>
+
+<script>
+function hexToRgb(hex) {
+  hex = hex.replace(/^#/,'');
+  if (hex.length===3) hex=hex[0]+hex[0]+hex[1]+hex[1]+hex[2]+hex[2];
+  if (hex.length!==6) return null;
+  const n = parseInt(hex,16);
+  if (isNaN(n)) return null;
+  return { r:(n>>16)&255, g:(n>>8)&255, b:n&255 };
+}
+
+function rgbToHex(r,g,b) {
+  return '#'+[r,g,b].map(v=>v.toString(16).padStart(2,'0')).join('');
+}
+
+function rgbToHsl(r,g,b) {
+  r/=255; g/=255; b/=255;
+  const max=Math.max(r,g,b), min=Math.min(r,g,b);
+  let h,s,l=(max+min)/2;
+  if (max===min) { h=s=0; }
+  else {
+    const d=max-min;
+    s=l>0.5?d/(2-max-min):d/(max+min);
+    switch(max){case r:h=(g-b)/d+(g<b?6:0);break;case g:h=(b-r)/d+2;break;case b:h=(r-g)/d+4;break;}
+    h/=6;
+  }
+  return { h:Math.round(h*360), s:Math.round(s*100), l:Math.round(l*100) };
+}
+
+function hslToRgb(h,s,l) {
+  s/=100; l/=100;
+  const k=n=>(n+h/30)%12;
+  const a=s*Math.min(l,1-l);
+  const f=n=>l-a*Math.max(-1,Math.min(k(n)-3,Math.min(9-k(n),1)));
+  return { r:Math.round(f(0)*255), g:Math.round(f(8)*255), b:Math.round(f(4)*255) };
+}
+
+function relativeLuminance(r,g,b) {
+  const [rs,gs,bs]=[r,g,b].map(v=>{v/=255;return v<=0.03928?v/12.92:Math.pow((v+0.055)/1.055,2.4);});
+  return 0.2126*rs+0.7152*gs+0.0722*bs;
+}
+
+function contrastRatio(l1,l2) {
+  const [lighter,darker]=[Math.max(l1,l2),Math.min(l1,l2)];
+  return ((lighter+0.05)/(darker+0.05)).toFixed(2);
+}
+
+function wcagBadge(ratio) {
+  if (ratio>=7) return ['AAA','#10b981'];
+  if (ratio>=4.5) return ['AA','#6366f1'];
+  if (ratio>=3) return ['AA Large','#f59e0b'];
+  return ['Fail','#f87171'];
+}
+
+let currentRgb = {r:99,g:102,b:241};
+
+function updateAll(r,g,b) {
+  currentRgb = {r,g,b};
+  const hex = rgbToHex(r,g,b);
+  const hsl = rgbToHsl(r,g,b);
+  const lum = relativeLuminance(r,g,b);
+
+  document.getElementById('colorPicker').value = hex;
+  document.getElementById('colorInput').value = hex;
+  document.getElementById('colorPreview').style.background = hex;
+  document.getElementById('previewText').textContent = hex.toUpperCase();
+  document.getElementById('previewText').style.color = lum>0.4?'#000':'#fff';
+
+  const formats = [
+    ['HEX', hex.toUpperCase()],
+    ['RGB', `rgb(${r}, ${g}, ${b})`],
+    ['RGB %', `rgb(${(r/255*100).toFixed(1)}%, ${(g/255*100).toFixed(1)}%, ${(b/255*100).toFixed(1)}%)`],
+    ['HSL', `hsl(${hsl.h}, ${hsl.s}%, ${hsl.l}%)`],
+    ['CSS Custom Prop', `--color: ${hex.toUpperCase()};`],
+    ['Tailwind approx', `text-['${hex.toUpperCase()}']`],
+    ['Decimal', (r<<16|g<<8|b).toString()],
+    ['Binary R', r.toString(2).padStart(8,'0')],
+  ];
+
+  document.getElementById('formatsGrid').innerHTML = formats.map(([label,val])=>`
+    <div class="format-box" onclick="copyText('${val.replace(/'/g,'"')}')">
+      <div class="format-label">${label}</div>
+      <div class="format-val">${val}</div>
+      <div class="copy-hint">click to copy</div>
+    </div>`).join('');
+
+  // Shades
+  const shades = [];
+  for(let i=0;i<=10;i++){
+    const t=i/10;
+    const sr=Math.round(r+(255-r)*t*(1-0.7)+r*t*0.3);
+    const lr=Math.round(r*((10-i)/10));
+    shades.push(rgbToHex(Math.min(255,Math.round(r+(255-r)*(i/10))),Math.min(255,Math.round(g+(255-g)*(i/10))),Math.min(255,Math.round(b+(255-b)*(i/10)))));
+  }
+  const tints = [];
+  for(let i=0;i<=10;i++){
+    tints.push(rgbToHex(Math.round(r*((10-i)/10)),Math.round(g*((10-i)/10)),Math.round(b*((10-i)/10))));
+  }
+  document.getElementById('shadesRow').innerHTML = 
+    tints.reverse().map(c=>`<div class="shade" style="background:${c}" title="${c}" onclick="setHex('${c}')"></div>`).join('') +
+    shades.map(c=>`<div class="shade" style="background:${c}" title="${c}" onclick="setHex('${c}')"></div>`).join('');
+
+  // Contrast
+  document.getElementById('contrastSwatch').style.background=hex;
+  document.getElementById('contrastSwatch').style.color=lum>0.4?'#000':'#fff';
+  const cw=contrastRatio(lum,1); const cb=contrastRatio(lum,0);
+  document.getElementById('contrastWhite').textContent=cw+':1';
+  document.getElementById('contrastBlack').textContent=cb+':1';
+  const [wLabel,wColor]=wcagBadge(parseFloat(cw));
+  const [bLabel,bColor]=wcagBadge(parseFloat(cb));
+  document.getElementById('badgeWhite').textContent=wLabel;
+  document.getElementById('badgeWhite').style.cssText=`background:${wColor}20;color:${wColor};padding:.2rem .5rem;border-radius:9999px;font-weight:700;`;
+  document.getElementById('badgeBlack').textContent=bLabel;
+  document.getElementById('badgeBlack').style.cssText=`background:${bColor}20;color:${bColor};padding:.2rem .5rem;border-radius:9999px;font-weight:700;`;
+}
+
+function fromPicker(hex) {
+  const rgb=hexToRgb(hex);
+  if(rgb)updateAll(rgb.r,rgb.g,rgb.b);
+  document.getElementById('colorInput').value=hex;
+}
+
+function setHex(hex) {
+  const rgb=hexToRgb(hex);
+  if(rgb){updateAll(rgb.r,rgb.g,rgb.b);document.getElementById('colorInput').value=hex;}
+}
+
+function fromInput(val) {
+  val=val.trim();
+  // Try HEX
+  let rgb=hexToRgb(val);
+  if(rgb){updateAll(rgb.r,rgb.g,rgb.b);document.getElementById('colorPicker').value=rgbToHex(rgb.r,rgb.g,rgb.b);return;}
+  // Try rgb(r,g,b)
+  const rgbM=val.match(/rgb\((\d+),\s*(\d+),\s*(\d+)\)/i);
+  if(rgbM){updateAll(parseInt(rgbM[1]),parseInt(rgbM[2]),parseInt(rgbM[3]));return;}
+  // Try hsl(h,s%,l%)
+  const hslM=val.match(/hsl\((\d+),\s*(\d+)%?,\s*(\d+)%?\)/i);
+  if(hslM){const r2=hslToRgb(parseInt(hslM[1]),parseInt(hslM[2]),parseInt(hslM[3]));updateAll(r2.r,r2.g,r2.b);return;}
+  // CSS named color via canvas
+  try{const c=document.createElement('canvas');c.width=c.height=1;const ctx=c.getContext('2d');ctx.fillStyle=val;ctx.fillRect(0,0,1,1);const d=ctx.getImageData(0,0,1,1).data;if(d[3]>0)updateAll(d[0],d[1],d[2]);}catch(e){}
+}
+
+function copyText(val) {
+  navigator.clipboard.writeText(val).catch(()=>{});
+}
+
+// Named colors
+const namedPalette = ['#ef4444','#f97316','#f59e0b','#eab308','#84cc16','#22c55e','#10b981','#14b8a6','#06b6d4','#0ea5e9','#3b82f6','#6366f1','#8b5cf6','#a855f7','#ec4899','#f43f5e','#ffffff','#d1d5db','#6b7280','#374151','#111827','#000000'];
+document.getElementById('namedColors').innerHTML = namedPalette.map(c=>`<div class="named-swatch" style="background:${c}" title="${c}" onclick="setHex('${c}')"></div>`).join('');
+
+updateAll(99,102,241);
+</script>
+</body>
+</html>
