@@ -7,6 +7,8 @@
   <url><loc>https://drghostpurp.github.io/scriptforge-io/tools/json-formatter/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://drghostpurp.github.io/scriptforge-io/tools/base64/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://drghostpurp.github.io/scriptforge-io/tools/regex-tester/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://drghostpurp.github.io/scriptforge-io/tools/timestamp/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://drghostpurp.github.io/scriptforge-io/changelog/</loc><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://drghostpurp.github.io/scriptforge-io/blog/</loc><changefreq>weekly</changefreq><priority>0.6</priority></url>
   <url><loc>https://drghostpurp.github.io/scriptforge-io/blog/why-browser-ide/</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
 </urlset>
