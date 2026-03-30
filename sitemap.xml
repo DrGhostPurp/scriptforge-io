@@ -11,7 +11,9 @@
   <url><loc>https://drghostpurp.github.io/scriptforge-io/tools/hash/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://drghostpurp.github.io/scriptforge-io/tools/url-encode/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://drghostpurp.github.io/scriptforge-io/tools/color/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://drghostpurp.github.io/scriptforge-io/tools/diff/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://drghostpurp.github.io/scriptforge-io/changelog/</loc><changefreq>weekly</changefreq><priority>0.6</priority></url>
   <url><loc>https://drghostpurp.github.io/scriptforge-io/blog/</loc><changefreq>weekly</changefreq><priority>0.6</priority></url>
   <url><loc>https://drghostpurp.github.io/scriptforge-io/blog/why-browser-ide/</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://drghostpurp.github.io/scriptforge-io/blog/python-in-browser/</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
 </urlset>
