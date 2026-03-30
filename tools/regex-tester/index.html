@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Regex Tester Online – Test Regular Expressions Instantly</title>
+<meta name="description" content="Free online regex tester. Test regular expressions in real-time with match highlighting, group capture, and explanation. Supports JavaScript regex syntax.">
+<link rel="canonical" href="https://drghostpurp.github.io/scriptforge-io/tools/regex-tester/">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#0d0d0d;color:#e5e7eb;line-height:1.6}
+  nav{display:flex;justify-content:space-between;align-items:center;padding:1rem 2rem;border-bottom:1px solid #1f2937;position:sticky;top:0;background:#0d0d0d;z-index:100}
+  .logo{font-size:1.25rem;font-weight:700;color:#fff;text-decoration:none}
+  .logo span{color:#6366f1}
+  nav a{color:#9ca3af;text-decoration:none;font-size:.9rem;margin-left:1.5rem}
+  nav a:hover{color:#fff}
+  .hero{text-align:center;padding:3rem 2rem 1.5rem}
+  .hero h1{font-size:2rem;font-weight:800;color:#fff;margin-bottom:.5rem}
+  .hero p{color:#9ca3af}
+  .container{max-width:900px;margin:0 auto;padding:1.5rem 2rem}
+  .card{background:#111827;border:1px solid #1f2937;border-radius:.75rem;padding:1.5rem;margin-bottom:1.5rem}
+  label{display:block;font-size:.8rem;font-weight:600;color:#9ca3af;text-transform:uppercase;letter-spacing:.05em;margin-bottom:.5rem}
+  .regex-row{display:flex;gap:.75rem;align-items:center}
+  .regex-input-wrap{flex:1;display:flex;align-items:center;background:#1f2937;border:1px solid #374151;border-radius:.5rem;overflow:hidden;font-family:'Courier New',monospace}
+  .regex-slash{padding:.6rem .5rem;color:#6b7280;font-size:1.1rem;font-weight:700;user-select:none}
+  #regexInput{flex:1;background:transparent;border:none;outline:none;color:#a78bfa;font-size:1rem;padding:.6rem 0;font-family:inherit}
+  #flagsInput{width:80px;background:#1f2937;border:1px solid #374151;border-radius:.5rem;color:#e5e7eb;padding:.6rem .75rem;font-family:'Courier New',monospace;font-size:.95rem;outline:none}
+  textarea{width:100%;background:#1f2937;border:1px solid #374151;border-radius:.5rem;color:#e5e7eb;padding:.75rem 1rem;font-family:'Courier New',monospace;font-size:.9rem;resize:vertical;outline:none;min-height:120px}
+  textarea:focus{border-color:#6366f1}
+  .result-area{min-height:80px;font-family:'Courier New',monospace;font-size:.9rem;line-height:1.8;word-break:break-all}
+  .match{background:#6366f150;color:#a78bfa;border-radius:2px;padding:0 1px}
+  .match-group{background:#10b98140;color:#6ee7b7;border-radius:2px;padding:0 1px}
+  .stats{display:flex;gap:1.5rem;margin-top:1rem;flex-wrap:wrap}
+  .stat{font-size:.85rem}
+  .stat-label{color:#6b7280}
+  .stat-value{color:#fff;font-weight:600;margin-left:.25rem}
+  .matches-list{margin-top:1rem}
+  .match-item{background:#1f2937;border-radius:.5rem;padding:.75rem 1rem;margin-bottom:.5rem;font-family:'Courier New',monospace;font-size:.85rem}
+  .match-item .match-num{color:#6b7280;font-size:.75rem;margin-bottom:.25rem}
+  .match-item .match-val{color:#a78bfa}
+  .match-item .match-groups{color:#6ee7b7;font-size:.8rem;margin-top:.25rem}
+  .error-msg{color:#f87171;font-size:.9rem;padding:.5rem 0}
+  .flags-help{font-size:.75rem;color:#6b7280;margin-top:.5rem}
+  .flags-help span{color:#9ca3af;cursor:pointer;margin-right:.75rem}
+  .flags-help span:hover{color:#6366f1}
+  .empty{color:#4b5563;font-style:italic;font-size:.9rem;padding:.5rem 0}
+  .tools-nav{display:flex;gap:.75rem;flex-wrap:wrap;margin-bottom:1.5rem}
+  .tools-nav a{background:#1f2937;color:#9ca3af;padding:.4rem .9rem;border-radius:.5rem;text-decoration:none;font-size:.85rem;transition:all .2s}
+  .tools-nav a:hover,.tools-nav a.active{background:#6366f1;color:#fff}
+  .cheatsheet{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:.75rem;margin-top:.5rem}
+  .cs-item{background:#1f2937;border-radius:.5rem;padding:.75rem;cursor:pointer;transition:border .2s;border:1px solid transparent}
+  .cs-item:hover{border-color:#6366f1}
+  .cs-pattern{font-family:'Courier New',monospace;color:#a78bfa;font-size:.85rem;font-weight:600}
+  .cs-desc{color:#9ca3af;font-size:.8rem;margin-top:.25rem}
+  h2{font-size:1.1rem;font-weight:700;color:#fff;margin-bottom:1rem}
+  footer{border-top:1px solid #1f2937;padding:2rem;text-align:center;color:#4b5563;font-size:.85rem}
+  footer a{color:#6366f1;text-decoration:none}
+</style>
+</head>
+<body>
+<nav>
+  <a class="logo" href="/scriptforge-io/"><Script<span>Forge</span></a>
+  <div>
+    <a href="/scriptforge-io/">Home</a>
+    <a href="/scriptforge-app/">Launch IDE</a>
+    <a href="/scriptforge-io/tools/">Tools</a>
+  </div>
+</nav>
+
+<div class="hero">
+  <h1>Regex Tester</h1>
+  <p>Test regular expressions in real-time with match highlighting and group capture</p>
+</div>
+
+<div class="container">
+  <div class="tools-nav">
+    <a href="/scriptforge-io/tools/">All Tools</a>
+    <a href="/scriptforge-io/tools/json-formatter/">JSON Formatter</a>
+    <a href="/scriptforge-io/tools/base64/">Base64</a>
+    <a href="/scriptforge-io/tools/regex-tester/" class="active">Regex Tester</a>
+  </div>
+
+  <div class="card">
+    <label>Regular Expression</label>
+    <div class="regex-row">
+      <div class="regex-input-wrap">
+        <span class="regex-slash">/</span>
+        <input type="text" id="regexInput" placeholder="([A-Z][a-z]+)" autocomplete="off" spellcheck="false">
+        <span class="regex-slash">/</span>
+      </div>
+      <input type="text" id="flagsInput" placeholder="gmi" value="g" maxlength="10">
+    </div>
+    <div class="flags-help">
+      Flags: <span onclick="addFlag('g')">g = global</span><span onclick="addFlag('i')">i = case-insensitive</span><span onclick="addFlag('m')">m = multiline</span><span onclick="addFlag('s')">s = dotAll</span>
+    </div>
+    <div id="regexError" class="error-msg" style="display:none"></div>
+  </div>
+
+  <div class="card">
+    <label>Test String</label>
+    <textarea id="testInput" placeholder="Enter your test string here...
+The quick brown Fox jumps over the Lazy Dog.
+Hello World, this is a Regex Test."></textarea>
+  </div>
+
+  <div class="card">
+    <h2>Matches</h2>
+    <div id="highlightArea" class="result-area"><span class="empty">Enter a regex and test string above to see highlighted matches</span></div>
+    <div class="stats" id="statsArea" style="display:none">
+      <div class="stat"><span class="stat-label">Matches:</span><span class="stat-value" id="matchCount">0</span></div>
+      <div class="stat"><span class="stat-label">Groups:</span><span class="stat-value" id="groupCount">0</span></div>
+    </div>
+  </div>
+
+  <div class="card" id="matchListCard" style="display:none">
+    <h2>Match Details</h2>
+    <div id="matchList" class="matches-list"></div>
+  </div>
+
+  <div class="card">
+    <h2>Quick Reference — click to use</h2>
+    <div class="cheatsheet">
+      <div class="cs-item" onclick="setRegex('\\d+')"><div class="cs-pattern">\d+</div><div class="cs-desc">One or more digits</div></div>
+      <div class="cs-item" onclick="setRegex('\\w+')"><div class="cs-pattern">\w+</div><div class="cs-desc">Word characters</div></div>
+      <div class="cs-item" onclick="setRegex('\\s+')"><div class="cs-pattern">\s+</div><div class="cs-desc">Whitespace</div></div>
+      <div class="cs-item" onclick="setRegex('[A-Za-z]+')"><div class="cs-pattern">[A-Za-z]+</div><div class="cs-desc">Letters only</div></div>
+      <div class="cs-item" onclick="setRegex('[\\w.-]+@[\\w-]+\\.[a-z]{2,}')"><div class="cs-pattern">Email address</div><div class="cs-desc">Basic email pattern</div></div>
+      <div class="cs-item" onclick="setRegex('https?:\/\/[\\w./?=#&-]+')"><div class="cs-pattern">URL</div><div class="cs-desc">http/https URLs</div></div>
+      <div class="cs-item" onclick="setRegex('\\b\\d{4}[-.]?\\d{4}[-.]?\\d{4}[-.]?\\d{4}\\b')"><div class="cs-pattern">Credit card</div><div class="cs-desc">16-digit card number</div></div>
+      <div class="cs-item" onclick="setRegex('^\\s*$','gm')"><div class="cs-pattern">^\s*$</div><div class="cs-desc">Empty lines</div></div>
+      <div class="cs-item" onclick="setRegex('#[0-9a-fA-F]{3,6}')"><div class="cs-pattern">#hex</div><div class="cs-desc">Hex color codes</div></div>
+      <div class="cs-item" onclick="setRegex('\\b(\\d{1,3}\\.){3}\\d{1,3}\\b')"><div class="cs-pattern">IP address</div><div class="cs-desc">IPv4 address</div></div>
+      <div class="cs-item" onclick="setRegex('\\d{4}-\\d{2}-\\d{2}')"><div class="cs-pattern">Date (YYYY-MM-DD)</div><div class="cs-desc">ISO date format</div></div>
+      <div class="cs-item" onclick="setRegex('(?<=\\$)[\\d,]+\\.\\d{2}')"><div class="cs-pattern">Price</div><div class="cs-desc">Dollar amounts</div></div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <p>© 2026 ScriptForge · <a href="/scriptforge-io/">Home</a> · <a href="/scriptforge-io/tools/">Tools</a> · <a href="/scriptforge-app/">Launch IDE</a></p>
+</footer>
+
+<script>
+const regexInput = document.getElementById('regexInput');
+const flagsInput = document.getElementById('flagsInput');
+const testInput = document.getElementById('testInput');
+const highlightArea = document.getElementById('highlightArea');
+const statsArea = document.getElementById('statsArea');
+const matchListCard = document.getElementById('matchListCard');
+const matchList = document.getElementById('matchList');
+const regexError = document.getElementById('regexError');
+
+function escapeHtml(s) {
+  return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+
+function updateRegex() {
+  const pattern = regexInput.value;
+  const flags = flagsInput.value.replace(/[^gimsuy]/g,'');
+  flagsInput.value = flags;
+
+  if (!pattern) {
+    highlightArea.innerHTML = '<span class="empty">Enter a regex and test string above to see highlighted matches</span>';
+    statsArea.style.display = 'none';
+    matchListCard.style.display = 'none';
+    regexError.style.display = 'none';
+    return;
+  }
+
+  let re;
+  try {
+    re = new RegExp(pattern, flags.includes('g') ? flags : flags + 'g');
+    regexError.style.display = 'none';
+  } catch(e) {
+    regexError.textContent = 'Invalid regex: ' + e.message;
+    regexError.style.display = 'block';
+    highlightArea.innerHTML = '<span class="empty">Fix the regex error above</span>';
+    statsArea.style.display = 'none';
+    matchListCard.style.display = 'none';
+    return;
+  }
+
+  const text = testInput.value;
+  if (!text) {
+    highlightArea.innerHTML = '<span class="empty">Enter a test string to see matches</span>';
+    statsArea.style.display = 'none';
+    matchListCard.style.display = 'none';
+    return;
+  }
+
+  const matches = [...text.matchAll(re)];
+
+  if (matches.length === 0) {
+    highlightArea.innerHTML = escapeHtml(text) + '<br><br><span style="color:#f87171;font-size:.85rem">No matches found</span>';
+    statsArea.style.display = 'none';
+    matchListCard.style.display = 'none';
+    return;
+  }
+
+  // Build highlighted version
+  let result = '';
+  let lastIdx = 0;
+  for (const m of matches) {
+    result += escapeHtml(text.slice(lastIdx, m.index));
+    if (m[1] !== undefined) {
+      // has capture groups — highlight whole match with group sub-highlight
+      result += '<span class="match">' + escapeHtml(m[0]) + '</span>';
+    } else {
+      result += '<span class="match">' + escapeHtml(m[0]) + '</span>';
+    }
+    lastIdx = m.index + m[0].length;
+  }
+  result += escapeHtml(text.slice(lastIdx));
+  highlightArea.innerHTML = result || '<span class="empty">No text</span>';
+
+  // Stats
+  const maxGroups = matches.reduce((n, m) => Math.max(n, m.length - 1), 0);
+  document.getElementById('matchCount').textContent = matches.length;
+  document.getElementById('groupCount').textContent = maxGroups;
+  statsArea.style.display = 'flex';
+
+  // Match list
+  matchList.innerHTML = matches.map((m, i) => {
+    const groups = m.slice(1).filter(g => g !== undefined);
+    return `<div class="match-item">
+      <div class="match-num">Match #${i+1} — index ${m.index}</div>
+      <div class="match-val">${escapeHtml(m[0])}</div>
+      ${groups.length ? '<div class="match-groups">Groups: ' + groups.map((g,j) => 'Group '+(j+1)+': ' + escapeHtml(g)).join(' · ') + '</div>' : ''}
+    </div>`;
+  }).join('');
+  matchListCard.style.display = 'block';
+}
+
+function addFlag(f) {
+  const current = flagsInput.value;
+  if (!current.includes(f)) {
+    flagsInput.value = current + f;
+    updateRegex();
+  }
+}
+
+function setRegex(pattern, flags) {
+  regexInput.value = pattern;
+  if (flags) flagsInput.value = flags;
+  updateRegex();
+}
+
+regexInput.addEventListener('input', updateRegex);
+flagsInput.addEventListener('input', updateRegex);
+testInput.addEventListener('input', updateRegex);
+
+// Default example
+testInput.value = 'The quick brown Fox jumps over the Lazy Dog.\nHello World! Contact us at hello@scriptforge.dev\nVersion 0.5.1 released on 2026-03-15';
+regexInput.value = '[A-Z][a-z]+';
+updateRegex();
+</script>
+</body>
+</html>
