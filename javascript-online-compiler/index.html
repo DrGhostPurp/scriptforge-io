@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JavaScript Online Compiler – Run JS Free in Browser | ScriptForge</title>
+<meta name="description" content="Free JavaScript online compiler. Run JS code instantly in your browser with npm package support via esm.sh. No install, no signup. ES2023+, async/await, full modern JS.">
+<meta property="og:title" content="JavaScript Online Compiler – Run JS Free | ScriptForge">
+<meta property="og:description" content="Run JavaScript instantly in your browser. Import any npm package. No install. Free forever.">
+<meta property="og:image" content="https://drghostpurp.github.io/scriptforge-io/og-image.svg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://drghostpurp.github.io/scriptforge-io/javascript-online-compiler/">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "ScriptForge JavaScript Online Compiler",
+  "url": "https://drghostpurp.github.io/scriptforge-app/",
+  "description": "Run JavaScript online for free. Import any npm package. Supports ES2023+, async/await, modules. No install required.",
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any (Browser)",
+  "offers": {"@type":"Offer","price":"0","priceCurrency":"USD"}
+}
+</script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#0a0a0f;color:#e5e7eb;line-height:1.6}
+nav{display:flex;justify-content:space-between;align-items:center;padding:1rem 2rem;border-bottom:1px solid #1f2937;position:sticky;top:0;background:rgba(10,10,15,.95);backdrop-filter:blur(8px);z-index:100}
+.logo{font-size:1.25rem;font-weight:800;color:#fff;text-decoration:none}.logo span{color:#6366f1}
+nav a{color:#9ca3af;text-decoration:none;font-size:.9rem;margin-left:1.5rem}
+.nav-cta{background:#6366f1;color:#fff!important;padding:.4rem 1rem;border-radius:.5rem;font-weight:600!important}
+.hero{text-align:center;padding:4rem 2rem 2rem;position:relative}
+.hero::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:600px;height:400px;background:radial-gradient(circle,rgba(234,179,8,.06) 0%,transparent 70%);pointer-events:none}
+.badge{display:inline-flex;align-items:center;gap:.4rem;background:rgba(234,179,8,.1);border:1px solid rgba(234,179,8,.25);color:#fcd34d;font-size:.8rem;padding:.3rem .85rem;border-radius:9999px;margin-bottom:1.25rem;font-weight:600}
+h1{font-size:clamp(2rem,5vw,3.25rem);font-weight:900;color:#fff;line-height:1.15;letter-spacing:-.02em;margin-bottom:1rem;max-width:700px;margin-left:auto;margin-right:auto}
+h1 .js{color:#eab308}
+.sub{color:#9ca3af;font-size:1.05rem;max-width:540px;margin:0 auto 2rem;line-height:1.65}
+.cta-row{display:flex;gap:.75rem;justify-content:center;flex-wrap:wrap;margin-bottom:1.75rem}
+.btn-main{background:#eab308;color:#000;padding:.85rem 2rem;border-radius:.6rem;text-decoration:none;font-weight:700;font-size:1rem;display:inline-flex;align-items:center;gap:.4rem;transition:background .2s}
+.btn-main:hover{background:#ca8a04}
+.btn-ghost{border:1px solid #1f2937;color:#9ca3af;padding:.85rem 1.5rem;border-radius:.6rem;text-decoration:none;font-size:.95rem;transition:all .2s}
+.btn-ghost:hover{border-color:#6366f1;color:#fff}
+.trust{display:flex;justify-content:center;gap:1.5rem;flex-wrap:wrap;font-size:.82rem;color:#4b5563}
+.trust span{display:flex;align-items:center;gap:.35rem}
+.trust .ok{color:#10b981}
+.ide-section{max-width:960px;margin:3rem auto;padding:0 2rem}
+.ide-wrap{border:1px solid #1f2937;border-radius:.75rem;overflow:hidden;box-shadow:0 0 60px rgba(234,179,8,.06)}
+.ide-bar{background:#161b2e;padding:.6rem 1rem;display:flex;align-items:center;gap:.5rem;border-bottom:1px solid #1f2937}
+.dot{width:12px;height:12px;border-radius:50%}
+.ide-bar .lbl{margin-left:.5rem;font-size:.78rem;color:#374151;font-family:'Courier New',monospace}
+iframe{width:100%;height:500px;border:none;display:block}
+.container{max-width:960px;margin:0 auto;padding:0 2rem 4rem}
+.section-lbl{font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:#eab308;margin-bottom:.5rem}
+.section-title{font-size:1.75rem;font-weight:800;color:#fff;margin-bottom:.75rem;line-height:1.25}
+.section-sub{color:#9ca3af;margin-bottom:2.5rem;font-size:.95rem;line-height:1.65;max-width:560px}
+.grid3{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1rem;margin-bottom:4rem}
+.feat{background:#111827;border:1px solid #1f2937;border-radius:.75rem;padding:1.4rem}
+.feat-icon{font-size:1.6rem;margin-bottom:.65rem}
+.feat-title{font-weight:700;color:#fff;margin-bottom:.35rem;font-size:.95rem}
+.feat-desc{font-size:.85rem;color:#6b7280;line-height:1.55}
+.pkg-grid{display:flex;gap:.5rem;flex-wrap:wrap;margin:1rem 0 2.5rem}
+.pkg{background:#111827;border:1px solid #1f2937;border-radius:.4rem;padding:.3rem .75rem;font-size:.82rem;font-family:'Courier New',monospace;color:#fcd34d;transition:border-color .2s}
+.pkg:hover{border-color:#eab308}
+.faq{max-width:680px;margin:0 auto 4rem}
+.faq h2{font-size:1.5rem;font-weight:800;color:#fff;margin-bottom:1.5rem}
+.faq-item{border-bottom:1px solid #1f2937;padding:1.1rem 0}
+.faq-item:first-of-type{border-top:1px solid #1f2937}
+.faq-q{font-weight:600;color:#fff;margin-bottom:.4rem;font-size:.95rem}
+.faq-a{color:#9ca3af;font-size:.875rem;line-height:1.65}
+pre{background:#111827;border:1px solid #1f2937;border-radius:.5rem;padding:1.25rem;overflow-x:auto;font-family:'Courier New',monospace;font-size:.82rem;line-height:1.8;margin-bottom:1rem}
+.kw{color:#818cf8}.fn{color:#34d399}.str{color:#fbbf24}.cm{color:#374151}.num{color:#f87171}
+.examples-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;margin-bottom:3rem}
+.example-card{background:#111827;border:1px solid #1f2937;border-radius:.75rem;padding:1.25rem;cursor:pointer;text-decoration:none;display:block;transition:border-color .2s}
+.example-card:hover{border-color:#eab308}
+.ex-title{font-weight:700;color:#fff;font-size:.9rem;margin-bottom:.75rem}
+footer{border-top:1px solid #1f2937;padding:2rem;text-align:center;color:#4b5563;font-size:.82rem}
+footer a{color:#6366f1;text-decoration:none}
+@media(max-width:600px){.examples-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<nav>
+  <a class="logo" href="/scriptforge-io/"><Script<span>Forge</span></a>
+  <div>
+    <a href="/scriptforge-io/">Home</a>
+    <a href="/scriptforge-io/tools/">Tools</a>
+    <a href="/scriptforge-io/python-online-compiler/">Python Compiler</a>
+    <a href="/scriptforge-app/" class="nav-cta">Launch IDE →</a>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="badge">⚡ JavaScript ES2023+ · npm via esm.sh</div>
+  <h1>JavaScript Online Compiler<br><span class="js">Run JS Free</span> in Your Browser</h1>
+  <p class="sub">The fastest way to run JavaScript online. Import any npm package with one URL. Full ES2023+, async/await, modules. No download, no install, no account.</p>
+  <div class="cta-row">
+    <a href="/scriptforge-app/" class="btn-main">▶ Run JavaScript Now — Free</a>
+    <a href="#examples" class="btn-ghost">See Examples</a>
+  </div>
+  <div class="trust">
+    <span><span class="ok">✓</span> Full ES2023+ support</span>
+    <span><span class="ok">✓</span> Import any npm package</span>
+    <span><span class="ok">✓</span> async/await + Promises</span>
+    <span><span class="ok">✓</span> No account needed</span>
+  </div>
+</div>
+
+<div class="ide-section">
+  <div class="ide-wrap">
+    <div class="ide-bar">
+      <div class="dot" style="background:#f87171"></div>
+      <div class="dot" style="background:#fbbf24"></div>
+      <div class="dot" style="background:#34d399"></div>
+      <span class="lbl">ScriptForge — JavaScript Online Compiler (live)</span>
+    </div>
+    <iframe src="https://drghostpurp.github.io/scriptforge-app/" title="JavaScript Online Compiler" loading="lazy"></iframe>
+  </div>
+</div>
+
+<div class="container">
+  <div class="section-lbl">The npm advantage</div>
+  <div class="section-title">Import any npm package. Zero setup.</div>
+  <p class="section-sub">ScriptForge uses esm.sh to serve any npm package as an ES module. One import line — that's all it takes.</p>
+  <div class="pkg-grid">
+    <span class="pkg">lodash</span><span class="pkg">dayjs</span><span class="pkg">date-fns</span>
+    <span class="pkg">zod</span><span class="pkg">axios</span><span class="pkg">uuid</span>
+    <span class="pkg">chalk</span><span class="pkg">marked</span><span class="pkg">validator</span>
+    <span class="pkg">ramda</span><span class="pkg">rxjs</span><span class="pkg">immer</span>
+    <span class="pkg">three.js</span><span class="pkg">d3</span><span class="pkg">mathjs</span>
+    <span class="pkg">crypto-js</span><span class="pkg">yaml</span><span class="pkg">papaparse</span>
+    <span class="pkg">fuse.js</span><span class="pkg">nanoid</span><span class="pkg">p-limit</span>
+  </div>
+
+  <div class="grid3">
+    <div class="feat">
+      <div class="feat-icon">📦</div>
+      <div class="feat-title">Any npm package</div>
+      <div class="feat-desc">Import via <code style="color:#fcd34d;font-family:monospace">https://esm.sh/package-name</code> — the entire npm registry, no bundler needed.</div>
+    </div>
+    <div class="feat">
+      <div class="feat-icon">⚡</div>
+      <div class="feat-title">Modern JavaScript</div>
+      <div class="feat-desc">Full ES2023+ support: arrow functions, destructuring, optional chaining, nullish coalescing, top-level await, dynamic imports.</div>
+    </div>
+    <div class="feat">
+      <div class="feat-icon">🔄</div>
+      <div class="feat-title">Async/await</div>
+      <div class="feat-desc">Run async code naturally. Fetch APIs, await promises, use async generators — all supported out of the box.</div>
+    </div>
+    <div class="feat">
+      <div class="feat-icon">🛡️</div>
+      <div class="feat-title">Sandboxed execution</div>
+      <div class="feat-desc">Scripts run in an isolated context. Console output is captured and displayed. Errors are caught and shown with stack traces.</div>
+    </div>
+    <div class="feat">
+      <div class="feat-icon">💾</div>
+      <div class="feat-title">Save & share</div>
+      <div class="feat-desc">Scripts save to localStorage. Share any script via URL hash. No account needed — just paste the link.</div>
+    </div>
+    <div class="feat">
+      <div class="feat-icon">🌐</div>
+      <div class="feat-title">Also runs Python</div>
+      <div class="feat-desc">Switch to Python with one click. Same IDE, full CPython via Pyodide — NumPy, pandas, and 100+ packages.</div>
+    </div>
+  </div>
+
+  <div id="examples" class="section-lbl" style="margin-top:0">Examples</div>
+  <div class="section-title" style="font-size:1.4rem">JavaScript examples — click to open</div>
+  <div class="examples-grid">
+    <a href="/scriptforge-app/" class="example-card">
+      <div class="ex-title">📅 npm: date-fns</div>
+      <pre><span class="kw">import</span> { format, addDays } <span class="kw">from</span>
+  <span class="str">'https://esm.sh/date-fns'</span>;
+
+<span class="kw">const</span> today = <span class="kw">new</span> Date();
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="fn">format</span>(today, <span class="str">'PPP'</span>));
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="fn">format</span>(<span class="fn">addDays</span>(today,<span class="num">7</span>),<span class="str">'PPP'</span>));</pre>
+    </a>
+    <a href="/scriptforge-app/" class="example-card">
+      <div class="ex-title">🔍 npm: fuse.js (fuzzy search)</div>
+      <pre><span class="kw">import</span> Fuse <span class="kw">from</span> <span class="str">'https://esm.sh/fuse.js'</span>;
+
+<span class="kw">const</span> items = [<span class="str">'apple'</span>,<span class="str">'apricot'</span>,<span class="str">'banana'</span>];
+<span class="kw">const</span> fuse = <span class="kw">new</span> <span class="fn">Fuse</span>(items);
+<span class="fn">console</span>.<span class="fn">log</span>(fuse.<span class="fn">search</span>(<span class="str">'appl'</span>));</pre>
+    </a>
+    <a href="/scriptforge-app/" class="example-card">
+      <div class="ex-title">⚙️ Async/await + fetch</div>
+      <pre><span class="kw">const</span> res = <span class="kw">await</span> <span class="fn">fetch</span>(
+  <span class="str">'https://api.github.com/zen'</span>);
+<span class="kw">const</span> text = <span class="kw">await</span> res.<span class="fn">text</span>();
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="str">'GitHub says:'</span>, text);</pre>
+    </a>
+    <a href="/scriptforge-app/" class="example-card">
+      <div class="ex-title">🧮 npm: mathjs</div>
+      <pre><span class="kw">import</span> * <span class="kw">as</span> math <span class="kw">from</span>
+  <span class="str">'https://esm.sh/mathjs'</span>;
+
+<span class="fn">console</span>.<span class="fn">log</span>(math.<span class="fn">sqrt</span>(<span class="num">144</span>));
+<span class="fn">console</span>.<span class="fn">log</span>(math.<span class="fn">evaluate</span>(<span class="str">'2^10'</span>));</pre>
+    </a>
+  </div>
+
+  <div class="faq">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-item">
+      <div class="faq-q">Does it support modern JavaScript (ES2023+)?</div>
+      <div class="faq-a">Yes. ScriptForge runs in your browser's JavaScript engine, which fully supports ES2023+ syntax including optional chaining, nullish coalescing, top-level await, dynamic imports, Array.at(), Object.hasOwn(), and more.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">How do I import npm packages?</div>
+      <div class="faq-a">Use esm.sh as your CDN: <code style="color:#fcd34d;font-family:monospace">import lodash from 'https://esm.sh/lodash'</code>. You can specify versions: <code style="color:#fcd34d;font-family:monospace">https://esm.sh/dayjs@1.11.0</code>. Any npm package that supports ESM works this way.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Can I use async/await and fetch?</div>
+      <div class="faq-a">Yes. async/await works natively. Top-level await is supported. You can fetch external APIs directly — the browser's fetch API is available, and CORS-permissive APIs (like GitHub's public API) work out of the box.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">How is this different from the browser console?</div>
+      <div class="faq-a">The browser console can't save scripts, import npm packages, share code via URL, or switch between multiple scripts. ScriptForge gives you persistent script management, npm imports, script sharing, export to .js files, and a clean UI purpose-built for scripting.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Is it completely free?</div>
+      <div class="faq-a">Yes. The JavaScript IDE is free forever with no rate limits. It runs entirely in your browser on GitHub Pages — there's no server for us to pay for, so there's nothing to charge for.</div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <p>© 2026 ScriptForge · <a href="/scriptforge-io/">Home</a> · <a href="/scriptforge-io/python-online-compiler/">Python Compiler</a> · <a href="/scriptforge-io/tools/">Tools</a> · <a href="/scriptforge-io/pricing/">Pricing</a></p>
+</footer>
+<script src="/scriptforge-io/assets/growth.js"></script>
+</body>
+</html>
