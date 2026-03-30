@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Get Started with ScriptForge – Run Python & JavaScript in Your Browser</title>
+<meta name="description" content="Start using ScriptForge in under 60 seconds. No install, no account. Run real Python and JavaScript directly in your browser.">
+<link rel="canonical" href="https://drghostpurp.github.io/scriptforge-io/start/">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#0a0a0f;color:#e5e7eb;line-height:1.6;min-height:100vh}
+nav{display:flex;justify-content:space-between;align-items:center;padding:1rem 2rem;border-bottom:1px solid #1f2937}
+.logo{font-size:1.25rem;font-weight:800;color:#fff;text-decoration:none}
+.logo span{color:#6366f1}
+nav a{color:#9ca3af;text-decoration:none;font-size:.9rem;margin-left:1.5rem}
+.container{max-width:680px;margin:0 auto;padding:4rem 2rem}
+.progress{display:flex;gap:.5rem;margin-bottom:3rem;justify-content:center}
+.prog-dot{width:10px;height:10px;border-radius:50%;background:#1f2937;transition:background .3s}
+.prog-dot.active{background:#6366f1}
+.prog-dot.done{background:#10b981}
+.step-panel{display:none}
+.step-panel.active{display:block}
+.step-label{font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:#6366f1;margin-bottom:.75rem}
+h1{font-size:2rem;font-weight:800;color:#fff;margin-bottom:1rem;line-height:1.2}
+.sub{color:#9ca3af;font-size:1rem;margin-bottom:2rem;line-height:1.65}
+.choice-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:2rem}
+.choice{background:#111827;border:2px solid #1f2937;border-radius:.75rem;padding:1.5rem;cursor:pointer;transition:all .2s;text-decoration:none;display:block}
+.choice:hover,.choice.selected{border-color:#6366f1;background:#1e1b4b20}
+.choice-icon{font-size:2rem;margin-bottom:.75rem}
+.choice-title{font-size:1rem;font-weight:700;color:#fff;margin-bottom:.35rem}
+.choice-desc{font-size:.82rem;color:#6b7280;line-height:1.5}
+.next-btn{background:#6366f1;color:#fff;border:none;padding:.85rem 2rem;border-radius:.5rem;font-weight:700;font-size:1rem;cursor:pointer;transition:background .2s;width:100%}
+.next-btn:hover{background:#4f46e5}
+.skip{display:block;text-align:center;margin-top:1rem;font-size:.85rem;color:#4b5563;cursor:pointer;text-decoration:none}
+.skip:hover{color:#9ca3af}
+.ide-cta{background:linear-gradient(135deg,#1e1b4b,#111827);border:2px solid #6366f1;border-radius:1rem;padding:2.5rem;text-align:center;margin-top:2rem}
+.ide-cta h2{font-size:1.75rem;font-weight:800;color:#fff;margin-bottom:.75rem}
+.ide-cta p{color:#a5b4fc;margin-bottom:2rem;line-height:1.65}
+.launch-btn{display:inline-block;background:#6366f1;color:#fff;padding:1rem 2.5rem;border-radius:.5rem;font-weight:700;font-size:1.1rem;text-decoration:none;transition:background .2s}
+.launch-btn:hover{background:#4f46e5}
+.checklist{list-style:none;margin:1.5rem 0;text-align:left}
+.checklist li{display:flex;gap:.75rem;align-items:center;padding:.5rem 0;font-size:.9rem;color:#d1d5db}
+.checklist .check{color:#10b981;font-size:1.1rem;flex-shrink:0}
+.snippet{background:#0d1117;border:1px solid #1f2937;border-radius:.5rem;padding:1.25rem;font-family:'Courier New',monospace;font-size:.82rem;margin:1.25rem 0;text-align:left;line-height:1.8}
+.kw{color:#818cf8}.fn{color:#34d399}.cm{color:#374151}.str{color:#fbbf24}.num{color:#f87171}
+.tools-row{display:flex;gap:.75rem;flex-wrap:wrap;margin:1.5rem 0}
+.tool-pill{background:#111827;border:1px solid #1f2937;border-radius:.5rem;padding:.5rem 1rem;text-decoration:none;font-size:.85rem;color:#9ca3af;transition:all .2s}
+.tool-pill:hover{border-color:#6366f1;color:#fff}
+.congrats-icon{font-size:4rem;text-align:center;margin-bottom:1rem}
+</style>
+</head>
+<body>
+<nav>
+  <a class="logo" href="/scriptforge-io/"><Script<span>Forge</span></a>
+  <a href="/scriptforge-io/">← Back to home</a>
+</nav>
+
+<div class="container">
+  <div class="progress">
+    <div class="prog-dot active" id="d0"></div>
+    <div class="prog-dot" id="d1"></div>
+    <div class="prog-dot" id="d2"></div>
+    <div class="prog-dot" id="d3"></div>
+  </div>
+
+  <!-- Step 0: What brings you here -->
+  <div class="step-panel active" id="step0">
+    <div class="step-label">Step 1 of 4</div>
+    <h1>What do you mainly work with?</h1>
+    <p class="sub">We'll start you with the right template.</p>
+    <div class="choice-grid">
+      <div class="choice" onclick="pick(this,'python')" id="c-python">
+        <div class="choice-icon">🐍</div>
+        <div class="choice-title">Python</div>
+        <div class="choice-desc">Data scripts, automation, analysis with NumPy, pandas, and more</div>
+      </div>
+      <div class="choice" onclick="pick(this,'javascript')" id="c-javascript">
+        <div class="choice-icon">⚡</div>
+        <div class="choice-title">JavaScript</div>
+        <div class="choice-desc">Front-end utilities, npm packages, quick JS prototypes</div>
+      </div>
+      <div class="choice" onclick="pick(this,'html')" id="c-html">
+        <div class="choice-icon">🌐</div>
+        <div class="choice-title">HTML / CSS</div>
+        <div class="choice-desc">Live preview of HTML components and CSS experiments</div>
+      </div>
+      <div class="choice" onclick="pick(this,'tools')" id="c-tools">
+        <div class="choice-icon">🔧</div>
+        <div class="choice-title">Just the tools</div>
+        <div class="choice-desc">JSON, regex, hash, diff, color, timestamps — quick utilities</div>
+      </div>
+    </div>
+    <button class="next-btn" onclick="next(0)">Continue →</button>
+  </div>
+
+  <!-- Step 1: What you'll love -->
+  <div class="step-panel" id="step1">
+    <div class="step-label">Step 2 of 4</div>
+    <h1>Here's what makes ScriptForge different</h1>
+    <p class="sub">You've probably used online REPLs before. This isn't one.</p>
+    <div class="snippet" id="codePreview">
+<span class="cm"># Real Python. Real libraries. Right here.</span>
+<span class="kw">import</span> <span class="fn">numpy</span> <span class="kw">as</span> np
+
+data = [<span class="num">42</span>, <span class="num">17</span>, <span class="num">93</span>, <span class="num">8</span>, <span class="num">65</span>]
+arr = np.<span class="fn">array</span>(data)
+<span class="kw">print</span>(<span class="str">f"Mean: {arr.mean():.1f}, Std: {arr.std():.1f}"</span>)
+<span class="cm"># Output: Mean: 45.0, Std: 30.1</span>
+    </div>
+    <ul class="checklist" id="checklistItems">
+      <li><span class="check">✓</span>Full CPython via WebAssembly — not a subset</li>
+      <li><span class="check">✓</span>100+ packages: NumPy, pandas, matplotlib...</li>
+      <li><span class="check">✓</span>Code runs in YOUR browser — never our servers</li>
+      <li><span class="check">✓</span>Scripts saved locally — no account needed</li>
+    </ul>
+    <button class="next-btn" onclick="next(1)">That's exactly what I need →</button>
+    <a class="skip" onclick="next(1)">Skip intro</a>
+  </div>
+
+  <!-- Step 2: Quick action -->
+  <div class="step-panel" id="step2">
+    <div class="step-label">Step 3 of 4</div>
+    <h1>One more thing — the free tools</h1>
+    <p class="sub">While your code is running, these live alongside the IDE. All free, all browser-native.</p>
+    <div class="tools-row">
+      <a href="/scriptforge-io/tools/json-formatter/" class="tool-pill">{ } JSON</a>
+      <a href="/scriptforge-io/tools/regex-tester/" class="tool-pill">🔍 Regex</a>
+      <a href="/scriptforge-io/tools/hash/" class="tool-pill">🔒 Hash</a>
+      <a href="/scriptforge-io/tools/diff/" class="tool-pill">⚖️ Diff</a>
+      <a href="/scriptforge-io/tools/color/" class="tool-pill">🎨 Color</a>
+      <a href="/scriptforge-io/tools/timestamp/" class="tool-pill">🕐 Timestamp</a>
+      <a href="/scriptforge-io/tools/url-encode/" class="tool-pill">🔗 URL</a>
+      <a href="/scriptforge-io/tools/base64/" class="tool-pill">🔐 Base64</a>
+    </div>
+    <button class="next-btn" onclick="next(2)">I'm ready — launch the IDE →</button>
+  </div>
+
+  <!-- Step 3: Launch -->
+  <div class="step-panel" id="step3">
+    <div class="congrats-icon">🚀</div>
+    <div class="step-label">You're all set</div>
+    <h1>Welcome to ScriptForge</h1>
+    <p class="sub">The IDE is open and ready. Your first script is waiting. Hit <strong style="color:#fff">Ctrl+Enter</strong> to run it.</p>
+    <div class="ide-cta">
+      <h2>Open the IDE</h2>
+      <p>No install. No account. Just code.</p>
+      <a href="/scriptforge-app/" class="launch-btn" id="launchBtn">Launch ScriptForge →</a>
+    </div>
+    <p style="text-align:center;margin-top:1.5rem;font-size:.85rem;color:#4b5563">
+      Loved it? Share it: 
+      <a href="https://twitter.com/intent/tweet?text=Just+discovered+ScriptForge+%E2%80%94+runs+real+Python+%26+JS+directly+in+the+browser.+No+install+needed.+Free+forever.&url=https://drghostpurp.github.io/scriptforge-io/" target="_blank" style="color:#6366f1;text-decoration:none;margin:0 .5rem">Twitter/X</a>
+      <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://drghostpurp.github.io/scriptforge-io/" target="_blank" style="color:#6366f1;text-decoration:none;margin:0 .5rem">LinkedIn</a>
+    </p>
+  </div>
+</div>
+
+<script>
+let userPick = 'python';
+const codeByType = {
+  python: `<span class="cm"># Real Python. NumPy included. No install.</span>
+<span class="kw">import</span> <span class="fn">numpy</span> <span class="kw">as</span> np
+data = [<span class="num">42</span>, <span class="num">17</span>, <span class="num">93</span>, <span class="num">8</span>, <span class="num">65</span>]
+arr = np.<span class="fn">array</span>(data)
+<span class="kw">print</span>(<span class="str">f"Mean: {arr.mean():.1f}"</span>)`,
+  javascript: `<span class="cm">// Import any npm package via esm.sh</span>
+<span class="kw">import</span> dayjs <span class="kw">from</span> <span class="str">'https://esm.sh/dayjs'</span>;
+<span class="kw">const</span> now = dayjs().<span class="fn">format</span>(<span class="str">'MMMM D, YYYY'</span>);
+console.<span class="fn">log</span>(<span class="str">\`Today is \${now}\`</span>);`,
+  html: `<span class="cm">&lt;!-- Live HTML preview below --&gt;</span>
+&lt;<span class="kw">div</span> <span class="fn">style</span>=<span class="str">"font-family:sans-serif;padding:2rem"</span>&gt;
+  &lt;<span class="kw">h1</span>&gt;Hello ScriptForge! 👋&lt;/<span class="kw">h1</span>&gt;
+  &lt;<span class="kw">p</span> <span class="fn">style</span>=<span class="str">"color:#6366f1"</span>&gt;Live preview updates as you type&lt;/<span class="kw">p</span>&gt;
+&lt;/<span class="kw">div</span>&gt;`,
+  tools: `<span class="cm">// You picked tools — check out the hub:</span>
+<span class="cm">// drghostpurp.github.io/scriptforge-io/tools/</span>
+<span class="cm">// JSON, Regex, Hash, Diff, Color, Timestamp...</span>
+<span class="kw">const</span> tools = [<span class="str">'JSON'</span>,<span class="str">'Regex'</span>,<span class="str">'Hash'</span>,<span class="str">'Diff'</span>,<span class="str">'Color'</span>];
+console.<span class="fn">log</span>(<span class="str">\`\${tools.length} tools, all free\`</span>);`
+};
+const checklistByType = {
+  python: ['Full CPython via WebAssembly — not a subset','100+ packages: NumPy, pandas, matplotlib...','Code runs in YOUR browser — never our servers','Scripts saved locally — no account needed'],
+  javascript: ['Import any npm package with one URL','No bundler, no node_modules, no build step','Full ES2023+ support via the browser engine','Scripts shareable via URL hash'],
+  html: ['Live HTML/CSS/JS preview pane','Updates as you type — instant feedback','Includes a CSS sandbox and component tester','Export as standalone .html file'],
+  tools: ['8 free tools: JSON, Regex, Hash, Diff, Color...','All run client-side — nothing sent to servers','No account or signup required','Available even offline once cached']
+};
+
+function pick(el, type) {
+  document.querySelectorAll('.choice').forEach(c => c.classList.remove('selected'));
+  el.classList.add('selected');
+  userPick = type;
+}
+
+function next(fromStep) {
+  document.getElementById('step' + fromStep).classList.remove('active');
+  const nextStep = fromStep + 1;
+  document.getElementById('step' + nextStep).classList.add('active');
+  document.querySelectorAll('.prog-dot').forEach((d, i) => {
+    d.classList.toggle('done', i < nextStep);
+    d.classList.toggle('active', i === nextStep);
+  });
+  if (fromStep === 0) {
+    document.getElementById('codePreview').innerHTML = codeByType[userPick] || codeByType.python;
+    const checks = checklistByType[userPick] || checklistByType.python;
+    document.getElementById('checklistItems').innerHTML = checks.map(c =>
+      `<li><span class="check">✓</span>${c}</li>`).join('');
+    if (userPick === 'tools') {
+      setTimeout(() => { window.location.href = '/scriptforge-io/tools/'; }, 100);
+    }
+  }
+  if (nextStep === 3) {
+    const lang = userPick === 'tools' ? '' : userPick;
+    document.getElementById('launchBtn').href = '/scriptforge-app/' + (lang ? '?lang=' + lang : '');
+  }
+  window.scrollTo(0, 0);
+}
+
+// Default select Python
+document.getElementById('c-python').classList.add('selected');
+</script>
+</body>
+</html>
