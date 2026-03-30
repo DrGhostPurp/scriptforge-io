@@ -1,1 +1,171 @@
-undefined
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>ScriptForge - Browser-Native Script IDE</title>
+<meta name="description" content="Write and run scripts instantly in your browser. Zero install, zero friction. JavaScript, Python, npm packages and more.">
+<meta property="og:title" content="ScriptForge — Browser-Native Script IDE">
+<meta property="og:description" content="Write and run scripts instantly in your browser. Zero install. Free forever.">
+<meta property="og:url" content="https://drghostpurp.github.io/scriptforge-io/">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0a0a0f;--sf:#13131a;--bd:#1e1e2e;--ac:#7c3aed;--a2:#06b6d4;--tx:#e2e8f0;--mu:#94a3b8;--gn:#10b981}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--bg);color:var(--tx);line-height:1.6}
+a{color:inherit;text-decoration:none}
+nav{position:sticky;top:0;z-index:100;background:rgba(10,10,15,.9);backdrop-filter:blur(12px);border-bottom:1px solid var(--bd);padding:0 5%}
+.nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{font-size:1.3rem;font-weight:700;background:linear-gradient(135deg,#7c3aed,#06b6d4);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.nav-links{display:flex;gap:2rem;font-size:.9rem;color:var(--mu)}
+.nav-links a:hover{color:var(--tx)}
+.nav-cta{background:var(--ac);color:#fff;padding:.5rem 1.2rem;border-radius:8px;font-size:.9rem;font-weight:600}
+.nav-cta:hover{opacity:.85}
+.hero{text-align:center;padding:100px 5% 80px;background:radial-gradient(ellipse 80% 50% at 50% 0%,rgba(124,58,237,.15),transparent)}
+.hero-badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(124,58,237,.15);border:1px solid rgba(124,58,237,.3);color:#a78bfa;padding:.4rem 1rem;border-radius:50px;font-size:.85rem;margin-bottom:2rem}
+.hero h1{font-size:clamp(2.5rem,6vw,4.5rem);font-weight:800;line-height:1.1;margin-bottom:1.5rem;letter-spacing:-1px}
+.hero h1 span{background:linear-gradient(135deg,#7c3aed,#06b6d4);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero p{font-size:1.2rem;color:var(--mu);max-width:600px;margin:0 auto 2.5rem}
+.hero-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+.btn-p{background:linear-gradient(135deg,#7c3aed,#6d28d9);color:#fff;padding:.9rem 2rem;border-radius:10px;font-weight:700;font-size:1rem;box-shadow:0 0 30px rgba(124,58,237,.3);transition:all .2s}
+.btn-p:hover{transform:translateY(-2px);box-shadow:0 0 40px rgba(124,58,237,.5)}
+.btn-s{background:transparent;color:var(--tx);padding:.9rem 2rem;border-radius:10px;font-weight:600;font-size:1rem;border:1px solid var(--bd);transition:border-color .2s}
+.btn-s:hover{border-color:var(--ac)}
+.stats{display:flex;justify-content:center;gap:3rem;flex-wrap:wrap;padding:3rem 5%;border-top:1px solid var(--bd);border-bottom:1px solid var(--bd)}
+.stat{text-align:center}
+.stat-n{font-size:2.2rem;font-weight:800;background:linear-gradient(135deg,#7c3aed,#06b6d4);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.stat-l{font-size:.85rem;color:var(--mu);margin-top:.25rem}
+.section{padding:80px 5%;max-width:1200px;margin:0 auto}
+.section h2{text-align:center;font-size:2rem;margin-bottom:1rem}
+.section-sub{text-align:center;color:var(--mu);margin-bottom:3rem}
+.features-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem}
+.fc{background:var(--sf);border:1px solid var(--bd);border-radius:12px;padding:1.5rem;transition:border-color .3s}
+.fc:hover{border-color:var(--ac)}
+.fc-icon{font-size:2rem;margin-bottom:1rem}
+.fc h3{font-size:1.05rem;margin-bottom:.5rem}
+.fc p{font-size:.9rem;color:var(--mu)}
+.pricing{padding:80px 5%;max-width:1100px;margin:0 auto}
+.pricing h2{text-align:center;font-size:2rem;margin-bottom:1rem}
+.price-note{text-align:center;background:rgba(6,182,212,.1);border:1px solid rgba(6,182,212,.3);color:#67e8f9;padding:.6rem 1.5rem;border-radius:8px;font-size:.85rem;max-width:500px;margin:.75rem auto 2.5rem}
+.pricing-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:1.5rem}
+.plan{background:var(--sf);border:1px solid var(--bd);border-radius:16px;padding:2rem;position:relative}
+.plan.pop{border-color:var(--ac);box-shadow:0 0 30px rgba(124,58,237,.2)}
+.pop-badge{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--ac);color:#fff;padding:.25rem 1rem;border-radius:50px;font-size:.75rem;font-weight:700;white-space:nowrap}
+.plan-name{font-size:1.1rem;font-weight:700;margin-bottom:.5rem}
+.plan-price{font-size:2.8rem;font-weight:800;margin-bottom:.25rem}
+.plan-price span{font-size:1rem;font-weight:400;color:var(--mu)}
+.plan-desc{font-size:.9rem;color:var(--mu);margin-bottom:1.5rem}
+.plan-features{list-style:none;margin-bottom:2rem}
+.plan-features li{padding:.4rem 0;font-size:.9rem;display:flex;align-items:center;gap:.6rem}
+.plan-features li::before{content:"✓";color:var(--gn);font-weight:700}
+.plan-btn{width:100%;padding:.85rem;border-radius:10px;font-weight:700;font-size:.95rem;cursor:pointer;border:none;transition:all .2s;text-align:center;display:block}
+.pb-free{background:transparent;border:1px solid var(--bd);color:var(--tx)}.pb-free:hover{border-color:var(--ac);color:#a78bfa}
+.pb-pro{background:linear-gradient(135deg,#7c3aed,#6d28d9);color:#fff;box-shadow:0 0 20px rgba(124,58,237,.3)}.pb-pro:hover{box-shadow:0 0 30px rgba(124,58,237,.5);transform:translateY(-1px)}
+.pb-team{background:linear-gradient(135deg,#06b6d4,#0891b2);color:#fff}.pb-team:hover{transform:translateY(-1px);box-shadow:0 0 20px rgba(6,182,212,.3)}
+.waitlist{padding:80px 5%;text-align:center}
+.waitlist h2{font-size:2rem;margin-bottom:1rem}
+.waitlist p{color:var(--mu);margin-bottom:2rem}
+.wl-form{display:flex;gap:.75rem;justify-content:center;flex-wrap:wrap;max-width:500px;margin:0 auto}
+.wl-form input{flex:1;min-width:220px;background:var(--sf);border:1px solid var(--bd);color:var(--tx);padding:.85rem 1.2rem;border-radius:10px;font-size:1rem;outline:none}
+.wl-form input:focus{border-color:var(--ac)}
+.wl-form button{background:linear-gradient(135deg,#7c3aed,#6d28d9);color:#fff;padding:.85rem 1.8rem;border-radius:10px;font-weight:700;font-size:1rem;border:none;cursor:pointer}
+#wl-ok{display:none;color:var(--gn);margin-top:1rem;font-weight:600}
+footer{background:var(--sf);border-top:1px solid var(--bd);padding:2.5rem 5%;text-align:center;color:var(--mu);font-size:.9rem}
+.footer-links{display:flex;gap:2rem;justify-content:center;margin-bottom:1rem;flex-wrap:wrap}
+.footer-links a:hover{color:var(--tx)}
+</style>
+</head>
+<body>
+<nav><div class="nav-inner">
+<div class="logo">⚡ ScriptForge</div>
+<div class="nav-links"><a href="#features">Features</a><a href="#pricing">Pricing</a><a href="https://drghostpurp.github.io/scriptforge-app/" target="_blank">Launch App</a></div>
+<a href="#waitlist" class="nav-cta">Get Early Access</a>
+</div></nav>
+
+<section class="hero">
+<div class="hero-badge">🚀 Now Live on GitHub Pages</div>
+<h1>Write &amp; Run Scripts<br><span>Instantly in Your Browser</span></h1>
+<p>Zero install. Zero friction. Full power. JavaScript, Python, npm packages, HTML preview — all free, all in your browser tab.</p>
+<div class="hero-btns">
+<a href="https://drghostpurp.github.io/scriptforge-app/" target="_blank" class="btn-p">Try It Free →</a>
+<a href="#pricing" class="btn-s">See Pricing</a>
+</div>
+</section>
+
+<div class="stats">
+<div class="stat"><div class="stat-n">0ms</div><div class="stat-l">Install Time</div></div>
+<div class="stat"><div class="stat-n">9+</div><div class="stat-l">Languages</div></div>
+<div class="stat"><div class="stat-n">🐍</div><div class="stat-l">Real Python</div></div>
+<div class="stat"><div class="stat-n">Free</div><div class="stat-l">To Get Started</div></div>
+</div>
+
+<section class="section" id="features">
+<h2>Everything You Need. Nothing You Don't.</h2>
+<p class="section-sub">Built for developers who want to ship fast without fighting their tools.</p>
+<div class="features-grid">
+<div class="fc"><div class="fc-icon">⚡</div><h3>Instant Execution</h3><p>JavaScript runs natively in V8. Results appear in milliseconds — no server round-trip.</p></div>
+<div class="fc"><div class="fc-icon">🐍</div><h3>Real Python (WebAssembly)</h3><p>Full Python stdlib via Pyodide. Run numpy, parse data, use math — 100% in your browser.</p></div>
+<div class="fc"><div class="fc-icon">📦</div><h3>npm Package Imports</h3><p>Import any npm package with <code style="color:#06b6d4">import x from "https://esm.sh/pkg"</code>. lodash, dayjs, zod, anything.</p></div>
+<div class="fc"><div class="fc-icon">🌐</div><h3>HTML Live Preview</h3><p>Write HTML/CSS/JS and see it render live in a Preview tab. No browser refresh needed.</p></div>
+<div class="fc"><div class="fc-icon">💾</div><h3>Auto-Save Scripts</h3><p>Every script persists in localStorage. Your library is always there when you come back.</p></div>
+<div class="fc"><div class="fc-icon">📤</div><h3>Share Any Script</h3><p>One click generates a URL with your script encoded. Anyone opens it instantly, zero setup.</p></div>
+<div class="fc"><div class="fc-icon">🌙</div><h3>Dark &amp; Light Theme</h3><p>Full dark/light theme toggle with persistence. Looks great either way.</p></div>
+<div class="fc"><div class="fc-icon">📎</div><h3>GitHub Gist Import</h3><p>Paste any Gist URL to load it instantly into the editor. Language auto-detected.</p></div>
+<div class="fc"><div class="fc-icon">↓</div><h3>Export Scripts</h3><p>Download any script as .js, .py, .sh, .html — one click, correct file extension.</p></div>
+</div>
+</section>
+
+<section class="pricing" id="pricing">
+<h2>Simple, Transparent Pricing</h2>
+<div class="price-note">🔒 Paid plans launching soon — join waitlist for founding member pricing</div>
+<div class="pricing-grid">
+<div class="plan">
+<div class="plan-name">Free</div><div class="plan-price">$0<span>/mo</span></div>
+<div class="plan-desc">Everything you need to start scripting</div>
+<ul class="plan-features"><li>Unlimited scripts (local)</li><li>JavaScript + Python (WebAssembly)</li><li>npm package imports</li><li>HTML live preview</li><li>Script sharing via URL</li><li>GitHub Gist import</li><li>Export as files</li></ul>
+<a href="https://drghostpurp.github.io/scriptforge-app/" target="_blank" class="plan-btn pb-free">Launch Free IDE</a>
+</div>
+<div class="plan pop">
+<div class="pop-badge">⭐ Most Popular</div>
+<div class="plan-name">Pro</div><div class="plan-price">$9<span>/mo</span></div>
+<div class="plan-desc">For serious developers</div>
+<ul class="plan-features"><li>Everything in Free</li><li>Cloud sync across devices</li><li>Unlimited script history</li><li>Priority support</li><li>Advanced language features</li></ul>
+<a href="#waitlist" class="plan-btn pb-pro">Join Waitlist for Pro</a>
+</div>
+<div class="plan">
+<div class="plan-name">Team</div><div class="plan-price">$29<span>/mo</span></div>
+<div class="plan-desc">For teams that ship together</div>
+<ul class="plan-features"><li>Everything in Pro</li><li>Up to 10 team seats</li><li>Shared script libraries</li><li>Admin dashboard</li><li>Real-time collaboration</li></ul>
+<a href="#waitlist" class="plan-btn pb-team">Join Waitlist for Team</a>
+</div>
+</div>
+</section>
+
+<section class="waitlist" id="waitlist">
+<h2>Get Early Access</h2>
+<p>Join the waitlist for Pro &amp; Team. Early members get <strong>founding member pricing — locked in forever.</strong></p>
+<form class="wl-form" action="https://formspree.io/f/xpwzgvkj" method="POST" id="wlf">
+<input type="email" name="email" placeholder="your@email.com" required>
+<button type="submit">Join Waitlist →</button>
+</form>
+<div id="wl-ok">✅ You're on the list!</div>
+</section>
+
+<footer>
+<div class="footer-links">
+<a href="https://drghostpurp.github.io/scriptforge-app/" target="_blank">Launch App</a>
+<a href="https://drghostpurp.github.io/scriptforge-io/playground/">Playground</a>
+<a href="https://drghostpurp.github.io/scriptforge-io/tools/">Tools</a>
+<a href="https://drghostpurp.github.io/scriptforge-io/changelog/">Changelog</a>
+<a href="https://drghostpurp.github.io/scriptforge-io/blog/why-browser-ide/">Blog</a>
+<a href="mailto:alloutpurp@gmail.com">Contact</a>
+</div>
+<p>© 2026 ScriptForge · Built for developers who move fast.</p>
+</footer>
+<script>
+document.getElementById("wlf").addEventListener("submit",async function(e){
+e.preventDefault();
+await fetch(this.action,{method:"POST",body:new FormData(this),headers:{"Accept":"application/json"}});
+this.style.display="none";
+document.getElementById("wl-ok").style.display="block";
+});
+</script>
+</body></html>
