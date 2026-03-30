@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Run Python in the Browser with WebAssembly – No Install Required</title>
+<meta name="description" content="How to run real Python code in the browser using Pyodide and WebAssembly. No server, no install, full CPython including NumPy and pandas.">
+<meta property="og:title" content="Run Python in the Browser with WebAssembly">
+<meta property="og:description" content="Real CPython in the browser via Pyodide — how it works and why it matters.">
+<link rel="canonical" href="https://drghostpurp.github.io/scriptforge-io/blog/python-in-browser/">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#0d0d0d;color:#e5e7eb;line-height:1.75}
+  nav{display:flex;justify-content:space-between;align-items:center;padding:1rem 2rem;border-bottom:1px solid #1f2937;position:sticky;top:0;background:#0d0d0d;z-index:100}
+  .logo{font-size:1.25rem;font-weight:700;color:#fff;text-decoration:none}
+  .logo span{color:#6366f1}
+  nav a{color:#9ca3af;text-decoration:none;font-size:.9rem;margin-left:1.5rem}
+  nav a:hover{color:#fff}
+  .container{max-width:680px;margin:0 auto;padding:4rem 2rem}
+  .meta{display:flex;gap:1rem;align-items:center;margin-bottom:2rem;font-size:.85rem;color:#6b7280}
+  .tag{background:#1f2937;color:#6366f1;padding:.2rem .6rem;border-radius:9999px;font-size:.75rem;font-weight:600}
+  h1{font-size:2.25rem;font-weight:800;color:#fff;line-height:1.25;margin-bottom:1.5rem}
+  h2{font-size:1.4rem;font-weight:700;color:#fff;margin:2.5rem 0 1rem}
+  p{margin-bottom:1.25rem;color:#d1d5db}
+  pre{background:#111827;border:1px solid #1f2937;border-radius:.5rem;padding:1.25rem;overflow-x:auto;margin:1.5rem 0}
+  code{color:#a78bfa;font-family:'Courier New',monospace;font-size:.88em}
+  pre code{font-size:.85rem;color:#e5e7eb}
+  .highlight{color:#6ee7b7}
+  .comment{color:#4b5563}
+  .callout{background:#1f2937;border-left:3px solid #6366f1;padding:1rem 1.5rem;border-radius:0 .5rem .5rem 0;margin:1.5rem 0}
+  .callout p{margin:0;color:#e5e7eb}
+  .cta-box{background:#111827;border:1px solid #374151;border-radius:1rem;padding:2rem;text-align:center;margin:3rem 0}
+  .cta-box h3{font-size:1.5rem;font-weight:700;color:#fff;margin-bottom:.75rem}
+  .cta-box p{color:#9ca3af;margin-bottom:1.5rem}
+  .btn{display:inline-block;background:#6366f1;color:#fff;padding:.75rem 2rem;border-radius:.5rem;text-decoration:none;font-weight:600}
+  .btn:hover{background:#4f46e5}
+  footer{border-top:1px solid #1f2937;padding:2rem;text-align:center;color:#4b5563;font-size:.85rem}
+  footer a{color:#6366f1;text-decoration:none}
+</style>
+</head>
+<body>
+<nav>
+  <a class="logo" href="/scriptforge-io/"><Script<span>Forge</span></a>
+  <div>
+    <a href="/scriptforge-io/">Home</a>
+    <a href="/scriptforge-app/">Launch IDE</a>
+    <a href="/scriptforge-io/tools/">Tools</a>
+    <a href="/scriptforge-io/blog/">Blog</a>
+  </div>
+</nav>
+
+<div class="container">
+  <div class="meta">
+    <span class="tag">WebAssembly</span>
+    <span>March 2026</span>
+    <span>·</span>
+    <span>8 min read</span>
+  </div>
+
+  <h1>Run Python in the Browser with WebAssembly — No Install Required</h1>
+
+  <p>For most of web development history, Python was a server-side language. You wrote it on the server, you ran it on the server, and the browser just received the output. That constraint is now completely gone.</p>
+
+  <p>WebAssembly changed the rules. And <a href="https://pyodide.org" style="color:#6366f1">Pyodide</a> — a full CPython interpreter compiled to WASM — means you can run real Python, with real libraries, directly in the browser tab. No server, no install, no account.</p>
+
+  <h2>How Pyodide Works</h2>
+
+  <p>Pyodide compiles the CPython interpreter itself to WebAssembly. When you load Pyodide in a browser, you're loading a 10MB WASM binary that is, functionally, the same Python runtime you'd install on your laptop. The compilation step is a one-time cost — after the first load, it's cached by the browser.</p>
+
+  <pre><code><span class="comment">// Load Pyodide from CDN — takes ~2-3s the first time</span>
+<span class="highlight">const</span> pyodide = <span class="highlight">await</span> loadPyodide();
+
+<span class="comment">// Run Python directly — this is real CPython</span>
+<span class="highlight">const</span> result = pyodide.runPython(`
+  x = [1, 2, 3, 4, 5]
+  sum(x) * 2
+`);
+console.log(result); <span class="comment">// 30</span></code></pre>
+
+  <p>That's it. No build step, no bundler, no server request. The Python runs in the browser's main thread (or a Web Worker for non-blocking execution).</p>
+
+  <h2>What Libraries Are Available?</h2>
+
+  <p>Pyodide ships with over 100 packages pre-compiled to WASM, including the scientific computing stack that Python is famous for: NumPy, pandas, matplotlib, scikit-learn, SciPy, and many more. You install them the same way you would in a normal Python environment:</p>
+
+  <pre><code><span class="highlight">await</span> pyodide.loadPackage(<span class="highlight">'numpy'</span>);
+
+pyodide.runPython(`
+  import numpy as np
+  arr = np.array([1, 2, 3, 4, 5])
+  print(arr.mean())   <span class="comment"># 3.0</span>
+  print(arr.std())    <span class="comment"># 1.4142...</span>
+`);</code></pre>
+
+  <p>The package download happens over CDN and is cached after the first request. For subsequent visits, your Python environment with all its dependencies loads instantly from the browser cache.</p>
+
+  <h2>JavaScript ↔ Python Interop</h2>
+
+  <p>One of Pyodide's most powerful features is seamless data exchange between Python and JavaScript. You can pass JavaScript objects into Python, operate on them with Python libraries, and get the result back as a JavaScript value:</p>
+
+  <pre><code><span class="comment">// Pass JS data to Python</span>
+pyodide.globals.set(<span class="highlight">'data'</span>, [10, 20, 30, 40, 50]);
+
+<span class="highlight">const</span> result = pyodide.runPython(`
+  import numpy as np
+  arr = np.array(data)
+  float(arr.mean())
+`);
+
+console.log(result); <span class="comment">// 30.0 — back in JavaScript</span></code></pre>
+
+  <div class="callout">
+    <p><strong>Performance note:</strong> Pyodide runs at roughly 1/3 the speed of native CPython for CPU-bound tasks. For most scripting, data transformation, and visualization work, this is fast enough. Web Workers let you run Python in a background thread without blocking the UI.</p>
+  </div>
+
+  <h2>Real-World Use Cases</h2>
+
+  <p>The applications are broader than they might first appear. Educational platforms use Pyodide to let students run Python exercises without any setup — the entire course runs in a browser tab. Data scientists use it to share interactive notebooks that anyone can open and run without installing Jupyter. Developer tools use it to let users write Python automation scripts that process local files entirely client-side, with zero privacy concerns.</p>
+
+  <p>ScriptForge uses Pyodide to power Python execution in its browser IDE. When you open a new Python script and click Run, there's no network request — your code runs in a WASM Python interpreter inside the tab itself.</p>
+
+  <h2>Getting Started in 3 Lines</h2>
+
+  <p>The barrier to entry is genuinely low. Drop this into any HTML file:</p>
+
+  <pre><code>&lt;<span class="highlight">script</span> src="https://cdn.jsdelivr.net/pyodide/v0.26.0/full/pyodide.js"&gt;&lt;/<span class="highlight">script</span>&gt;
+&lt;<span class="highlight">script</span>&gt;
+  loadPyodide().then(py =&gt; {
+    py.runPython(`print("Hello from Python!")`);
+  });
+&lt;/<span class="highlight">script</span>&gt;</code></pre>
+
+  <p>Open that in a browser, open the console, and you'll see "Hello from Python!" — with no Python installed on your machine, no server running, no build step. That's the power of WebAssembly.</p>
+
+  <div class="cta-box">
+    <h3>Try It Now in ScriptForge</h3>
+    <p>Open the ScriptForge IDE, select Python, and start coding. Pyodide loads automatically — no setup needed.</p>
+    <a href="/scriptforge-app/" class="btn">Open ScriptForge IDE →</a>
+  </div>
+
+</div>
+
+<footer>
+  <p>© 2026 ScriptForge · <a href="/scriptforge-io/">Home</a> · <a href="/scriptforge-io/tools/">Tools</a> · <a href="/scriptforge-io/blog/">Blog</a></p>
+</footer>
+</body>
+</html>
